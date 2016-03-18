@@ -21,7 +21,7 @@ function serveBrowsersync(err) {
   return browserSync({
     files: [
       {
-        match: [ 'src/**/*.@(css|txt|png|php|pot)' ],
+        match: [ 'src/**/*.@(css|txt|png|php|pot|twig)' ],
         fn(event, file) {
           switch (event) {
             case 'add':

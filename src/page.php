@@ -7,31 +7,37 @@
  * and that other 'pages' on your WordPress site may use a
  * different template.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link    https://codex.wordpress.org/Template_Hierarchy
  *
  * @package _msp
  */
 
-get_header(); ?>
+$context = Timber::get_context();
+$context['posts'] = Timber::get_posts();
+$context['foo'] = 'bar';
+$templates = ['index.twig'];
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+get_header();
+?>
 
-			<?php
-			while ( have_posts() ) : the_post();
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
 
-				get_template_part( 'template-parts/content', 'page' );
+            <?php
+            while (have_posts()) : the_post();
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+                get_template_part('template-parts/content', 'page');
 
-			endwhile; // End of the loop.
-			?>
+                // If comments are open or we have at least one comment, load up the comment template.
+                if (comments_open() || get_comments_number()) :
+                    comments_template();
+                endif;
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+            endwhile; // End of the loop.
+            ?>
+
+        </main><!-- #main -->
+    </div><!-- #primary -->
 
 <?php
 get_sidebar();
