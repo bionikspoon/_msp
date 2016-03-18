@@ -1,0 +1,12 @@
+{
+    "name": "bionikspoon/_msp",
+    "description": "Wordpress theme for manuphatak.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Manu Phatak",
+            "email": "bionikspoon@gmail.com"
+        }
+    ],
+    "require": {}
+}

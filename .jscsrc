@@ -1,7 +1,15 @@
 {
-    "preset": "wordpress",
-    "fileExtensions": [ ".js" ],
-    "excludeFiles": [
-    	"js/**.min.js"
-    ]
+  "preset": "airbnb",
+  "fileExtensions": [
+    ".js"
+  ],
+  "esnext": true,
+  "excludeFiles": [
+    "_msp/**",
+    "node_modules/**"
+  ],
+  "disallowSpacesInsideBrackets": null,
+  "disallowSpacesInsideArrayBrackets": null,
+  "disallowKeywordsOnNewLine": [],
+  "maximumLineLength": 120
 }
