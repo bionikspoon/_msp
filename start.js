@@ -13,7 +13,7 @@ const identity = require('lodash').identity;
 
 const bundler = webpack(webpackConfig);
 
-const DIST = 'manuphatak.com';
+const DIST = webpackConfig.THEME_NAME;
 
 
 fs.emptyDir(DIST, serveBrowsersync);

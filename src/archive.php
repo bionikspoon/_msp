@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package manuphatak.com
+ * @package _msp
  */
 
 get_header(); ?>

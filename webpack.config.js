@@ -9,7 +9,7 @@ const _ = require('lodash');
 // ===========================================================================
 // CONSTANTS
 // ===========================================================================
-const THEME_NAME = 'manuphatak.com';
+const THEME_NAME = '_msp';
 const PATHS = { // :off
     src: unipath('src'),
     build: unipath(THEME_NAME),
@@ -46,6 +46,8 @@ log('WATCH', WATCH);
 // CONFIG EXPORT
 // ===========================================================================
 module.exports = {
+    THEME_NAME: THEME_NAME,
+
     entry: getEntry(ENV),
 
     output: { // :off

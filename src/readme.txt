@@ -1,4 +1,4 @@
-=== manuphatak.com ===
+=== _msp ===
 
 Contributors: automattic
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
@@ -9,11 +9,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A starter theme called manuphatak.com, or underscores.
+A starter theme called _msp, or underscores.
 
 == Description ==
 
-Hi. I'm a starter theme called manuphatak.com, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Hi. I'm a starter theme called _msp, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
 == Installation ==
 	
@@ -25,7 +25,7 @@ Hi. I'm a starter theme called manuphatak.com, or underscores, if you like. I'm 
 
 = Does this theme support any plugins? =
 
-manuphatak.com includes support for Infinite Scroll in Jetpack.
+_msp includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

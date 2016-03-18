@@ -1,8 +1,8 @@
-@import "../../node_modules/normalize.css/normalize.css";
-@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Normalize
 # Typography
 # Elements
 # Forms
@@ -14,7 +14,7 @@
 # Clearings
 # Widgets
 # Content
-	## Posts and pages
+    ## Posts and pages
 	## Asides
 	## Comments
 # Infinite scroll
@@ -22,18 +22,67 @@
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-@import "./typopgraphy";
-@import "./elements";
-@import "./forms";
-@import "./navigation";
-@import "./accessibility";
-@import "./alignments";
-@import "./clearings";
-@import "./widgets";
-@import "./content";
-@import "./infinite-scroll";
-@import "./media";
 
-body {
-  //background-color: orange;
-}
+@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+@import "../../node_modules/normalize.css/normalize.css";
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+@import "typography/typography";
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+@import "elements/elements";
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+@import "forms/forms";
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+@import "navigation/navigation";
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+@import "modules/accessibility";
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+@import "modules/alignments";
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+@import "modules/clearings";
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+@import "site/secondary/widgets";
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+@import "site/site";
+
+/*--------------------------------------------------------------
+# Infinite scroll
+--------------------------------------------------------------*/
+@import "modules/infinite-scroll";
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+@import "media/media";
