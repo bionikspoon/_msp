@@ -1,43 +1,38 @@
-<nav id="site-navigation" class="main-navigation" role="navigation">
-    <div id="main-navigation-wrapper">
-        {% if logo %}
-            <div id="logo">
-                <img src={{ logo.src }} alt={{ logo.alt }} width={{ logo.width }} height={{ logo.height }}>
-                {#<a href="{{ }}" title="" rel="home">#}
-                {#<img src="{{  }}" />#}
-                {#</a>#}
-            </div>
-        {% endif %}
-        {% if menu %}
-            <div class="menu-main-container">
-                <ul class="menu-main menu">
-                    {% for item in menu.get_items %}
-                        <li id="menu-item-{{ item.ID }}" class="{{ item.class }}">
-                            <a href="{{ item.link }}" title="{{ item.attr_title }}">
-                                {{ item.name }}
-                            </a>
-                            {% if item.get_children %}
-                                <ul class="nav-drop">
-                                    {% for child in item.get_children %}
-                                        <li class="nav-drop-item">
-                                            <a href="{{ child.get_link }}">{{ child.title }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-
-                        </li>
-
-                    {% endfor %}
-                </ul>
-            </div>
-            <select>
-                <option selected="selected" value>Select Page</option>
-                {% for item in menu.get_items %}
-                    <option value={{ item.link }}>{{ item.name }}</option>
-                {% endfor %}
-            </select>
-        {% endif %}
-    </div>
+<nav id=site-navigation class=main-navigation role=navigation>
+   <div id=main-navigation-wrapper>
+      {% if logo %}
+         <div id=logo>
+            <img src={{ logo.src }} alt={{ logo.alt }} width={{ logo.width }} height={{ logo.height }}>
+         </div>
+      {% endif %}
+      {% if menu %}
+         <div class=menu-main-container>
+            <ul class="menu-main menu">
+               {% for item in menu.get_items %}
+                  <li id=menu-item-{{ item.ID }} class="{{ item.class }}">
+                     <a href={{ item.link }} title={{ item.attr_title }}>
+                        {{ item.name }}
+                     </a>
+                     {% if item.get_children %}
+                        <ul class=nav-drop>
+                           {% for child in item.get_children %}
+                              <li class=nav-drop-item>
+                                 <a href={{ child.get_link }}>{{ child.title }}</a>
+                              </li>
+                           {% endfor %}
+                        </ul>
+                     {% endif %}
+                  </li>
+               {% endfor %}
+            </ul>
+         </div>
+         <select>
+            <option selected value>Select Page</option>
+            {% for item in menu.get_items %}
+               <option value={{ item.link }}>{{ item.name }}</option>
+            {% endfor %}
+         </select>
+      {% endif %}
+   </div>
 
 </nav><!-- #site-navigation -->

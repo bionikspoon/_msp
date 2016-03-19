@@ -19,5 +19,5 @@ trim_trailing_whitespace = false
 [*.{scss,css}]
 indent_size = 4
 
-[*.html]
+[*.{html,twig,php}]
 indent_size = 3
