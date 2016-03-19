@@ -1,0 +1,38 @@
+
+#footer-area {
+    width: 100%;
+    display: inline;
+    float: left;
+    padding-top: 10px;
+    margin-top: 20px;
+    clear: both;
+    border-top: 2px solid $color__border--footer;
+
+    .wp-caption {
+        border: 1px solid $color__border--caption;
+    }
+}
+
+#copyright {
+    clear: both;
+    width: 100%;
+    border-top: 2px solid $color__border--footer;
+    display: inline;
+    float: left;
+    margin-top: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    p {
+        padding-top: 15px;
+        color: $color__text-primary-2;
+        font-size: 12px;
+    }
+    a {
+        color: $color__text-secondary;
+        text-decoration: none;
+        &:hover {
+            color: $color__link-hover;
+            text-decoration: underline;
+        }
+    }
+}

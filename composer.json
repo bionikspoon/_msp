@@ -8,5 +8,7 @@
             "email": "bionikspoon@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "jarednova/timber": "^0.22.6"
+    }
 }

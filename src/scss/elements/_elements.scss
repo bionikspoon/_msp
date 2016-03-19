@@ -1,38 +1,64 @@
 html {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-	box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+    background: $color__background-body; /* Fallback for when there is no custom background color defined. */
 }
 
 blockquote, q {
-	quotes: "" "";
+    quotes: "" "";
+    font-size: 2em;
+    line-height: 23px;
+    color: $color__text-primary;
+    margin-left: 20px;
+    border-left: 1px dotted $color__border--caption;
+    padding-left: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 
-	&:before,
-	&:after {
-		content: "";
-	}
+    &:before,
+    &:after {
+        content: "";
+    }
 }
 
 hr {
-	background-color: $color__background-hr;
-	border: 0;
-	height: 1px;
-	margin-bottom: 1.5em;
+    background-color: $color__background-hr;
+    border: 0;
+    height: 1px;
+    margin-bottom: 1.5em;
+
+}
+
+pre {
+    background: $color__background-pre;
+    font-size: 13px;
+    line-height: 1.2;
+    margin-bottom: 1.6em;
+    padding: 1.6em;
+    overflow: auto;
+    max-width: 100%;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 0 1.5em 1.5em;
+}
+
+img {
+    height: auto; /* Make sure images are scaled correctly. */
+    max-width: 100%; /* Adhere to container width. */
 }
 
 @import "lists";
-
-img {
-	height: auto; /* Make sure images are scaled correctly. */
-	max-width: 100%; /* Adhere to container width. */
-}
-
 @import "tables";

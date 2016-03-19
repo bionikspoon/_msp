@@ -1,19 +1,35 @@
-#{$all-text-inputs} {
-  color: $color__text-input;
-  border: 1px solid $color__border-input;
-  border-radius: 3px;
-  padding: 3px;
+#{$all-text-inputs}, .text-input, #s, .comment-input {
+    color: $color__text-input;
+    border: 1px solid $color__border-input;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 12px;
 
-  &:focus {
-    color: $color__text-input-focus;
-  }
+    &:focus {
+        color: $color__text-input-focus;
+    }
+}
+
+#s {
+    width: auto;
+    margin-top: 3px;
+}
+
+.comment-input {
+    width: 96%;
 }
 
 select {
-  border: 1px solid $color__border-input;
+    border: 1px solid $color__border-input;
+    width: 100%;
 }
 
 textarea {
-  @include padding(inherit inherit inherit 3);
-  width: 100%;
+    @include padding(inherit inherit inherit 3);
+    width: 100%;
 }
+
+label {
+    display: inline-block;
+}
+

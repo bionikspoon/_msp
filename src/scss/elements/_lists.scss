@@ -1,27 +1,48 @@
-ul, ol {
-  margin: 0 0 1.5em 3em;
-}
-
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
-}
 
 li {
-  > ul,
-  > ol {
-    margin-bottom: 0;
-    margin-left: 1.5em;
-  }
+    > ul,
+    > ol {
+        margin-bottom: 0;
+        margin-left: 1.5em;
+    }
 }
 
 dt {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 dd {
-  margin: 0 1.5em 1.5em;
+    margin: 0 1.5em 1.5em;
+}
+
+ul {
+    list-style: disc;
+    margin: 0 0 1.5em 3em;
+}
+
+ol {
+    list-style: decimal;
+    margin: 0 0 1.5em 3em;
+    li {
+        margin-bottom: 7px;
+        ol {
+            list-style-type: lower-alpha;
+            li ol {
+                list-style-type: lower-roman;
+            }
+        }
+    }
+
+}
+
+ul, ol {
+    li {
+        font-size: 12px;
+        color: $color__text-secondary;
+        padding-left: 10px;
+    }
+    ul, ol {
+        margin-bottom: 0;
+        margin-left: 1.5em;
+    }
 }

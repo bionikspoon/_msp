@@ -1,107 +1,289 @@
-.main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
+/*.main-navigation {
+    clear: both;
+    display: block;
+    float: left;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
 
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
+    ul {
+        display: none;
+        list-style: none;
+        margin: 0;
+        padding: 5px 25px;
+        position: relative;
 
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 1.5em;
-			left: -999em;
-			z-index: 99999;
+        ul {
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+            float: left;
+            position: absolute;
+            top: 1.5em;
+            left: -999em;
+            z-index: 99999;
 
-			ul {
-				left: -999em;
-				top: 0;
-			}
+            ul {
+                left: -999em;
+                top: 0;
+            }
 
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
+            li {
+                &:hover > ul,
+                &.focus > ul {
+                    left: 100%;
+                    color: #111 !important;
+                }
 
-			a {
-				width: 200px;
-			}
+            }
 
-			:hover > a,
-			.focus > a {
-			}
+            a {
+                width: 200px;
+            }
 
-			a:hover,
-			a.focus {
-			}
-		}
+            :hover > a,
+            .focus > a {
+            }
 
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-	
-	li {
-		float: left;
-		position: relative;
+            a:hover,
+            a.focus {
+            }
+        }
 
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-	
-	a {
-		display: block;
-		text-decoration: none;
-	}
+        li {
+            &:hover,
+            &.focus {
+                > ul {
+                    left: auto;
+                }
 
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
+                ul {
+                    background-color: #fff;
+                    box-shadow: 0 3px 7px -2px #333;
+                    display: block;
+                    margin-top: 5px;
+                    padding: 5px;
+                    position: absolute;
+                    left: 0;
+                    top: 33px;
+                    width: 150px;
+                }
+            }
+        }
+
+    }
+
+    li {
+        float: left;
+        position: relative;
+        display: inline;
+        padding: 12px 12px;
+
+        a {
+            color: #999;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        &:hover > a,
+        &.focus > a {
+            color: #111;
+        }
+
+        &.current-menu-item a,
+        &.current-post-parent a {
+            color: #111;
+        }
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    .current_page_item > a,
+    .current-menu-item > a,
+    .current_page_ancestor > a,
+    .current-menu-ancestor > a {
+    }
+    ul {
+        display: none;
+        z-index: 9999;
+    }
 }
 
-/* Small menu. */
+!* Small menu. *!
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
+    display: block;
 }
 
 @media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
-		display: block;
-	}
+    .menu-toggle {
+        display: none;
+    }
+    .main-navigation ul {
+        display: block;
+    }
 }
 
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
 
-	.site-main & {
-		margin: 0 0 1.5em;
-		overflow: hidden;
-	}
+    .site-main & {
+        margin: 0 0 1.5em;
+        overflow: hidden;
+    }
 
-	.nav-previous {
-		float: left;
-		width: 50%;
-	}
+    .nav-previous {
+        float: left;
+        width: 50%;
+    }
 
-	.nav-next {
-		float: right;
-		text-align: right;
-		width: 50%;
-	}
+    .nav-next {
+        float: right;
+        text-align: right;
+        width: 50%;
+    }
+}*/
+
+#main-nav-wrapper {
+    background: $color__background-body;
+    float: left;
+    position: relative;
+    width: 100%;
+    min-height: 42px;
+    max-height: 86px;
+    z-index: 2;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 0 4px 15px -5px $color__box-shadow-secondary;
 }
+
+.main-navigation {
+    display: block;
+    float: left;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+
+    ul {
+        padding: 5px 25px;
+        position: relative;
+        width: 960px;
+        margin-top: -1px;
+        li {
+            display: inline;
+            float: left;
+            padding: 12px;
+            position: relative;
+            a {
+                color: $color__link-nav;
+                font-size: 13px;
+                text-decoration: none;
+            }
+            &:hover {
+                a {
+                    color: $color__link-hover;
+                }
+                ul {
+                    background: $color__background-body;
+                    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+                    box-shadow: 0 3px 7px -2px #333;
+                    display: block;
+                    margin-top: 5px;
+                    padding: 5px;
+                    position: absolute;
+                    left: 0;
+                    top: 33px;
+                    width: 150px;
+                    li {
+                        padding: 4px;
+                        position: relative;
+                        width: 97%;
+                        ul {
+                            display: none;
+                        }
+                        &:hover ul {
+                            border: none;
+                            display: block;
+                            margin: 0;
+                            position: absolute;
+                            left: 155px;
+                            top: 0;
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+            ul {
+                display: none;
+                z-index: 9999;
+            }
+        }
+        ul li a {
+            color: $color__link-nav !important;
+            height: auto;
+            display: block;
+            &:hover {
+                color: $color__link-hover !important;
+            }
+        }
+        .sub-menu, .children {
+            li {
+                background: none;
+                border-bottom: 1px dotted $color__border--table;
+                width: 100%;
+            }
+        }
+
+    }
+    li {
+        &.current-menu-item, &.current-post-parent {
+            a {
+                color: $color__text-primary;
+            }
+        }
+    }
+    select {
+        display: none;
+    }
+}
+
+nav.main-navigation {
+    box-shadow: 0 4px 15px -5px $color__box-shadow-secondary;
+}
+
+#logo img {
+    @include img-effect;
+    max-height: 50px;
+    padding: 0 0 0 3%;
+    position: relative;
+    float: left;
+}
+
+@media only screen and(max-width: 767px) {
+    .main-navigation {
+        background: $color__background-body;
+        ul {
+            display: none;
+        }
+        select {
+            display: inline;
+            background: $url-mobile-select no-repeat scroll right center $color__background-body;
+            appearance: none;
+            padding: 8px 10px;
+            margin: 8px 15px;
+            border: 1px solid $color__border--table;
+            //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+            border-radius: 5px;
+            width: 40%;
+        }
+    }
+    #main-nav-wrapper {
+        height: 42px;
+        display: inline;
+        float: none;
+    }
+}
+
+
+

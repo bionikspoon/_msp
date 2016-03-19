@@ -1,20 +1,50 @@
+//colors
 $color__background-body: #fff;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
-$color__background-pre: #eee;
+$color__background-pre: #efefef;
 $color__background-ins: #fff9c0;
+$color__background--post-sticky: #ececec;
+$color__background--th: #999;
 
+$color__text-primary: #111;
+$color__text-primary-2: #444;
+$color__text-primary-inverse: #fff;
+$color__text-secondary: #858585;
 $color__text-screen: #21759b;
-$color__text-input: #666;
+$color__text-input: #555;
 $color__text-input-focus: #111;
-$color__link: royalblue;
-$color__link-visited: purple;
-$color__link-hover: midnightblue;
+$color__link-nav: #999;
 $color__text-main: #404040;
+$color__text--post-date: #8e8e8e;
+$color__text--post-meta: #8e8e8e;
+$color__text--post-comment: #8e8e8e;
+$color__text--caption: #999;
+$color__link: #444;
+$color__link--inverse: #fafafa;
+$color__link-visited: #111;
+$color__link-hover: #111;
+$color__link-hover-bg: #777;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+$color__border--footer: #fff;
+$color__border--table: #eaeaea;
+$color__border--caption: #999;
+$color__border--post: #dbdbdb;
+
+$color__box-shadow-secondary: #555;
+$color__category-bg: #000;
+
+//fonts
+$sans-serif-family: sans-serif;
+
+//urls
+$url-hr-img: url(./images/hr.jpg);
+$url-button-bg: url(./images/button-back.gif);
+$url-button-bg-hover: url(./images/button-back-over.gif);
+$url-mobile-select: url(./images/mobile-menu-icon.png);

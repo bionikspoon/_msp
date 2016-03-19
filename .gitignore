@@ -1,3 +1,5 @@
 node_modules
 _msp
-/vendor/
+vendor
+composer.lock
+wp-content

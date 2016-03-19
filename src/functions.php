@@ -42,10 +42,12 @@ if (!function_exists('_msp_setup')) :
          */
         add_theme_support('post-thumbnails');
 
-        // This theme uses wp_nav_menu() in one location.
+        // This theme uses wp_nav_menu()
         register_nav_menus([
-            'primary' => esc_html__('Primary', '_msp'),
+            'primary' => esc_html__('Primary Menu', '_msp'),
+            'social'  => esc_html__('Social Links Menu', '_msp'),
         ]);
+
 
         /*
          * Switch default core markup for search form, comment form, and comments

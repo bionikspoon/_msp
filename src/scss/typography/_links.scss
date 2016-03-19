@@ -1,0 +1,22 @@
+
+a {
+    &:link {
+        color: $color__link;
+        text-decoration: underline;
+    }
+    &:visited {
+        color: $color__link-visited;
+        text-decoration: underline;
+    }
+    &:hover {
+        color: $color__link-visited;
+        text-decoration: none;
+    }
+    &:active {
+        color: $color__link;
+        text-decoration: none;
+    }
+    &:focus {
+        outline-style: none;
+    }
+}
