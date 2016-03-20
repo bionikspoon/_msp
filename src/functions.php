@@ -7,25 +7,28 @@
  * @package _msp
  */
 
-if (!function_exists('_msp_setup')) :
-   /**
-    * Sets up theme defaults and registers support for various WordPress features.
-    *
-    * Note that this function is hooked into the after_setup_theme hook, which
-    * runs before the init hook. The init hook is too late for some features, such
-    * as indicating support for post thumbnails.
-    */
-   function _msp_setup() {
+
+if ( !class_exists( 'Timber' ) ) {
+   add_action( 'admin_notices', function () {
+      echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url( admin_url( 'plugins.php#timber' ) ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a></p></div>';
+   } );
+
+   return;
+}
+
+class MSPSite extends TimberSite {
+
+   function __construct() {
       /*
-       * Make theme available for translation.
-       * Translations can be filed in the /languages/ directory.
-       * If you're building a theme based on _msp, use a find and replace
-       * to change '_msp' to the name of your theme in all the template files.
-       */
-      load_theme_textdomain('_msp', get_template_directory() . '/languages');
+      * Make theme available for translation.
+      * Translations can be filed in the /languages/ directory.
+      * If you're building a theme based on _msp, use a find and replace
+      * to change '_msp' to the name of your theme in all the template files.
+      */
+      load_theme_textdomain( '_msp', get_template_directory() . '/languages' );
 
       // Add default posts and comments RSS feed links to head.
-      add_theme_support('automatic-feed-links');
+      add_theme_support( 'automatic-feed-links' );
 
       /*
        * Let WordPress manage the document title.
@@ -33,54 +36,113 @@ if (!function_exists('_msp_setup')) :
        * hard-coded <title> tag in the document head, and expect WordPress to
        * provide it for us.
        */
-      add_theme_support('title-tag');
+      add_theme_support( 'title-tag' );
 
       /*
        * Enable support for Post Thumbnails on posts and pages.
        *
        * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
        */
-      add_theme_support('post-thumbnails');
+      add_theme_support( 'post-thumbnails' );
+      add_image_size( 'summary-image', 300, 9999 );
+      add_image_size( 'detail-image', 750, 9999 );
 
       // This theme uses wp_nav_menu()
-      register_nav_menus([
-         'primary' => esc_html__('Primary Menu', '_msp'),
-         'social'  => esc_html__('Social Links Menu', '_msp'),
-      ]);
+      register_nav_menus( [
+         'primary' => esc_html__( 'Primary Menu', '_msp' ),
+         'social'  => esc_html__( 'Social Links Menu', '_msp' ),
+      ] );
 
 
       /*
        * Switch default core markup for search form, comment form, and comments
        * to output valid HTML5.
        */
-      add_theme_support('html5', [
+      add_theme_support( 'html5', [
          'search-form',
          'comment-form',
          'comment-list',
          'gallery',
          'caption',
-      ]);
+      ] );
 
       /*
        * Enable support for Post Formats.
        * See https://developer.wordpress.org/themes/functionality/post-formats/
        */
-      add_theme_support('post-formats', [
+      add_theme_support( 'post-formats', [
          'aside',
          'image',
          'video',
          'quote',
          'link',
-      ]);
+      ] );
 
       // Set up the WordPress core custom background feature.
-      add_theme_support('custom-background', apply_filters('_msp_custom_background_args', [
+      add_theme_support( 'custom-background', apply_filters( '_msp_custom_background_args', [
          'default-color' => 'ffffff',
          'default-image' => '',
-      ]));
+      ] ) );
+
+      add_theme_support( 'menus' );
+      add_filter( 'timber_context', [ $this, 'add_to_context' ] );
+      add_filter( 'get_twig', [ $this, 'add_to_twig' ] );
+      parent::__construct();
    }
-endif;
-add_action('after_setup_theme', '_msp_setup');
+
+   function add_to_context( $context ) {
+      $context[ 'menu' ] = new TimberMenu( 'primary' );
+      $context[ 'social' ] = new TimberMenu( 'social' );
+      //$context[ 'logo' ] = new TimberImage( get_custom_header()->attachment_id );
+      $context[ 'footer_bg' ] = new TimberImage( 305 );
+      $context[ 'header_bg' ] = new TimberImage( 306 );
+      $context[ 'logo' ] = new TimberImage( 307 );
+      $context[ 'ex_work_1' ] = new TimberImage( 308 );
+      $context[ 'ex_work_2' ] = new TimberImage( 309 );
+      $context[ 'ex_work_3' ] = new TimberImage( 310 );
+      $context[ 'ex_work_4' ] = new TimberImage( 311 );
+      $context[ 'ex_work_5' ] = new TimberImage( 312 );
+      $context[ 'ex_work_6' ] = new TimberImage( 313 );
+      $context[ 'ex_work_7' ] = new TimberImage( 314 );
+      $context[ 'ex_work_8' ] = new TimberImage( 315 );
+      $context[ 'ex_work_9' ] = new TimberImage( 316 );
+      $context[ 'site' ] = $this;
+
+      return $context;
+   }
+
+   function add_to_twig( $twig ) {
+      /* this is where you can add your own fuctions to twig */
+      $twig->addFilter( 'tax_links', new Twig_SimpleFilter( 'tax_links', 'tax_links' ) );
+
+      return $twig;
+   }
+
+}
+
+function tax_links( $taxes ) {
+   $convert_to_link = function ( $tax ) {
+      return sprintf( '<a href=%s rel="%s tag">%s</a>', $tax->link, $tax->taxonomy, $tax->name );
+   };
+
+   return array_map( $convert_to_link, $taxes );
+}
+
+new MSPSite();
+
+//if (!function_exists('_msp_setup')) :
+//   /**
+//    * Sets up theme defaults and registers support for various WordPress features.
+//    *
+//    * Note that this function is hooked into the after_setup_theme hook, which
+//    * runs before the init hook. The init hook is too late for some features, such
+//    * as indicating support for post thumbnails.
+//    */
+//   function _msp_setup() {
+//
+//   }
+//endif;
+//add_action('after_setup_theme', '_msp_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -90,10 +152,10 @@ add_action('after_setup_theme', '_msp_setup');
  * @global int $content_width
  */
 function _msp_content_width() {
-   $GLOBALS['content_width'] = apply_filters('_msp_content_width', 640);
+   $GLOBALS[ 'content_width' ] = apply_filters( '_msp_content_width', 640 );
 }
 
-add_action('after_setup_theme', '_msp_content_width', 0);
+add_action( 'after_setup_theme', '_msp_content_width', 0 );
 
 /**
  * Register widget area.
@@ -101,37 +163,37 @@ add_action('after_setup_theme', '_msp_content_width', 0);
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function _msp_widgets_init() {
-   register_sidebar([
-      'name'          => esc_html__('Sidebar', '_msp'),
+   register_sidebar( [
+      'name'          => esc_html__( 'Sidebar', '_msp' ),
       'id'            => 'sidebar-1',
       'description'   => '',
       'before_widget' => '<section id="%1$s" class="widget %2$s">',
       'after_widget'  => '</section>',
       'before_title'  => '<h2 class="widget-title">',
       'after_title'   => '</h2>',
-   ]);
+   ] );
 }
 
-add_action('widgets_init', '_msp_widgets_init');
+add_action( 'widgets_init', '_msp_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
 function _msp_scripts() {
-   wp_enqueue_style('_msp-style', get_stylesheet_uri());
+   wp_enqueue_style( '_msp-style', get_stylesheet_uri() );
 
-   wp_enqueue_script('_msp-main', get_template_directory_uri() . '/js/main.js', [], '20151215', TRUE);
+   wp_enqueue_script( '_msp-main', get_template_directory_uri() . '/js/main.js', [ ], '20151215', TRUE );
 
-   wp_enqueue_script('_msp-navigation', get_template_directory_uri() . '/js/navigation.js', [], '20151215', TRUE);
+   wp_enqueue_script( '_msp-navigation', get_template_directory_uri() . '/js/navigation.js', [ ], '20151215', TRUE );
 
-   wp_enqueue_script('_msp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [], '20151215', TRUE);
+   wp_enqueue_script( '_msp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [ ], '20151215', TRUE );
 
-   if (is_singular() && comments_open() && get_option('thread_comments')) {
-      wp_enqueue_script('comment-reply');
+   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+      wp_enqueue_script( 'comment-reply' );
    }
 }
 
-add_action('wp_enqueue_scripts', '_msp_scripts');
+add_action( 'wp_enqueue_scripts', '_msp_scripts' );
 
 /**
  * Implement the Custom Header feature.

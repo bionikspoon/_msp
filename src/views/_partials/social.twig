@@ -1,0 +1,11 @@
+{% if social %}
+   {% for item in social.items %}
+      <a class="mdl-navigation__link {{ item.class }}"
+         href="{{ item.link }}"
+         title="{{ item.attr_title }}"
+      >
+         <span class="screen-reader-text">{{ item.attr_title ?: item.name }}</span>
+      </a>
+   {% endfor %}
+{% endif %}
+{#TODO Support children#}

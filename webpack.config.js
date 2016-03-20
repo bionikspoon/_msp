@@ -116,7 +116,7 @@ function getEntry(env) {
   const entry = {};
   entry.main = [
     'babel-polyfill',
-    PATHS.src('scss', 'style.scss'),
+    PATHS.src('sass', 'style.scss'),
   ];
 
   entry[ 'navigation' ] = [ PATHS.src('js', 'navigation.js') ];
@@ -131,8 +131,9 @@ function getEntry(env) {
     case PRODUCTION:
       break;
   }
+  entry.main.push(PATHS.modules('material-design-lite', 'material.js'));
   entry.main.push(PATHS.src('js', 'main.js'));
-  entry.main.push(PATHS.src('scss', 'main.scss'));
+  entry.main.push(PATHS.src('sass', 'main.scss'));
 
   return entry;
 }

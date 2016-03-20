@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+
+{% block content %}
+   {% for post in posts %}
+      {{ dump(post) }}
+      <div id=post-{{ post.ID }} class="{{ post.class }}">
+
+
+      </div>
+   {% endfor %}
+{% endblock %}
+

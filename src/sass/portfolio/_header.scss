@@ -1,0 +1,108 @@
+
+.portfolio-header {
+    position: relative;
+    .mdl-layout {
+        &__header-row {
+            padding: 0;
+            justify-content: center;
+        }
+        &__drawer-button {
+            background-color: $color--drawer-button-bg;
+        }
+    }
+
+}
+
+.mdl-layout {
+    &__header {
+        color: $layout-text-color;
+    }
+    &__title {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 300;
+    }
+}
+
+.is-compact {
+    //noinspection CssInvalidPropertyValue
+    .portfolio-logo-row {
+        min-height: auto;
+    }
+    .portfolio-logo {
+        height: 50px;
+        width: 50px;
+        margin-top: 7px;
+    }
+    .mdl-layout__title span {
+        display: none;
+    }
+}
+
+.portfolio-logo-row {
+    min-height: 200px;
+}
+
+.portfolio-logo {
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+    margin: auto auto 10px;
+}
+
+.portfolio-navigation-row {
+    background-color: $color--portfolio-nav-bg;
+    text-transform: uppercase;
+    height: 45px;
+    .mdl-navigation {
+        text-align: center;
+        max-width: 900px;
+        width: 100%;
+        &__link {
+            flex: 1;
+            line-height: 42px;
+            color: $layout-text-color;
+        }
+    }
+    .current-menu-item {
+        position: relative;
+        font-weight: bold;
+        &:after {
+            content: "";
+            width: 70%;
+            height: 2px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            background-color: $color-accent;
+            left: 15%;
+        }
+    }
+}
+
+.portfolio-navigation-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    a.mdl-navigation {
+        &__link {
+            @extend %genericon;
+
+            font-size: 34px;
+
+            @include padding(null 10px);
+
+            &[href*='github.com'] {
+                @extend %genericon-github;
+            }
+            &[href*='linkedin.com'] {
+                @extend %genericon-linkedin-alt;
+            }
+            &:hover:before {
+                color: $color-accent;
+            }
+        }
+
+    }
+}
+

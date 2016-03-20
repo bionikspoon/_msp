@@ -1,0 +1,150 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+    ## Posts and pages
+	## Asides
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Variables and Mixins
+--------------------------------------------------------------*/
+@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+//colors
+$color--portfolio-nav-bg: rgba(0, 0, 0, 0.08);
+$color--drawer-button-bg: rgba(197, 197, 197, 0.44);
+$color-accent: #ff4081;
+$color--blog-card-bg: rgba(0, 0, 0, 0.2);
+
+//urls
+$img--logo: url('./images/logo.png');
+$img--ex-blog-03: url('./images/example-blog03.jpg');
+$img--ex-blog-05: url('./images/example-blog05.jpg');
+$img--ex-blog-06: url('./images/example-blog06.jpg');
+$img--footer-bg: url('./images/footer-background.png');
+
+//fonts
+$font-genericons: Genericons;
+
+//urls
+$url-genericons-eot: url('./genericons/Genericons.eot');
+$url-genericons-eot-2: url('./genericons/Genericons.eot?');
+$url-genericons-ttf: url('./genericons/Genericons.ttf');
+$url-genericons-svg: url('./genericons/Genericons.svg#Genericons');
+
+/*--------------------------------------------------------------
+# Fonts
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import 'genericons/genericons';
+/*--------------------------------------------------------------
+# Material Design Lite
+--------------------------------------------------------------*/
+// Variables and mixins
+@import "../../node_modules/material-design-lite/src/color-definitions";
+@import "../../node_modules/material-design-lite/src/functions";
+@import "../../node_modules/material-design-lite/src/variables";
+@import "../../node_modules/material-design-lite/src/mixins";
+
+// Resets and dependencies
+@import "../../node_modules/material-design-lite/src/resets/resets";
+@import "../../node_modules/material-design-lite/src/typography/typography";
+// Components
+@import "../../node_modules/material-design-lite/src/palette/palette";
+@import "../../node_modules/material-design-lite/src/ripple/ripple";
+@import "../../node_modules/material-design-lite/src/animation/animation";
+@import "../../node_modules/material-design-lite/src/badge/badge";
+@import "../../node_modules/material-design-lite/src/button/button";
+@import "../../node_modules/material-design-lite/src/card/card";
+@import "../../node_modules/material-design-lite/src/checkbox/checkbox";
+@import "../../node_modules/material-design-lite/src/data-table/data-table";
+@import "../../node_modules/material-design-lite/src/dialog/dialog";
+@import "../../node_modules/material-design-lite/src/footer/mega_footer";
+@import "../../node_modules/material-design-lite/src/footer/mini_footer";
+@import "../../node_modules/material-design-lite/src/icon-toggle/icon-toggle";
+@import "../../node_modules/material-design-lite/src/list/list";
+@import "../../node_modules/material-design-lite/src/menu/menu";
+@import "../../node_modules/material-design-lite/src/progress/progress";
+@import "../../node_modules/material-design-lite/src/layout/layout";
+@import "../../node_modules/material-design-lite/src/radio/radio";
+@import "../../node_modules/material-design-lite/src/slider/slider";
+@import "../../node_modules/material-design-lite/src/snackbar/snackbar";
+@import "../../node_modules/material-design-lite/src/spinner/spinner";
+@import "../../node_modules/material-design-lite/src/switch/switch";
+@import "../../node_modules/material-design-lite/src/tabs/tabs";
+@import "../../node_modules/material-design-lite/src/textfield/textfield";
+@import "../../node_modules/material-design-lite/src/tooltip/tooltip";
+@import "../../node_modules/material-design-lite/src/shadow/shadow";
+@import "../../node_modules/material-design-lite/src/grid/grid";
+
+/*--------------------------------------------------------------
+# Portfolio
+--------------------------------------------------------------*/
+@import "portfolio/portfolio";
+///*--------------------------------------------------------------
+//# Normalize
+//--------------------------------------------------------------*/
+//@import "../../node_modules/normalize.css/normalize.css";
+///*--------------------------------------------------------------
+//# Typography
+//--------------------------------------------------------------*/
+//@import "typography/typography";
+///*--------------------------------------------------------------
+//# Elements
+//--------------------------------------------------------------*/
+//@import "elements/elements";
+///*--------------------------------------------------------------
+//# Forms
+//--------------------------------------------------------------*/
+//@import "forms/forms";
+///*--------------------------------------------------------------
+//# Navigation
+//--------------------------------------------------------------*/
+//@import "navigation/navigation";
+///*--------------------------------------------------------------
+//# Accessibility
+//--------------------------------------------------------------*/
+@import "modules/accessibility";
+///*--------------------------------------------------------------
+//# Alignments
+//--------------------------------------------------------------*/
+//@import "modules/alignments";
+///*--------------------------------------------------------------
+//# Clearings
+//--------------------------------------------------------------*/
+//@import "modules/clearings";
+///*--------------------------------------------------------------
+//# Content
+//--------------------------------------------------------------*/
+//@import "site/site";
+///*--------------------------------------------------------------
+//# Infinite scroll
+//--------------------------------------------------------------*/
+//@import "modules/infinite-scroll";
+///*--------------------------------------------------------------
+//# Media
+//--------------------------------------------------------------*/
+//@import "media/media";
+
+body {
+    //background-color: lightyellow;
+}

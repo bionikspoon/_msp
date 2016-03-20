@@ -1,0 +1,25 @@
+<header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+   <div class="mdl-layout__header-row portfolio-logo-row">
+       <span class="mdl-layout__title">
+           <div class="portfolio-logo"></div>
+           <span class="mdl-layout__title portfolio-title">{{ site.title }}</span>
+       </span>
+   </div>
+   <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+      <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+         {% include '_partials/menu.twig' %}
+         <span class="portfolio-navigation-social">{% include '_partials/social.twig' %}</span>
+      </nav>
+   </div>
+
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+   <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+      {% include '_partials/menu.twig' %}
+      {% include '_partials/social.twig' %}
+   </nav>
+</div>
+
+{% for item in social.items %}
+   {#{{ dump(item) }}#}
+{% endfor %}

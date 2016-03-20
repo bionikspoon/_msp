@@ -1,0 +1,15 @@
+{% macro img_attr(image, size = null) %}
+      src={{ image.src(size) }}
+      alt="{{ image.alt }}"
+      height={{ image.sizes[size].height ?: image.height }}
+      width={{ image.sizes[size].width ?: image.sizes[size].width }}
+{% endmacro %}
+
+
+{% macro img_style(image, size = null) %}
+   height: {{ image.sizes[size].height ?: image.height }}px;
+   width: {{ image.sizes[size].width ?: image.sizes[size].width }}px;
+   background: url('{{ image.src(size) }}') center / cover;
+{% endmacro %}
+
+

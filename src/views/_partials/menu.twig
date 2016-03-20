@@ -1,0 +1,11 @@
+{% if menu %}
+   {% for item in menu.items %}
+      <a class="mdl-navigation__link {{ item.class }}"
+         href="{{ item.link }}"
+         title="{{ item.attr_title }}"
+      >
+         {{ item.name }}
+      </a>
+   {% endfor %}
+{% endif %}
+{#TODO Support children#}

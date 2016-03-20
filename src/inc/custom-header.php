@@ -37,13 +37,13 @@ function _msp_custom_header_setup() {
       'admin-head-callback'    => '',
       'admin-preview-callback' => '',
    ];
-   add_theme_support('custom-header', $header_args);
+   add_theme_support( 'custom-header', $header_args );
 
 }
 
-add_action('after_setup_theme', '_msp_custom_header_setup');
+add_action( 'after_setup_theme', '_msp_custom_header_setup' );
 
-if (!function_exists('_msp_header_style')) :
+if ( !function_exists( '_msp_header_style' ) ) :
    /**
     * Styles the header image and text displayed on the blog.
     *
@@ -56,7 +56,7 @@ if (!function_exists('_msp_header_style')) :
        * If no custom options for text are set, let's bail.
        * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
        */
-      if (HEADER_TEXTCOLOR === $header_text_color) {
+      if ( HEADER_TEXTCOLOR === $header_text_color ) {
          return;
       }
 

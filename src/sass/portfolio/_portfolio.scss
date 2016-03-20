@@ -1,0 +1,112 @@
+@import "header";
+
+.portfolio-blog-card-full-bg {
+    background: $img--ex-blog-03 center / cover;
+}
+
+.portfolio-blog-card-event-bg {
+    background: $img--ex-blog-05 center / cover;
+}
+
+.portfolio-blog-card-strip-bg {
+    background: $img--ex-blog-06 center / cover;
+}
+
+.portfolio-max-width {
+    max-width: 900px;
+    margin: auto;
+}
+
+.portfolio-copy {
+    max-width: 700px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-left-padding {
+    padding-left: 0;
+}
+
+.no-bottom-padding {
+    padding-bottom: 0;
+}
+
+.padding-top {
+    padding: 10px 0 0;
+}
+
+.portfolio-share-btn {
+    position: relative;
+    float: right;
+    top: -4px;
+}
+
+.portfolio-contact {
+    .mdl-textfield {
+        width: 100%;
+    }
+    form {
+        max-width: 550px;
+        margin: auto;
+    }
+}
+
+.portfolio-card .mdl-card__title {
+    padding-bottom: 0;
+}
+
+.portfolio-blog-card-compact .mdl-card__title {
+    padding-bottom: 0;
+}
+
+.portfolio-blog-card-bg > .mdl-card__actions {
+    height: 52px;
+    padding: 16px;
+    background: $color--blog-card-bg;
+}
+
+img.article-image {
+    width: 100%;
+    height: auto;
+}
+
+.demo-card-event > .mdl-card__actions {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.portfolio-categories {
+    &.mdl-card__title {
+        padding: 0;
+    }
+    p {
+        background-color: #000;
+        opacity: .7;
+        overflow: hidden;
+        font-size: 13px;
+        margin: 0;
+        padding: 0 40px 0 20px;
+        line-height: 30px;
+        color: #fff;
+        font-style: italic;
+        white-space: nowrap;
+        a {
+            color: #fff;
+            font-style: italic;
+            text-decoration: none;
+            opacity: 1;
+            white-space: nowrap;
+
+            &:hover {
+                color: #777777;
+                text-decoration: none;
+            }
+
+        }
+
+    }
+}
+
