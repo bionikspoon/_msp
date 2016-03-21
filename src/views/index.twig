@@ -4,9 +4,9 @@
 {% if posts %}
 
    {% block content %}
-      <div class="mdl-grid portfolio-max-width">
+      <div class="portfolio-entries portfolio-max-width">
          {% for post in posts %}
-            <article id=post-{{ post.ID }} class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card {{ post.class }}">
+            <article id=post-{{ post.ID }} class="mdl-card mdl-shadow--4dp portfolio-card {{ post.class }}">
 
                {% if post.thumbnail %}
                   <style>

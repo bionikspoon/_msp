@@ -13,8 +13,16 @@
 }
 
 .portfolio-max-width {
-    max-width: 900px;
+    max-width: $layout--max-width;
     margin: auto;
+}
+
+@media (min-width: 1200px) {
+    .portfolio-max-width {
+        max-width: 100%;
+        margin-left: $grid-desktop-margin * 2;
+    }
+;
 }
 
 .portfolio-copy {
@@ -53,8 +61,14 @@
     }
 }
 
-.portfolio-card .mdl-card__title {
-    padding-bottom: 0;
+.portfolio-card {
+    margin: 8px;
+    min-height: inherit;
+    width: 300px;
+    display: inline-block;
+    .mdl-card__title {
+        padding-bottom: 0;
+    }
 }
 
 .portfolio-blog-card-compact .mdl-card__title {

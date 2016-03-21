@@ -21,7 +21,6 @@
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-
 /*--------------------------------------------------------------
 # Variables and Mixins
 --------------------------------------------------------------*/
@@ -49,6 +48,9 @@ $url-genericons-eot: url('./genericons/Genericons.eot');
 $url-genericons-eot-2: url('./genericons/Genericons.eot?');
 $url-genericons-ttf: url('./genericons/Genericons.ttf');
 $url-genericons-svg: url('./genericons/Genericons.svg#Genericons');
+
+//layout
+$layout--max-width: 956px;
 
 /*--------------------------------------------------------------
 # Fonts
