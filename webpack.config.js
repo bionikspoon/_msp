@@ -115,12 +115,12 @@ module.exports = {
 function getEntry(env) {
   const entry = {};
   entry.main = [
-    'babel-polyfill',
     PATHS.src('sass', 'style.scss'),
   ];
 
-  entry[ 'navigation' ] = [ PATHS.src('js', 'navigation.js') ];
-  entry[ 'skip-link-focus-fix' ] = [ PATHS.src('js', 'skip-link-focus-fix.js') ];
+  entry.vendor = Object.keys(require('./package.json').dependencies);
+  entry.manifest = [];
+  entry.customizer = PATHS.src('js', 'customizer.js');
 
   switch (env) {
     case DEVELOPMENT:
@@ -131,7 +131,7 @@ function getEntry(env) {
     case PRODUCTION:
       break;
   }
-  entry.main.push(PATHS.modules('material-design-lite', 'material.js'));
+  entry.vendor.push(PATHS.modules('material-design-lite', 'material.js'));
   entry.main.push(PATHS.src('js', 'main.js'));
   entry.main.push(PATHS.src('sass', 'main.scss'));
 

@@ -8,6 +8,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('./webpack.config');
 const path = require('path');
 const fs = require('fs-extra');
+const htmlInjector = require('bs-html-injector');
 
 const DIST = webpackConfig.THEME_NAME;
 const INIT = {
@@ -16,9 +17,10 @@ const INIT = {
 };
 const bundler = webpack(webpackConfig);
 const bs = browserSync.create();
+bs.use(htmlInjector);
 
 // clean DIST directory
-fs.emptyDir(DIST, serveBrowsersync);
+fs.emptyDir(DIST, serveBrowsersync, { restrictions: [ '#page' ] });
 
 /**
  * Start BrowserSync.
@@ -98,7 +100,7 @@ function handleFileCopyRemoveReload(event, file) {
     // Guard, only reload after initial copy, only if php files.
     if (!INIT.completed || !srcFile.match(/\.(?:php|twig)$/)) return undefined;
 
-    return bs.reload();
+    return htmlInjector();
   }
 }
 

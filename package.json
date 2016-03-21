@@ -62,9 +62,11 @@
     "webpack": "1.12.14",
     "webpack-dev-middleware": "1.5.1",
     "webpack-dev-server": "1.14.1",
+    "url-loader": "0.5.7",
     "webpack-hot-middleware": "2.10.0"
   },
   "dependencies": {
-    "url-loader": "0.5.7"
+    "imagesloaded": "4.1.0",
+    "masonry-layout": "4.0.0"
   }
 }

@@ -106,6 +106,13 @@ class MSPSite extends TimberSite {
       $context[ 'ex_work_7' ] = new TimberImage( 314 );
       $context[ 'ex_work_8' ] = new TimberImage( 315 );
       $context[ 'ex_work_9' ] = new TimberImage( 316 );
+      $context[ 'ex_blog_1' ] = new TimberImage( 319 );
+      $context[ 'ex_blog_2' ] = new TimberImage( 320 );
+      $context[ 'ex_blog_3' ] = new TimberImage( 321 );
+      $context[ 'ex_blog_4' ] = new TimberImage( 322 );
+      $context[ 'ex_blog_5' ] = new TimberImage( 323 );
+      $context[ 'ex_blog_6' ] = new TimberImage( 324 );
+      $context[ 'ex_blog_7' ] = new TimberImage( 325 );
       $context[ 'site' ] = $this;
 
       return $context;
@@ -173,11 +180,14 @@ function _msp_scripts() {
 
    wp_enqueue_script( 'jquery-masonry' );
 
-   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ 'jquery-masonry' ], '20151215', TRUE );
+   wp_enqueue_script( '_msp.manifest', get_template_directory_uri() . '/js/manifest.js', [ ], '20151215', TRUE );
+   wp_enqueue_script( '_msp.vendor', get_template_directory_uri() . '/js/vendor.js', [ '_msp.manifest' ], '20151215', TRUE );
 
-   wp_enqueue_script( '_msp.navigation', get_template_directory_uri() . '/js/navigation.js', [ ], '20151215', TRUE );
-
-   wp_enqueue_script( '_msp.skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [ ], '20151215', TRUE );
+   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ 'jquery-masonry', '_msp.vendor' ], '20151215', TRUE );
+   //
+   //wp_enqueue_script( '_msp.navigation', get_template_directory_uri() . '/js/navigation.js', [ ], '20151215', TRUE );
+   //
+   //wp_enqueue_script( '_msp.skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [ ], '20151215', TRUE );
 
    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );

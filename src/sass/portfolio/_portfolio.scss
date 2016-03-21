@@ -17,6 +17,10 @@
     margin: auto;
 }
 
+.blog-max-width {
+    max-width: 956px;
+}
+
 @media (min-width: 1200px) {
     .portfolio-max-width {
         max-width: 100%;

@@ -12,6 +12,9 @@
  * @package _msp
  */
 
+
 $context = Timber::get_context();
-$context[ 'posts' ] = Timber::get_posts();
-Timber::render( 'page.twig', $context );
+$post = new TimberPost();
+$context[ 'post' ] = $post;
+$template = [ 'page-' . $post->post_name . '.twig', 'page.twig' ];
+Timber::render( $template, $context );

@@ -1,4 +1,4 @@
-{% import 'macros/macros.twig' as macros %}
+{% from 'macros/img.twig' import img_style %}
 {% extends "base.twig" %}
 
 {% if posts %}
@@ -11,7 +11,7 @@
                {% if post.thumbnail %}
                   <style>
                      #post-{{ post.ID }} > .portfolio-categories {
-                     {{ macros.img_style(post.thumbnail, 'summary-image') }}
+                     {{ img_style(post.thumbnail, 'summary-image') }}
                      }
                   </style>
                   <div class="mdl-card__title portfolio-categories">
