@@ -13,13 +13,3 @@ const imagesLoaded = require('imagesloaded');
   masonry.layout();
   imagesLoaded(container, masonry.layout);
 })();
-/* global jQuery */
-// ((function customizer($) {
-//
-//   $(() => {
-//     const $container = $('.portfolio-entries');
-//
-//     $container.masonry(masonryOptions);
-//     $container.imagesLoaded().progress(() => $container.masonry('layout'));
-//   });
-// })(jQuery));

@@ -10,11 +10,10 @@ const path = require('path');
 const fs = require('fs-extra');
 const htmlInjector = require('bs-html-injector');
 
+const INIT_DELAY = 5000;
 const DIST = webpackConfig.THEME_NAME;
-const INIT = {
-  completed: false,
-  delay: 5000,
-};
+let initComplete = false;
+
 const bundler = webpack(webpackConfig);
 const bs = browserSync.create();
 bs.use(htmlInjector);
@@ -28,13 +27,13 @@ fs.emptyDir(DIST, serveBrowsersync, { restrictions: [ '#page' ] });
  * @returns {*}
  */
 function serveBrowsersync(err) {
-  if (err) return console.error(err);
+  if (err) { return console.error(err); }
 
   // Start server. Delay callback.
-  return bs.init(getOptions(), () => setTimeout(cbSetInit, INIT.delay));
+  return bs.init(getOptions(), () => setTimeout(cbSetInit, INIT_DELAY));
 
   // Init is complete.
-  function cbSetInit() {INIT.completed = true;}
+  function cbSetInit() {initComplete = true;}
 }
 
 /**
@@ -95,10 +94,10 @@ function handleFileCopyRemoveReload(event, file) {
 
   // Reload browser.
   function cbReloadBrowser(err) {
-    if (err) return console.error(err);
+    if (err) {return console.error(err);}
 
     // Guard, only reload after initial copy, only if php files.
-    if (!INIT.completed || !srcFile.match(/\.(?:php|twig)$/)) return undefined;
+    if (!initComplete || !srcFile.match(/\.(?:php|twig)$/)) {return undefined;}
 
     return htmlInjector();
   }

@@ -260,7 +260,7 @@ function getLoaders(env) {
           + '?sourceMap',
         ],
       });
-      JS_LOADER.loader = 'babel?cacheDirectory';
+      JS_LOADER.loader = 'babel?cacheDirecto2ry';
       delete JS_LOADER.query;
       break;
 
