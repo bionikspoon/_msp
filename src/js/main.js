@@ -8,8 +8,10 @@ const imagesLoaded = require('imagesloaded');
     itemSelector: 'article.portfolio-card',
     percentPosition: true,
   };
-  const container = document.querySelector('.portfolio-entries');
-  const masonry = new Masonry(container, masonryOptions);
-  masonry.layout();
-  imagesLoaded(container, masonry.layout);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.portfolio-entries');
+    const masonry = new Masonry(container, masonryOptions);
+    imagesLoaded(container, masonry.layout);
+  });
 })();

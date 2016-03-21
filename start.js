@@ -12,7 +12,7 @@ const htmlInjector = require('bs-html-injector');
 
 const INIT_DELAY = 5000;
 const DIST = webpackConfig.THEME_NAME;
-let initComplete = false;
+const INIT = { complete: false };
 
 const bundler = webpack(webpackConfig);
 const bs = browserSync.create();
@@ -33,7 +33,7 @@ function serveBrowsersync(err) {
   return bs.init(getOptions(), () => setTimeout(cbSetInit, INIT_DELAY));
 
   // Init is complete.
-  function cbSetInit() {initComplete = true;}
+  function cbSetInit() {INIT.complete = true;}
 }
 
 /**
@@ -97,7 +97,7 @@ function handleFileCopyRemoveReload(event, file) {
     if (err) {return console.error(err);}
 
     // Guard, only reload after initial copy, only if php files.
-    if (!initComplete || !srcFile.match(/\.(?:php|twig)$/)) {return undefined;}
+    if (!INIT.complete || !srcFile.match(/\.(?:php|twig)$/)) {return undefined;}
 
     return htmlInjector();
   }
