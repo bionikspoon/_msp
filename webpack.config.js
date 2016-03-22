@@ -1,17 +1,18 @@
-/* eslint dot-notation:0, default-case:0, prefer-rest-params:0, no-console: 0  */
+/* eslint dot-notation:0, default-case:0  */
 /* jscs:disable requireDotNotation*/
 require('babel-polyfill');
 const webpack = require('webpack');
-const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const NPMInstallPlugin = require('npm-install-webpack-plugin');
-const chalk = require('chalk');
-const _ = require('lodash');
+const path = require('path');
+
+const { logLine, unipath } = require('./_utils');
 
 // ===========================================================================
 // CONSTANTS
 // ===========================================================================
 const THEME_NAME = '_msp';
+const PROXY_TARGET = 'local.wordpress.dev';
 const HOST = 'localhost';
 const PORT = 3000;
 const PATHS = {
@@ -40,17 +41,15 @@ const WATCH = global.watch;
 // NOTIFY
 // ===========================================================================
 
-log('ENV', ENV);
-log('DEBUG', DEBUG);
-log('VERBOSE', VERBOSE);
-log('WATCH', WATCH);
+logLine('ENV', ENV);
+logLine('DEBUG', DEBUG);
+logLine('VERBOSE', VERBOSE);
+logLine('WATCH', WATCH);
 
 // ===========================================================================
 // CONFIG EXPORT
 // ===========================================================================
 module.exports = {
-  THEME_NAME,
-
   entry: getEntry(ENV),
 
   output: {
@@ -99,6 +98,15 @@ module.exports = {
     children: VERBOSE,
   },
 
+  data: {
+    THEME_NAME,
+    FILE_MAP: {
+      // '/sass' -> ''
+      [ `${path.sep}sass` ]: '',
+    },
+    PROXY_TARGET,
+  },
+
   postcss(bundler) {
     return [
       require('postcss-import')({ addDependencyTo: bundler }),
@@ -114,9 +122,7 @@ module.exports = {
 
 function getEntry(env) {
   const entry = {};
-  entry.main = [
-    PATHS.src('sass', 'style.scss'),
-  ];
+  entry.main = [ PATHS.src('sass', 'style.scss'), ];
 
   entry.vendor = Object.keys(require('./package.json').dependencies);
   entry.manifest = [];
@@ -139,19 +145,15 @@ function getEntry(env) {
 }
 
 function getPreLoaders(env) {
-  const preLoaders = [];
+  const preLoaders = [ {
+    test: /\.js$/, include: LOADER_INCLUDES, loaders: [ 'eslint', 'jscs' ],
+  } ];
 
   switch (env) {
     case PRODUCTION:
-      preLoaders.push({
-        test: /\.js$/, include: LOADER_INCLUDES, loaders: [ 'eslint', 'jscs' ],
-      });
       break;
 
     case DEVELOPMENT:
-      preLoaders.push({
-        test: /\.js$/, include: LOADER_INCLUDES, loaders: [ 'eslint', 'jscs' ],
-      });
       break;
 
   }
@@ -327,35 +329,3 @@ function getEnv(target) {
   }
 }
 
-/**
- * Log a colorful message to the console.
- *
- * @param {string} description - Name of the variable to log
- * @param {*} data - Variable
- * @returns {void}
- */
-function log(description, data) {
-  const message = _.padEnd(` ${_.padEnd(`${description}:`, 8)} ${data} `, process.stdout.columns);
-  console.error(chalk.bold.white.bgBlue(message));
-}
-
-/**
- * Create a path -> resolve -> join partial.
- *
- * @param {string} base - Base path
- * @returns {Function}
- */
-function unipath(base) {
-  return join;
-
-  /**
-   * Get fully resolved path from arguments.
-   *
-   * @param {...string} paths - Paths to join
-   * @returns {*|{extensions}|{filePath}|{filePath, configName}}
-   */
-  function join(paths/* ...paths */) { // eslint-disable-line no-unused-vars
-    const _paths = [ base ].concat(Array.from(arguments));
-    return path.resolve(path.join.apply(null, _paths));
-  }
-}
