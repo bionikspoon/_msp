@@ -1,0 +1,50 @@
+._msp-header {
+    position: relative;
+    color: $layout-text-color;
+
+    & &__row {
+        padding: 0;
+        justify-content: center;
+        &--logo {
+            min-height: 200px;
+
+        }
+    }
+    & &__logo {
+        background-size: cover;
+        height: 150px;
+        width: 150px;
+        margin: auto auto 10px;
+
+    }
+    & &__title {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 300;
+    }
+    .mdl-layout {
+
+        &__drawer-button {
+            background-color: $color--drawer-button-bg;
+        }
+    }
+}
+
+.is-compact._msp-header {
+    ._msp-header {
+        &__row--logo {
+            //noinspection CssInvalidPropertyValue
+            min-height: auto;
+
+        }
+        &__logo {
+            height: 50px;
+            width: 50px;
+            margin-top: 7px;
+        }
+        &__title {
+            display: none;
+        }
+    }
+}
+

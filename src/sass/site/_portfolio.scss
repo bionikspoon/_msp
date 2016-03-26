@@ -1,0 +1,54 @@
+._msp-portfolio {
+
+    & &__card {
+        margin: 8px;
+        min-height: inherit;
+        width: 300px;
+        display: inline-block;
+    }
+    & &__categories {
+        padding: 0;
+
+        %text {
+            color: rgba(255, 255, 255, .7);
+            font-style: italic;
+            text-decoration: none;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 13px;
+        }
+
+        a {
+            @extend %text;
+
+            &:hover {
+                color: $text-link-color;
+            }
+        }
+
+        p {
+            @extend %text;
+
+            background-color: rgba(0, 0, 0, .7);
+            margin: 0;
+            padding: 0 40px 0 20px;
+            line-height: 30px;
+        }
+    }
+
+    & &__title {
+
+    }
+}
+
+._msp-portfolio {
+    max-width: $layout--max-width;
+    margin: auto;
+}
+
+@media (min-width: 1200px) {
+    ._msp-portfolio {
+        max-width: 100%;
+        margin-left: $grid-desktop-margin * 2;
+    }
+}

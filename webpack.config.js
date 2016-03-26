@@ -122,7 +122,7 @@ module.exports = {
 
 function getEntry(env) {
   const entry = {};
-  entry.main = [ PATHS.src('sass', 'style.scss'), ];
+  entry.main = [ PATHS.src('sass', 'style.scss') ];
 
   entry.vendor = Object.keys(require('./package.json').dependencies);
   entry.manifest = [];
@@ -145,9 +145,11 @@ function getEntry(env) {
 }
 
 function getPreLoaders(env) {
-  const preLoaders = [ {
-    test: /\.js$/, include: LOADER_INCLUDES, loaders: [ 'eslint', 'jscs' ],
-  } ];
+  const preLoaders = [
+    {
+      test: /\.js$/, include: LOADER_INCLUDES, loaders: [ 'eslint', 'jscs' ],
+    },
+  ];
 
   switch (env) {
     case PRODUCTION:

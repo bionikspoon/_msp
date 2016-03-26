@@ -133,9 +133,10 @@ function synchronize(dist) {
       }
 
       // JS/CSS injected via HMR, PHP updates injected here
-      if (!srcFile.match(/\.(?:php|twig)$/)) {
+      if (srcFile.match(/\.(?:php|twig)$/)) {
+
         // state machine, skips injection first few seconds
-        injector();
+        injector(destFile);
       }
     }
     catch (e) {
@@ -149,6 +150,10 @@ function injector() {
 }
 
 injector.call = function noop() {};
+
+injector.active = function inject(file) {
+  log(chalk.dim('Injecting html: ') + file);
+};
 
 injector.activate = async function activate(delay = INIT_DELAY, func = htmlInjector) {
   await timeout(delay);

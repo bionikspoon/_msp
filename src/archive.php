@@ -6,8 +6,9 @@
  *
  * @package _msp
  */
-$templates = [ sprintf( 'archive-%s.twig', get_post_type() ), 'archive.twig', 'index.twig' ];
+$templates = [ 'archive-' . get_post_type() . '.twig', 'archive.twig' ];
 if ( is_category() ) {
-   array_unshift( $templates, sprintf( 'archive-%s.twig', get_query_var( 'cat' ) ) );
+   array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
 }
+
 Timber::render( $templates, Timber::get_context() );

@@ -1,1 +1,19 @@
 {% extends "base.twig" %}
+
+{% if posts %}
+   {% block content %}
+      <div id="primary" class="blog-post--container">
+         {# TODO page title ? #}
+
+         {% for post in posts %}
+               {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
+         {% endfor %}
+
+         {# todo the_posts_navigation(); #}
+
+
+      </div><!-- #primary -->
+   {% endblock %}
+{% endif %}
+
+{# TODO else none ? #}

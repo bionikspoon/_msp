@@ -1,8 +1,8 @@
 {% macro img_attr(image, size = null) %}
-      src={{ image.src(size) }}
-      alt="{{ image.alt }}"
-      height={{ image.sizes[size].height ?: image.height }}
-      width={{ image.sizes[size].width ?: image.sizes[size].width }}
+   src={{ image.src(size) }}
+   alt="{{ image.alt }}"
+   height={{ image.sizes[size].height ?: image.height }}
+   width={{ image.sizes[size].width ?: image.sizes[size].width }}
 {% endmacro %}
 
 

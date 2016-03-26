@@ -4,17 +4,15 @@
 {% if posts %}
 
    {% block content %}
-      <div class="portfolio-entries portfolio-max-width">
+      <div class="_msp-portfolio">
          {% for post in posts %}
-            <article id=post-{{ post.ID }} class="mdl-card mdl-shadow--4dp portfolio-card {{ post.class }}">
+            <article id=post-{{ post.ID }} class="mdl-card mdl-shadow--4dp _msp-portfolio__card {{ post.class }}">
 
                {% if post.thumbnail %}
-                  <style>
-                     #post-{{ post.ID }} > .portfolio-categories {
-                     {{ img_style(post.thumbnail, 'summary-image') }}
-                     }
-                  </style>
-                  <div class="mdl-card__title portfolio-categories">
+                  <div
+                     class="mdl-card__title _msp-portfolio__categories"
+                     style="{{ img_style(post.thumbnail, 'summary-image') }}"
+                  >
                      <p class="mdl-card__title-text">
                         {{ post.terms('jetpack-portfolio-type') | tax_links | join(',&nbsp;') }}
                      </p>
@@ -22,7 +20,7 @@
                {% endif %}
 
                <div class="mdl-card__title">
-                  <h2 class="mdl-card__title-text portfolio-title">
+                  <h2 class="mdl-card__title-text">
                      {{ post.name }}
                   </h2>
                </div>
@@ -32,9 +30,13 @@
                </div>
                <div class="mdl-card__actions mdl-card--border">
                   <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"
-                     href="{{ post.link }}">{{ __('Read more') }}</a>
+                     href="{{ post.link }}"
+                  >
+                     {{ __('Read more') }}
+                  </a>
                </div>
             </article>
+
 
          {% endfor %}
 

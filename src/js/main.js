@@ -5,12 +5,12 @@ const imagesLoaded = require('imagesloaded');
 
 (() => {
   const masonryOptions = {
-    itemSelector: 'article.portfolio-card',
+    itemSelector: 'article._msp-portfolio__card',
     percentPosition: true,
   };
 
   document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.portfolio-entries');
+    const container = document.querySelector('._msp-portfolio');
     const masonry = new Masonry(container, masonryOptions);
     imagesLoaded(container, masonry.layout);
   });
