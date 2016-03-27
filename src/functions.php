@@ -121,6 +121,7 @@ class MSPSite extends TimberSite {
    function add_to_twig( $twig ) {
       /* this is where you can add your own fuctions to twig */
       $twig->addFilter( 'tax_links', new Twig_SimpleFilter( 'tax_links', 'tax_links' ) );
+      $twig->addFilter( 'after_more', new Twig_SimpleFilter( 'after_more', 'after_more' ) );
 
       return $twig;
    }
@@ -133,6 +134,13 @@ function tax_links( $taxes ) {
    };
 
    return array_map( $convert_to_link, $taxes );
+}
+
+function after_more( $post_content ) {
+   $result = explode( '<!--more--></p>', $post_content );
+
+
+   return array_key_exists( 1, $result ) ? $result [ 1 ] : '';
 }
 
 new MSPSite();
@@ -175,7 +183,6 @@ add_action( 'widgets_init', '_msp_widgets_init' );
  */
 function _msp_scripts() {
    wp_enqueue_style( '_msp-style', get_stylesheet_uri() );
-
 
 
    wp_enqueue_script( '_msp.manifest', get_template_directory_uri() . '/js/manifest.js', [ ], '20151215', TRUE );

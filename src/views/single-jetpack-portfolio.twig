@@ -1,0 +1,38 @@
+{% from 'macros/img.twig' import img_style %}
+{% extends "base.twig" %}
+{% set excerpt = post.get_preview(null, false, null) %}
+
+{% block content %}
+   <article class="_msp-portfolio _msp-portfolio--entry mdl-card mdl-shadow--4dp">
+
+      <header class="_msp-portfolio__content-header mdl-shadow--2dp">
+         <div class="_msp-portfolio__content-header__meta">
+            <h2 class="mdl-card__title-text _msp-portfolio__content-header__meta__title">
+               {{ post.name }}
+            </h2>
+            {% if excerpt %}
+               <div class="_msp-portfolio__excerpt _msp-portfolio__excerpt--entry">
+                  {{ excerpt }}
+               </div>
+            {% endif %}
+            {% include '_partials/portfolio--meta.twig' %}
+
+         </div>
+         {% if post.thumbnail %}
+            <div
+               class="_msp-portfolio__image"
+               style="{{ img_style(post.thumbnail, 'summary-image') }}max-height:{{ post.thumbnail.sizes['summary-image'].width ?: post.thumbnail.width }}px">
+               <p class="_msp-portfolio__categories mdl-card__title-text">
+                  {{ post.terms('jetpack-portfolio-type') | tax_links | join(',&nbsp;') }}
+               </p>
+            </div>
+         {% endif %}
+
+      </header>
+
+
+      <div class="_msp-portfolio__content mdl-card__supporting-text">
+         {{ post.content | after_more }}
+      </div>
+   </article>
+{% endblock %}

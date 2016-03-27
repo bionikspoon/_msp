@@ -4,40 +4,39 @@
 {% if posts %}
 
    {% block content %}
-      <div class="_msp-portfolio">
+      <div class=_msp-portfolio__container>
          {% for post in posts %}
-            <article id=post-{{ post.ID }} class="mdl-card mdl-shadow--4dp _msp-portfolio__card {{ post.class }}">
+
+            {% set excerpt = post.get_preview(null, false, null) %}
+
+            <article
+               id=portfolio-{{ post.ID }}
+               class="mdl-card mdl-shadow--4dp _msp-portfolio _msp-portfolio--item {{ post.class }}">
 
                {% if post.thumbnail %}
                   <div
-                     class="mdl-card__title _msp-portfolio__categories"
-                     style="{{ img_style(post.thumbnail, 'summary-image') }}"
-                  >
-                     <p class="mdl-card__title-text">
+                     class="mdl-card__title _msp-portfolio__image"
+                     style="{{ img_style(post.thumbnail, 'summary-image') }}">
+                     <p class="mdl-card__title-text  _msp-portfolio__categories">
                         {{ post.terms('jetpack-portfolio-type') | tax_links | join(',&nbsp;') }}
                      </p>
                   </div>
                {% endif %}
 
-               <div class="mdl-card__title">
+               <div class="mdl-card__title _msp-portfolio__title">
                   <h2 class="mdl-card__title-text">
                      {{ post.name }}
                   </h2>
                </div>
 
-               <div class="mdl-card__supporting-text">
-                  {{ post.get_preview(null, false, null) }}
-               </div>
-               <div class="mdl-card__actions mdl-card--border">
-                  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent"
-                     href="{{ post.link }}"
-                  >
-                     {{ __('Read more') }}
-                  </a>
-               </div>
+               {% if excerpt %}
+                  <div class="mdl-card__supporting-text  _msp-portfolio__excerpt">
+                     {{ excerpt }}
+                  </div>
+               {% endif %}
+
+               {% include '_partials/portfolio--actions.twig' %}
             </article>
-
-
          {% endfor %}
 
       </div>

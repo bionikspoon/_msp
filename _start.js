@@ -85,7 +85,7 @@ async function setup() {
   };
 
   // connect html injector
-  _bs.use(htmlInjector, { restrictions: [ '#page' ] });
+  _bs.use(htmlInjector);
 
   return _bs;
 }

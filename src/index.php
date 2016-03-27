@@ -12,12 +12,8 @@
  * @package _msp
  */
 
+get_header();
 
-if ( !class_exists( 'Timber' ) ) {
-   echo 'Timber not activated. Make sure you activate the plugin in <a href="' . admin_url( 'plugins.php#timber', $scheme ) . '">' . esc_url( admin_url( 'plugins.php' ) ) . '</a>';
-
-   return;
-}
 $templates = [ 'index.twig' ];
 if ( is_home() ) {
    array_unshift( $templates, 'home.twig' );

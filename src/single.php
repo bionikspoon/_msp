@@ -6,6 +6,7 @@
  *
  * @package _msp
  */
+get_header();
 
 $context = Timber::get_context();
 $post = Timber::query_post();

@@ -8,7 +8,7 @@
 
 {% macro img_style(image, size = null) %}
    height: {{ image.sizes[size].height ?: image.height }}px;
-   width: {{ image.sizes[size].width ?: image.sizes[size].width }}px;
+   width: {{ image.sizes[size].width ?: image.width }}px;
    background: url('{{ image.src(size) }}') center / cover;
 {% endmacro %}
 

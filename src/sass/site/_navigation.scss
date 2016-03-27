@@ -28,7 +28,7 @@
                 @extend %genericon-linkedin-alt;
             }
             &:hover:before {
-                color: $color-accent;
+                color: $color--accent;
             }
         }
     }
@@ -55,7 +55,7 @@
             display: block;
             position: absolute;
             bottom: 0;
-            background-color: $color-accent;
+            background-color: $color--accent;
             left: 15%;
         }
     }
