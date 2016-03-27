@@ -7,11 +7,12 @@
     overflow: hidden;
 
     &:focus {
+        $color__background-screen: unquote("rgb(#{$palette-grey-100})");
         background-color: $color__background-screen;
         border-radius: 3px;
-        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 2px 2px unquote("rgba(#{$color-black}, 0.06)");
         clip: auto !important;
-        color: $color__text-screen;
+        color: $color--primary-dark;
         display: block;
         @include font-size(0.875);
         font-weight: bold;

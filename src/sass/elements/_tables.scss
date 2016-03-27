@@ -1,0 +1,27 @@
+table {
+    margin: 0 0 1.5em;
+    width: 100%;
+}
+
+td {
+    padding: 5px;
+    border: 1px solid unquote("rgb(#{$palette-grey-300})");
+    &:hover {
+        background: unquote("rgb(#{$palette-grey-300})");
+    }
+}
+
+th {
+    padding: 5px;
+    border: 1px solid unquote("rgb(#{$palette-grey-300})");
+    font-weight: bold;
+    background: #999;
+    color: unquote("rgb(#{$color-white})");
+    text-align: center;
+}
+
+tr {
+    &.alternate {
+        background-color: unquote("rgb(#{$palette-grey-100})");
+    }
+}

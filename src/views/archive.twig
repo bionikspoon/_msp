@@ -2,11 +2,11 @@
 
 {% if posts %}
    {% block content %}
-      <div id="primary" class="blog-post--container">
+      <div id="primary" class=_msp-blog--container>
          {# TODO page title ? #}
 
          {% for post in posts %}
-               {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
+            {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
          {% endfor %}
 
          {# todo the_posts_navigation(); #}

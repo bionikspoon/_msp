@@ -40,7 +40,7 @@
     }
 
     &--container {
-        background-color: $color--portfolio-nav-bg;
+        background-color: unquote("rgba(#{$color-black}, 0.08)");
         text-transform: uppercase;
         height: 45px;
     }

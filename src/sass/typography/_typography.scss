@@ -1,0 +1,18 @@
+html,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: $performance_font;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: $text-color-primary;
+}
+
+@import "headings";
+
+@import "copy";
+
+@import "links";

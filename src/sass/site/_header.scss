@@ -25,7 +25,7 @@
     .mdl-layout {
 
         &__drawer-button {
-            background-color: $color--drawer-button-bg;
+            background-color: unquote("rgba(#{$palette-grey-400}, 0.44)");
         }
     }
 }
