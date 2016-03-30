@@ -3,7 +3,7 @@
 
     }
     & &__title {
-
+        margin-bottom: 0;
         a {
             @include typo-display-1;
             font-weight: 300;
@@ -18,12 +18,24 @@
 
     }
     & &__date {
-        @include typo-body-2;
-        text-transform: uppercase;
+        @include typo-body-1;
+        font-size: 13px;
+        color: rgba(0, 0, 0, .20);
+        > .material-icons {
+            vertical-align: text-bottom;
+            margin-right: 4px;
+            font-size: 130%;
+        }
+
     }
     & &__excerpt {
         @extend %excerpt;
     }
+
+    & &__content {
+        @extend %excerpt;
+    }
+
     & &__body {
 
     }
@@ -31,8 +43,9 @@
     }
 
     &--container {
-        width: 1000px;
-        margin: 0 auto;
+        max-width: 1000px;
+        width: 100%;
+        margin: auto;
     }
 }
 

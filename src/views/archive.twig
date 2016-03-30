@@ -6,6 +6,9 @@
          {# TODO page title ? #}
 
          {% for post in posts %}
+            {% if not loop.first %}
+               <hr/>
+            {% endif %}
             {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
          {% endfor %}
 

@@ -3,3 +3,4 @@ _msp
 vendor
 composer.lock
 wp-content
+*.log.*

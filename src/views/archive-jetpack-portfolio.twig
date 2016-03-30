@@ -1,14 +1,11 @@
 {% from 'macros/img.twig' import img_style %}
 {% extends "base.twig" %}
-
 {% if posts %}
 
    {% block content %}
       <div class=_msp-portfolio__container>
          {% for post in posts %}
-
             {% set excerpt = post.get_preview(null, false, null) %}
-
             <article
                id=portfolio-{{ post.ID }}
                class="mdl-card mdl-shadow--4dp _msp-portfolio _msp-portfolio--item {{ post.class }}">

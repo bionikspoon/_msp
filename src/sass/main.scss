@@ -10,12 +10,14 @@
 # Variables and mixins
 --------------------------------------------------------------*/
 @import "variables/variables";
-@import "../../node_modules/material-design-lite/src/variables";
-@import "../../node_modules/material-design-lite/src/mixins";
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
 @import "../../node_modules/normalize.css/normalize.css";
+/*--------------------------------------------------------------
+# Material Design Lite
+--------------------------------------------------------------*/
+@import "modules/material-design-lite";
 /*--------------------------------------------------------------
 # Elements
 --------------------------------------------------------------*/
@@ -29,14 +31,11 @@
 --------------------------------------------------------------*/
 @import "typography/typography";
 /*--------------------------------------------------------------
-# Material Design Lite
---------------------------------------------------------------*/
-@import "modules/material-design-lite";
-/*--------------------------------------------------------------
 # Site
 --------------------------------------------------------------*/
 @import "site/layout";
 @import "site/header";
+@import "site/footer";
 @import "site/navigation";
 @import "site/portfolio";
 @import "site/blog";

@@ -44,8 +44,11 @@ class MSPSite extends TimberSite {
        * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
        */
       add_theme_support( 'post-thumbnails' );
-      add_image_size( 'summary-image', 300, 9999 );
+      add_image_size( 'summary-image', 300, 9998 );
       add_image_size( 'detail-image', 750, 9999 );
+      add_image_size( 'portfolio-image-item', 300, 9999 );
+      add_image_size( 'portfolio-image-entry', 300, 9997 );
+
 
       // This theme uses wp_nav_menu()
       register_nav_menus( [
@@ -78,12 +81,6 @@ class MSPSite extends TimberSite {
          'link',
       ] );
 
-      // Set up the WordPress core custom background feature.
-      add_theme_support( 'custom-background', apply_filters( '_msp_custom_background_args', [
-         'default-color' => 'ffffff',
-         'default-image' => '',
-      ] ) );
-
       add_theme_support( 'menus' );
       add_filter( 'timber_context', [ $this, 'add_to_context' ] );
       add_filter( 'get_twig', [ $this, 'add_to_twig' ] );
@@ -95,7 +92,9 @@ class MSPSite extends TimberSite {
       $context[ 'social' ] = new TimberMenu( 'social' );
       //$context[ 'logo' ] = new TimberImage( get_custom_header()->attachment_id );
       $context[ 'footer_bg' ] = new TimberImage( 305 );
+      //$context[ 'footer_bg' ] = new TimberImage( 1707 );
       $context[ 'header_bg' ] = new TimberImage( 306 );
+      //$context[ 'header_bg' ] = new TimberImage( 1706 );
       $context[ 'logo' ] = new TimberImage( 307 );
       $context[ 'ex_work_1' ] = new TimberImage( 308 );
       $context[ 'ex_work_2' ] = new TimberImage( 309 );
@@ -146,37 +145,37 @@ function after_more( $post_content ) {
 new MSPSite();
 
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function _msp_content_width() {
-   $GLOBALS[ 'content_width' ] = apply_filters( '_msp_content_width', 640 );
-}
+///**
+// * Set the content width in pixels, based on the theme's design and stylesheet.
+// *
+// * Priority 0 to make it available to lower priority callbacks.
+// *
+// * @global int $content_width
+// */
+//function _msp_content_width() {
+//   $GLOBALS[ 'content_width' ] = apply_filters( '_msp_content_width', 640 );
+//}
+//
+//add_action( 'after_setup_theme', '_msp_content_width', 0 );
 
-add_action( 'after_setup_theme', '_msp_content_width', 0 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function _msp_widgets_init() {
-   register_sidebar( [
-      'name'          => esc_html__( 'Sidebar', '_msp' ),
-      'id'            => 'sidebar-1',
-      'description'   => '',
-      'before_widget' => '<section id="%1$s" class="widget %2$s">',
-      'after_widget'  => '</section>',
-      'before_title'  => '<h2 class="widget-title">',
-      'after_title'   => '</h2>',
-   ] );
-}
-
-add_action( 'widgets_init', '_msp_widgets_init' );
+///**
+// * Register widget area.
+// *
+// * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+// */
+//function _msp_widgets_init() {
+//   register_sidebar( [
+//      'name'          => esc_html__( 'Sidebar', '_msp' ),
+//      'id'            => 'sidebar-1',
+//      'description'   => '',
+//      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+//      'after_widget'  => '</section>',
+//      'before_title'  => '<h2 class="widget-title">',
+//      'after_title'   => '</h2>',
+//   ] );
+//}
+//
+//add_action( 'widgets_init', '_msp_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -201,6 +200,10 @@ add_action( 'wp_enqueue_scripts', '_msp_scripts' );
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
+/**
+ * Implement the Custom Header feature.
+ */
+require get_template_directory() . '/inc/custom-background.php';
 
 /**
  * Custom template tags for this theme.

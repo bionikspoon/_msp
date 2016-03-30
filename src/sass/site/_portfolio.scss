@@ -1,12 +1,14 @@
 ._msp-portfolio {
     & {
-        min-height: inherit;
 
     }
 
     &__container {
         max-width: $layout--max-width;
-        margin: auto;
+        width: 100%;
+        //margin: 0 auto;
+        padding-top: $grid-desktop-margin * 2;
+
     }
     @media (min-width: 1200px) {
         &__container {
@@ -55,7 +57,7 @@
         padding-top: 0;
 
         &--entry {
-            color:  unquote("rgba(#{$color-black}, 0.54)");
+            color: unquote("rgba(#{$color-black}, 0.54)");
             overflow: hidden;
         }
     }
@@ -132,7 +134,8 @@
     &--entry {
         width: 100%;
         max-width: 1000px;
-        margin: auto auto $grid-desktop-margin * 2;
+        margin: 0 auto auto;
+        min-height: min-content;
     }
     &--item {
         margin: 8px;

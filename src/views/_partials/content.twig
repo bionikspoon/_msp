@@ -5,16 +5,18 @@
          </a></h2>
       <div class="_msp-blog__meta">
          {# TODO <?php _msp_posted_on(); ?>#}
+         <p class="_msp-blog__date">
+            <i class="material-icons">access_time</i>{{ post.post_date | date }}</p>
       </div><!-- .entry-meta -->
 
    </header><!-- .entry-header -->
 
    <div class="_msp-blog__body">
-      <p class="_msp-blog__date">{{ post.post_date | date }}</p>
+
       <span class="_msp-blog__excerpt">
          {#{{ post.content }}#}
          {# TODO use excerpt #}
-         {{ post.get_preview(50,false,null,false) }}
+         {{ post.get_preview(50,false,null,false,'') }}
       </span>
    </div><!-- .entry-content -->
 
