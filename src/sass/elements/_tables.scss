@@ -15,9 +15,18 @@ th {
     padding: 5px;
     border: 1px solid unquote("rgb(#{$palette-grey-300})");
     font-weight: bold;
-    background: #999;
+    background: unquote("rgb(#{$palette-grey-700})");
     color: unquote("rgb(#{$color-white})");
     text-align: center;
+}
+
+tbody {
+    > tr > th {
+        background: unquote("rgb(#{$palette-grey-200})");
+        &:hover {
+            background: unquote("rgb(#{$palette-grey-300})");
+        }
+    }
 }
 
 tr {

@@ -1,15 +1,34 @@
 {% macro img_attr(image, size = null) %}
+   {% if size and image.sizes[size] %}
+      {% set height = image.sizes[size].height %}
+      {% set width = image.sizes[size].width %}
+   {% else %}
+      {% set height = image.height %}
+      {% set width = image.width %}
+   {% endif %}
+
    src={{ image.src(size) }}
    alt="{{ image.alt }}"
-   height={{ image.sizes[size].height ?: image.height }}
-   width={{ image.sizes[size].width ?: image.sizes[size].width }}
+   height="{{ height }}"
+   width="{{ width }}"
 {% endmacro %}
 
 
-{% macro img_style(image, size = null) %}
-   height: {{ image.sizes[size].height ?: image.height }}px;
-   width: {{ image.sizes[size].width ?: image.width }}px;
-   background: url('{{ image.src(size) }}') center / cover;
+{% macro img_style(image, size = null, square = false) %}
+   {% if size and image.sizes[size] %}
+      {% set height = image.sizes[size].height %}
+      {% set width = image.sizes[size].width %}
+   {% else %}
+      {% set height = image.height %}
+      {% set width = image.width %}
+   {% endif %}
+   {% if square and height > width %}
+      {% set height = width %}
+   {% endif %}
+   {% if height %}height: {{ height }}px;{% endif %}
+   {% if width %}width: {{ width }}px;{% endif %}
+   background: url('{{ image.src(size) }}');
+   overflow:hidden;
 {% endmacro %}
 
 

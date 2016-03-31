@@ -18,4 +18,6 @@ $templates = [ 'index.twig' ];
 if ( is_home() ) {
    array_unshift( $templates, 'home.twig' );
 }
-Timber::render( $templates, Timber::get_context() );
+$context = Timber::get_context();
+$context[ 'pagination' ] = Timber::get_pagination();
+Timber::render( $templates, $context );

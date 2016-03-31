@@ -134,8 +134,8 @@
     &--entry {
         width: 100%;
         max-width: 1000px;
-        margin: 0 auto auto;
         min-height: min-content;
+        margin: $grid-desktop-margin * 2 auto;
     }
     &--item {
         margin: 8px;

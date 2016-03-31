@@ -1,17 +1,16 @@
 a {
-    color: $text-color-primary;
     font-weight: 500;
     text-decoration: none;
     &:link {
-        color: $text-color-primary;
+        color: $text-link-color;
 
     }
     &:visited {
-        color: $text-color-primary;
+        color: $text-link-color;
 
     }
     &:hover {
-        color: $text-link-color;
+        color: unquote("rgb(#{$palette-grey-700})");
     }
     &:active {
 

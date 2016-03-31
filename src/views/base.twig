@@ -15,7 +15,7 @@
          background: url("{{ logo.src }}") 50% no-repeat;
       }
 
-      footer {
+      ._msp-footer {
          background-image: url("{{ footer_bg.src }}");
          background-size: cover;
       }
@@ -35,8 +35,8 @@
       {% include '_partials/footer.twig' %}
 
    </main>
-
    {% block footer %}{% endblock %}
+   <div class="mdl-layout__obfuscator"></div>
 </div><!-- #page -->
 
 {{ wp_footer() }}

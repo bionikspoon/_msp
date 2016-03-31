@@ -1,32 +1,61 @@
 ._msp-blog {
+    &.sticky {
+        background-color: unquote("rgb(#{$palette-grey-100})");
+        padding: 16px;
+        @include shadow-4dp;
+    }
     & &__header {
 
     }
+    & &__thumbnail {
+        margin-bottom: 16px;
+    }
     & &__title {
         margin-bottom: 0;
-        a {
+        &, & a {
             @include typo-display-1;
             font-weight: 300;
             color: $text-color-primary;
             text-decoration: none;
+        }
+        a {
             &:hover {
                 color: $text-link-color;
             }
         }
     }
     & &__meta {
+        margin-bottom: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        > p {
+            @include typo-body-1;
+            font-size: 13px;
+            color: rgba(0, 0, 0, .40);
+            margin-bottom: 0;
+            display: inline;
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
 
+            > .material-icons {
+                color: rgba(0, 0, 0, .20);
+
+                vertical-align: text-bottom;
+                margin-right: 4px;
+                font-size: 130%;
+            }
+        }
     }
     & &__date {
-        @include typo-body-1;
-        font-size: 13px;
-        color: rgba(0, 0, 0, .20);
-        > .material-icons {
-            vertical-align: text-bottom;
-            margin-right: 4px;
-            font-size: 130%;
+    }
+    & &__categories {
+        > a {
+            color: inherit;
+            &:hover {
+                color: $color--accent;
+            }
         }
-
     }
     & &__excerpt {
         @extend %excerpt;
@@ -41,11 +70,43 @@
     }
     & &__footer {
     }
+    & &__read-more {
+        //color: unquote("rgba(#{$palette-grey-500}, 0.70)");
+        &:hover {
+            color: $color--primary-dark;
+        }
+    }
+    &__navigation {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+        font-weight: 500;
+
+        & > &__link {
+            color: #000;
+            text-decoration: none;
+            &--prev > button.mdl-button {
+                margin-left: 16px;
+            }
+            &--next > button.mdl-button {
+                margin-right: 16px;
+            }
+
+            & > button.mdl-button {
+                background-color: #000;
+                color: rgba(255, 255, 255, .9);
+            }
+        }
+
+    }
 
     &--container {
         max-width: 1000px;
         width: 100%;
         margin: auto;
+        padding-top: $grid-desktop-margin * 2;
+        padding-bottom: $grid-desktop-margin * 2;
     }
 }
 
@@ -55,6 +116,7 @@
     h1, h2, h3, h4, h5, h6 {
         line-height: 1em;
         margin: 16px 0;
+        color: rgba(0, 0, 0, .54);
     }
     h1 {
         font-size: 34px * .90;
@@ -74,6 +136,7 @@
     h6 {
         font-size: 34px * .50;
     }
+
     blockquote {
         border-top: 1px solid #cccccc;
         border-bottom: 1px solid #cccccc;

@@ -2,7 +2,7 @@
     text-align: left;
     margin-top: 5px;
     margin-bottom: 5px;
-    border: 1px solid unquote("rgb(#{$palette-grey-500})");
+    border: 1px solid unquote("rgb(#{$palette-grey-300})");
     max-width: 99%;
     &.aligncenter {
         margin-bottom: 1.5em;
@@ -33,6 +33,6 @@
     margin-top: 2px;
     font-style: italic;
     // TODO use variable
-    color: #999;
+    color: unquote("rgb(#{$palette-grey-500})");
     font-size: 80%;
 }

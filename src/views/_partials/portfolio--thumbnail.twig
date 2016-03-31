@@ -1,0 +1,10 @@
+{% from 'macros/img.twig' import img_style %}
+{% if post.thumbnail %}
+   <div
+      class="{% if not single %}mdl-card__title{% endif %} _msp-portfolio__image"
+      style="{{ img_style(post.thumbnail, 'summary-image', single) }}">
+      <p class="_msp-portfolio__categories mdl-card__title-text">
+         {{ post.terms('jetpack-portfolio-type') | tax_links | join(',&nbsp;') }}
+      </p>
+   </div>
+{% endif %}

@@ -1,11 +1,4 @@
 
-li {
-    > ul,
-    > ol {
-        margin-bottom: 0;
-        margin-left: 1.5em;
-    }
-}
 
 dt {
     font-weight: bold;
@@ -17,14 +10,13 @@ dd {
 
 ul {
     list-style: disc;
-    margin: 0 0 1.5em 3em;
+
 }
 
 ol {
     list-style: decimal;
-    padding-left: 60px;
     li {
-        margin-bottom: 10px;
+        padding-left: 10px;
         ol {
             list-style-type: lower-alpha;
             li ol {
@@ -36,11 +28,19 @@ ol {
 }
 
 ul, ol {
-    li {
-        padding-left: 10px;
-    }
+    margin: 0 0 16px 0;
+    padding-left: 32px;
+
     ul, ol {
-        margin-bottom: 0;
-        margin-left: 1.5em;
+        margin: 0;
+        padding-left: 32px;
     }
 }
+
+//li {
+//    > ul,
+//    > ol {
+//        margin-bottom: 0;
+//        margin-left: 1.5em;
+//    }
+//}

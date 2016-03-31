@@ -14,4 +14,6 @@ if ( is_category() ) {
    array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
 }
 
-Timber::render( $templates, Timber::get_context() );
+$context = Timber::get_context();
+$context[ 'pagination' ] = Timber::get_pagination();
+Timber::render( $templates, $context );

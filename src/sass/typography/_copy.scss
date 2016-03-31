@@ -12,23 +12,26 @@ address {
 }
 
 pre {
-    /*background: $color__background-pre;
-    font-family: $font__pre;
-    @include font-size(0.9375);
-    line-height: $font__line-height-pre;
+    background-color: unquote("rgb(#{$palette-grey-100})");
+    //background: $color__background-pre;
+    //font-family: $font__pre;
+    //@include font-size(0.9375);
+    //line-height: $font__line-height-pre;
     margin-bottom: 1.6em;
     max-width: 100%;
     overflow: auto;
-    padding: 1.6em;*/
+    padding: 1.6em;
 }
 
 code, kbd, tt, var {
-    /*font-family: $font__code;
-    @include font-size(0.9375);*/
+    word-wrap: break-word;
+    color: unquote("rgb(#{$palette-grey-700})");
+    font-style: normal;
+    font-family: monospace;
 }
 
 abbr, acronym {
-    //border-bottom: 1px dotted $color__border-abbr;
+    border-bottom: 1px dotted;
     cursor: help;
 }
 

@@ -5,12 +5,15 @@
       <div id="primary" class=_msp-blog--container>
          {# TODO page title ? #}
 
-         {% for post in posts %}
-            {% if not loop.first %}
-               <hr/>
-            {% endif %}
+         {% for post in posts if ' sticky ' in post.class %}
             {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
          {% endfor %}
+         {% for post in posts if ' sticky ' not in post.class %}
+            {% if not loop.first %}
+               <hr/>{% endif %}
+            {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
+         {% endfor %}
+         {% include '_partials/content--navigation.twig' %}
 
          {# todo the_posts_navigation(); #}
 
