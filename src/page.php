@@ -12,7 +12,7 @@
  * @package _msp
  */
 
-get_header();
+get_template_part('timber');
 
 $context = Timber::get_context();
 $post = new TimberPost();

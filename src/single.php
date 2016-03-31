@@ -6,7 +6,7 @@
  *
  * @package _msp
  */
-get_header();
+get_template_part('timber');
 
 $context = Timber::get_context();
 $post = Timber::query_post();

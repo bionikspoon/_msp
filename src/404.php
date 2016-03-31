@@ -6,4 +6,6 @@
  *
  * @package _msp
  */
+get_template_part('timber');
+
 Timber::render( '404.twig', Timber::get_context() );

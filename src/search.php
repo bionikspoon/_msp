@@ -7,7 +7,7 @@
  * @package _msp
  */
 
-get_header();
+get_template_part('timber');
 
 $templates = [ 'search.twig', 'archive.twig', 'index.twig' ];
 $context = Timber::get_context();

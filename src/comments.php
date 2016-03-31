@@ -10,7 +10,7 @@
  * @package _msp
  */
 
-get_header();
+get_template_part('timber');
 
 /*
  * If the current post is protected by a password and

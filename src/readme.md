@@ -1,19 +1,19 @@
 === _msp ===
 
-Contributors: automattic
+Contributors: Manu Phatak
 Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
 
-Requires at least: 4.0
+Requires at least: 4.4
 Tested up to: 4.4.2
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 0.0.1
+License: MIT
+License URI: https://opensource.org/licenses/MIT
 
-A starter theme called _msp, or underscores.
 
 == Description ==
 
-Hi. I'm a starter theme called _msp, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+_msp is designed by Manu Phatak for manuphtak.com.  Based on Underscores.me.
+
 
 == Installation ==
 	

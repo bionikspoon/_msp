@@ -7,7 +7,7 @@
  * @package _msp
  */
 
-get_header();
+get_template_part('timber');
 
 $templates = [ 'archive-' . get_post_type() . '.twig', 'archive.twig' ];
 if ( is_category() ) {
