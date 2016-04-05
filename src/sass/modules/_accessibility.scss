@@ -1,3 +1,7 @@
+$color--screen--bg--focus: unquote("rgb(#{$palette-grey-100})");
+$color--screen--fg--focus: $color--primary-dark;
+$shadow--screen--focus: 0 0 2px 2px unquote("rgba(#{$color-black}, 0.06)");
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
@@ -7,21 +11,21 @@
     overflow: hidden;
 
     &:focus {
-        $color__background-screen: unquote("rgb(#{$palette-grey-100})");
-        background-color: $color__background-screen;
+
+        background-color: $color--screen--bg--focus;
         border-radius: 3px;
-        box-shadow: 0 0 2px 2px unquote("rgba(#{$color-black}, 0.06)");
+        box-shadow: $shadow--screen--focus;
         clip: auto !important;
-        color: $color--primary-dark;
+        color: $color--screen--fg--focus;
         display: block;
-        @include font-size(0.875);
-        font-weight: bold;
+        font-size: 14px;
+        @extend b;
         height: auto;
         left: 5px;
+        top: 5px;
         line-height: normal;
         padding: 15px 23px 14px;
         text-decoration: none;
-        top: 5px;
         width: auto;
         z-index: 100000; /* Above WP toolbar. */
     }

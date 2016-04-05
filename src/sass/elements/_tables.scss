@@ -1,30 +1,36 @@
+$color--table--th--bg: unquote("rgb(#{$palette-grey-700})");
+$color--table--th--fg: unquote("rgb(#{$color-white})");
+$color--table--td--bg: unquote("rgb(#{$palette-grey-300})");
+$gutter--table--cell: 5px;
+$gutter: 16px;
+
 table {
-    margin: 0 0 1.5em;
+    margin: 0 0 $gutter;
     width: 100%;
 }
 
 td {
-    padding: 5px;
-    border: 1px solid unquote("rgb(#{$palette-grey-300})");
+    padding: $gutter--table--cell;
+    border: 1px solid $color--table--td--bg;
     &:hover {
-        background: unquote("rgb(#{$palette-grey-300})");
+        background: $color--table--td--bg;
     }
 }
 
 th {
-    padding: 5px;
-    border: 1px solid unquote("rgb(#{$palette-grey-300})");
-    font-weight: bold;
-    background: unquote("rgb(#{$palette-grey-700})");
-    color: unquote("rgb(#{$color-white})");
-    text-align: center;
+    padding: $gutter--table--cell;
+    border: 1px solid $color--table--td--bg;
+    @extend b;
+    @extend .mdl-typography--text-center;
+    background: $color--table--th--bg;
+    color: $color--table--th--fg;
 }
 
 tbody {
     > tr > th {
         background: unquote("rgb(#{$palette-grey-200})");
         &:hover {
-            background: unquote("rgb(#{$palette-grey-300})");
+            background: $color--table--td--bg;
         }
     }
 }

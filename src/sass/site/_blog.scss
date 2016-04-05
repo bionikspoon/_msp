@@ -1,37 +1,51 @@
+$gutter: 16px;
+$color--blog--sticky--bg: unquote("rgb(#{$palette-grey-100})");
+$color--blog--title--link--fg: $text-color-primary;
+$color--blog--title--link--fg--hover: $text-link-color;
+$color--blog--meta--fg: rgba(0, 0, 0, .40);
+$color--blog--meta--icon--fg: rgba(0, 0, 0, .20);
+$color--blog--categories--link--fg--hover: $color--accent;
+$color--blog--read-more--fg--hover: $color--primary-dark;
+$color--blog--navigation--link--fg: #000;
+$color--blog--navigation--link--button--bg: #000;
+$color--blog--navigation--link--button--fg: rgba(255, 255, 255, .9);
+$color--blog--heading--fg: rgba(0, 0, 0, .54);
+$font-size--blog--base-heading: 34px;
+
 ._msp-blog {
     &.sticky {
-        background-color: unquote("rgb(#{$palette-grey-100})");
-        padding: 16px;
+        background-color: $color--blog--sticky--bg;
+        padding: $gutter;
         @include shadow-4dp;
     }
     & &__header {
 
     }
     & &__thumbnail {
-        margin-bottom: 16px;
+        margin-bottom: $gutter;
     }
     & &__title {
         margin-bottom: 0;
         &, & a {
             @include typo-display-1;
-            font-weight: 300;
-            color: $text-color-primary;
+            @extend .mdl-typography--font-light;
+            color: $color--blog--title--link--fg;
             text-decoration: none;
         }
         a {
             &:hover {
-                color: $text-link-color;
+                color: $color--blog--title--link--fg--hover;
             }
         }
     }
     & &__meta {
-        margin-bottom: 16px;
+        margin-bottom: $gutter;
         overflow: hidden;
         white-space: nowrap;
         > p {
             @include typo-body-1;
             font-size: 13px;
-            color: rgba(0, 0, 0, .40);
+            color: $color--blog--meta--fg;
             margin-bottom: 0;
             display: inline;
             &:not(:first-child) {
@@ -39,7 +53,7 @@
             }
 
             > .material-icons {
-                color: rgba(0, 0, 0, .20);
+                color: $color--blog--meta--icon--fg;
 
                 vertical-align: text-bottom;
                 margin-right: 4px;
@@ -53,7 +67,7 @@
         > a {
             color: inherit;
             &:hover {
-                color: $color--accent;
+                color: $color--blog--categories--link--fg--hover;
             }
         }
     }
@@ -71,9 +85,8 @@
     & &__footer {
     }
     & &__read-more {
-        //color: unquote("rgba(#{$palette-grey-500}, 0.70)");
         &:hover {
-            color: $color--primary-dark;
+            color: $color--blog--read-more--fg--hover;
         }
     }
     &__navigation {
@@ -81,21 +94,21 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         align-content: center;
-        font-weight: 500;
+        @extend .mdl-typography--font-medium;
 
         & > &__link {
-            color: #000;
+            color: $color--blog--navigation--link--fg;
             text-decoration: none;
             &--prev > button.mdl-button {
-                margin-left: 16px;
+                margin-left: $gutter;
             }
             &--next > button.mdl-button {
-                margin-right: 16px;
+                margin-right: $gutter;
             }
 
             & > button.mdl-button {
-                background-color: #000;
-                color: rgba(255, 255, 255, .9);
+                background-color: $color--blog--navigation--link--button--bg;
+                color: $color--blog--navigation--link--button--fg;
             }
         }
 
@@ -105,8 +118,8 @@
         max-width: 1000px;
         width: 100%;
         margin: auto;
-        padding-top: $grid-desktop-margin * 2;
-        padding-bottom: $grid-desktop-margin * 2;
+        padding-top: $gutter * 2;
+        padding-bottom: $gutter * 2;
     }
 }
 
@@ -115,52 +128,26 @@
 
     h1, h2, h3, h4, h5, h6 {
         line-height: 1em;
-        margin: 16px 0;
-        color: rgba(0, 0, 0, .54);
+        margin: $gutter 0;
+        color: $color--blog--heading--fg;
     }
     h1 {
-        font-size: 34px * .90;
+        font-size: $font-size--blog--base-heading * .90;
     }
     h2 {
-        font-size: 34px * .75;
+        font-size: $font-size--blog--base-heading * .75;
     }
     h3 {
-        font-size: 34px * .65;
+        font-size: $font-size--blog--base-heading * .65;
     }
     h4 {
-        font-size: 34px * .60;
+        font-size: $font-size--blog--base-heading * .60;
     }
     h5 {
-        font-size: 34px * .55;
+        font-size: $font-size--blog--base-heading * .55;
     }
     h6 {
-        font-size: 34px * .50;
+        font-size: $font-size--blog--base-heading * .50;
     }
 
-    blockquote {
-        border-top: 1px solid #cccccc;
-        border-bottom: 1px solid #cccccc;
-
-        margin: 30px 0;
-        padding: 30px;
-        opacity: .55;
-
-        &:before, &:after {
-            position: inherit;
-            content: '';
-            margin: inherit;
-        }
-        &, & p {
-            font-size: 24px;
-            font-style: italic;
-            line-height: 1.35;
-            letter-spacing: 0.08em;
-            text-align: center;
-        }
-        p {
-            padding: 0;
-            margin: 0;
-        }
-
-    }
 }

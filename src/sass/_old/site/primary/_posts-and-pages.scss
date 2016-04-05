@@ -108,11 +108,11 @@
         line-height: 30px;
         padding: 0 40px 0 20px;
         color: $color__text-primary-inverse;
-        font-style: italic;
+        @extend i;
     }
     a {
         color: $color__text-primary-inverse;
-        font-style: italic;
+        @extend i;
         text-decoration: none;
         &:hover {
             color: $color__link-hover-bg;
@@ -192,7 +192,7 @@
 
 .comment-author {
     font-size: 14px;
-    font-weight: bold;
+    @extend b;
     font-family: $sans-serif-family;
 }
 

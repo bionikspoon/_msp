@@ -1,0 +1,14 @@
+{% from 'macros/img.twig' import img_style %}
+<style type=text/css>
+
+   ._msp-header__logo {
+      {{ img_style(logo) }};
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+   }
+
+   ._msp-footer {
+      background-image: url("{{ footer_bg.src }}");
+      background-size: cover;
+   }
+</style>

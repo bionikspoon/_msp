@@ -96,7 +96,8 @@ class MSPSite extends TimberSite {
       //$context[ 'footer_bg' ] = new TimberImage( 1707 );
       $context[ 'header_bg' ] = new TimberImage( 306 );
       //$context[ 'header_bg' ] = new TimberImage( 1706 );
-      $context[ 'logo' ] = new TimberImage( 307 );
+      //$context[ 'logo' ] = new TimberImage( 307 );
+      $context[ 'logo' ] = new TimberImage( 1711 );
       $context[ 'ex_work_1' ] = new TimberImage( 308 );
       $context[ 'ex_work_2' ] = new TimberImage( 309 );
       $context[ 'ex_work_3' ] = new TimberImage( 310 );

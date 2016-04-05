@@ -9,17 +9,8 @@
    {% block header %}
    {% endblock %}
    {{ wp_head }}
-   <style type=text/css>
+   {% include '_partials/base--styles.twig' %}
 
-      ._msp-header__logo {
-         background: url("{{ logo.src }}") 50% no-repeat;
-      }
-
-      ._msp-footer {
-         background-image: url("{{ footer_bg.src }}");
-         background-size: cover;
-      }
-   </style>
 </head>
 
 <body class='{{ body_class }}'>
@@ -27,7 +18,7 @@
 <div id=page class="mdl-layout mdl-js-layout mdl-layout--fixed-header _msp-layout">
    {% include '_partials/header.twig' %}
 
-   <main id="content" class="mdl-layout__content _msp-layout__content">
+   <main id="content" class="mdl-layout__content _msp-layout__content _msp-layout__content--flex">
       {% block content %}
          {{ __('Sorry, no content.', '_msp') }}
 

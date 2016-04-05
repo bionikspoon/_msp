@@ -1,13 +1,18 @@
+$size--navigation--max-width: $layout--max-width;
+$color--navigation--link--fg: $layout-text-color;
+$color--navigation--container--bg: unquote("rgba(#{$color-black}, 0.08)");
+$color--navigation--link--social--fg: $color--accent;
+$color--navigation--menu-item--bg--after: $color--accent;
 ._msp-navigation {
     @extend .mdl-typography--body-1-force-preferred-font;
     text-align: center;
     padding-right: 24px;
-    max-width: $layout--max-width;
+    max-width: $size--navigation--max-width;
     width: 100%;
     & &__link {
         flex: 1;
         line-height: 42px;
-        color: $layout-text-color;
+        color: $color--navigation--link--fg;
         margin: 0;
         padding: 0;
 
@@ -28,7 +33,7 @@
                 @extend %genericon-linkedin-alt;
             }
             &:hover:before {
-                color: $color--accent;
+                color: $color--navigation--link--social--fg;
             }
         }
     }
@@ -40,14 +45,14 @@
     }
 
     &--container {
-        background-color: unquote("rgba(#{$color-black}, 0.08)");
+        background-color: $color--navigation--container--bg;
         text-transform: uppercase;
         height: 45px;
     }
 
     .current-menu-item {
         position: relative;
-        font-weight: bold;
+        @extend b;
         &:after {
             content: "";
             width: 70%;
@@ -55,7 +60,7 @@
             display: block;
             position: absolute;
             bottom: 0;
-            background-color: $color--accent;
+            background-color: $color--navigation--menu-item--bg--after;
             left: 15%;
         }
     }

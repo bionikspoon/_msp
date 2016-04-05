@@ -1,11 +1,10 @@
-
-
+$gutter: 16px;
 dt {
-    font-weight: bold;
+    @extend b;
 }
 
 dd {
-    margin: 0 1.5em 1.5em;
+    margin: 0 $gutter $gutter;
 }
 
 ul {
@@ -16,7 +15,7 @@ ul {
 ol {
     list-style: decimal;
     li {
-        padding-left: 10px;
+        padding-left: $gutter / 2;
         ol {
             list-style-type: lower-alpha;
             li ol {
@@ -28,19 +27,11 @@ ol {
 }
 
 ul, ol {
-    margin: 0 0 16px 0;
-    padding-left: 32px;
+    margin: $gutter;
+    padding-left: $gutter * 2;
 
     ul, ol {
         margin: 0;
-        padding-left: 32px;
+        padding-left: $gutter * 2;
     }
 }
-
-//li {
-//    > ul,
-//    > ol {
-//        margin-bottom: 0;
-//        margin-left: 1.5em;
-//    }
-//}

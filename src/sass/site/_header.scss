@@ -1,32 +1,38 @@
+$color--header--fg: $layout-text-color;
+$color--header--bg: #fff;
+$color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
+
 ._msp-header {
     position: relative;
-    color: $layout-text-color;
-    background-color: #fff;
+    color: $color--header--fg;
+    background-color: $color--header--bg;
 
     & &__row {
         padding: 0;
         justify-content: center;
         &--logo {
             min-height: 200px;
-
+            .mdl-layout__title {
+                width: 100%;
+                max-width: 1000px;
+                & ._msp-header__logo {
+                    background-size: cover;
+                    margin: auto auto auto 0;
+                }
+            }
         }
     }
     & &__logo {
-        background-size: cover;
-        height: 150px;
-        width: 150px;
-        margin: auto auto 10px;
-
     }
     & &__title {
+        @extend .mdl-typography--font-light;
+        @extend .mdl-typography--text-center;
         font-size: 14px;
-        text-align: center;
-        font-weight: 300;
     }
     .mdl-layout {
 
         &__drawer-button {
-            background-color: unquote("rgba(#{$palette-grey-400}, 0.44)");
+            background-color: $color--header--drawer-button--bg;
         }
     }
 }
@@ -39,9 +45,6 @@
 
         }
         &__logo {
-            height: 50px;
-            width: 50px;
-            margin-top: 7px;
         }
         &__title {
             display: none;

@@ -1,19 +1,33 @@
+$gutter: $grid-desktop-margin;
+$size--portfolio--max-width: $layout--max-width;
+$color--portfolio--categories--fg: rgba(255, 255, 255, .7);
+$color--portfolio--categories--bg: rgba(0, 0, 0, .7);
+$color--portfolio--categories--link--fg: $text-link-color;
+$color--portfolio--fg: unquote("rgba(#{$color-black}, 0.54)");
+$color--portfolio--link--fg--hover: $color--accent;
+$color--portfolio--content-header--bg: unquote("rgb(#{$palette-grey-100})");
+$color--portfolio--dl--link--fg: unquote("rgba(#{$color-black}, 0.54)");
+$color--portfolio--dl--link--fg--hover: $text-link-color;
+
 ._msp-portfolio {
     & {
 
     }
 
     &__container {
-        max-width: $layout--max-width;
+        max-width: $size--portfolio--max-width;
         width: 100%;
-        //margin: 0 auto;
-        padding-top: $grid-desktop-margin * 2;
+        padding-top: $gutter * 2;
+        padding-bottom: $gutter * 2;
+
+        flex: 1;
+        flex-basis: auto;
 
     }
     @media (min-width: 1200px) {
         &__container {
             max-width: 100%;
-            margin-left: $grid-desktop-margin * 2;
+            margin-left: $gutter * 2;
         }
     }
 
@@ -23,8 +37,8 @@
     }
 
     %categories {
-        color: rgba(255, 255, 255, .7);
-        font-style: italic;
+        @extend i;
+        color: $color--portfolio--categories--fg;
         text-decoration: none;
         white-space: nowrap;
 
@@ -34,17 +48,17 @@
     & &__categories {
         @extend %categories;
 
-        background-color: rgba(0, 0, 0, .7);
+        background-color: $color--portfolio--categories--bg;
         margin: 0;
-        padding: 0 20px;
-        line-height: 30px;
+        padding: 0 $gutter;
+        line-height: $gutter * 2;
         overflow: hidden;
 
         a {
             @extend %categories;
 
             &:hover {
-                color: $text-link-color;
+                color: $color--portfolio--categories--link--fg;
             }
         }
     }
@@ -57,7 +71,7 @@
         padding-top: 0;
 
         &--entry {
-            color: unquote("rgba(#{$color-black}, 0.54)");
+            color: $color--portfolio--fg;
             overflow: hidden;
         }
     }
@@ -77,16 +91,16 @@
     }
 
     & &__link {
-        color: unquote("rgba(#{$palette-grey-500}, 0.80)");
+        color: $color--portfolio--fg;
         &:hover {
-            color: $color--accent;
+            color: $color--portfolio--link--fg--hover;
 
         }
 
         &--external {
             padding-left: 12px;
             &:hover {
-                color: $color--accent;
+                color: $color--portfolio--link--fg--hover;
             }
         }
     }
@@ -95,23 +109,23 @@
         display: flex;
         flex-flow: row wrap-reverse;
         justify-content: space-between;
-        background-color: unquote("rgb(#{$palette-grey-100})");
+        background-color: $color--portfolio--content-header--bg;
         z-index: 10;
 
         &__meta {
-            padding: 16px;
+            padding: $gutter;
             flex: 1;
 
             &__title {
                 @include typo-display-3;
-                font-weight: 300;
+                @extend .mdl-typography--font-light;
             }
 
             & > dl a {
-                color: unquote("rgba(#{$color-black}, 0.54)");
+                color: $color--portfolio--dl--link--fg;
                 text-decoration: none;
                 &:hover {
-                    color: $text-link-color;
+                    color: $color--portfolio--dl--link--fg--hover;
                 }
             }
         }
@@ -120,10 +134,10 @@
     & &__content {
         width: 100%;
         padding: 0;
-        margin-top: 16px;
-        margin-bottom: 16px;
+        margin-top: $gutter;
+        margin-bottom: $gutter;
         p {
-            margin: 16px;
+            margin: $gutter;
             font-size: 18px;
             &:last-of-type {
                 margin-bottom: 0;
@@ -133,13 +147,13 @@
 
     &--entry {
         width: 100%;
-        max-width: 1000px;
+        max-width: $size--portfolio--max-width;
         min-height: min-content;
-        margin: $grid-desktop-margin * 2 auto;
+        margin: $gutter * 2 auto;
     }
     &--item {
-        margin: 8px;
-        width: 300px;
+        @extend .mdl-typography--font-light;
+        margin: $gutter / 2;
         display: inline-block;
     }
 }

@@ -1,5 +1,5 @@
 a {
-    font-weight: 500;
+    @extend .mdl-typography--font-medium;
     text-decoration: none;
     &:link {
         color: $text-link-color;
