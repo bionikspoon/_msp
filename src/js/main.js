@@ -34,13 +34,16 @@ const malarkey = require('malarkey');
   // Run masonry
   function activateMasonry() {
     const container = document.querySelector('._msp-portfolio__container');
-    const masonry = new Masonry(container, options.masonry);
-    imagesLoaded(container, masonry.layout);
+    if (container) {
+      const masonry = new Masonry(container, options.masonry);
+      imagesLoaded(container, masonry.layout);
+    }
   }
 
   // Run malarkey
   function activateMalarkey() {
     const pageTitleContainer = document.querySelector('._msp-header-title');
+    if (!pageTitleContainer) return;
     const pageTitle = pageTitleContainer.querySelector('#_msp-page-title');
 
     const malarkeyHandle = getMalarkeyHandle(pageTitle, options.malarkey);
@@ -50,7 +53,6 @@ const malarkey = require('malarkey');
       .typePhrase('Manu Phatak')
       .typePhrase('Full Stack Developer', 2000)
       .typeLegendTaunt();
-
 
     function addHighlight() {
       pageTitleContainer.classList.add(HIGHLIGHT_CLASS);

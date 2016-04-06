@@ -16,7 +16,11 @@ $layout--max-width: 1000px;
    We should be able to improve on this once CSS Font Loading L3 becomes more
    widely available.
 */
-$preferred_font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$font-family--sans-serif: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$font-family--monospace: 'Roboto Mono', monospace;
+$font-family--serif: 'Roboto Slab', serif;
+
+$preferred_font: $font-family--sans-serif;
 $performance_font: 'Helvetica', 'Arial', sans-serif;
 
 /* ==========  COLORS  ========== */

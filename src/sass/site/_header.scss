@@ -2,6 +2,15 @@ $color--header--fg: $layout-text-color;
 $color--header--bg: $color--white;
 $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
 
+$size--header--logo--height: 50px;
+$color--header--logo--link--fg: #fff;
+
+$color--header-title--bg: unquote("rgb(#{$palette-grey-50})");
+$color--header-title--fg: $color--accent;
+$color--header-title--cursor--fg: $color--primary;
+$color--header-title--text--fg--highlight: unquote("rgba(#{$palette-grey-700}, 0.87)");
+$color--header-title--text--fg--highlight-legend: $color--primary;
+
 ._msp-header {
     position: relative;
     color: $color--header--fg;
@@ -26,6 +35,27 @@ $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
     }
     & &__logo {
         display: none;
+        &, & a {
+            @extend .mdl-typography--font-light;
+            font-size: $size--header--logo--height;
+            font-family: $font-family--monospace;
+            min-height: 100%;
+            line-height: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            vertical-align: middle;
+            letter-spacing: -0.06em;
+
+        }
+
+        a {
+            padding-left: $gutter;
+            padding-right: $gutter;
+            &:link, &:active, &:hover, &:focus, &:visited {
+                color: $color--header--logo--link--fg
+            }
+        }
+
     }
     & &__title {
     }
@@ -54,10 +84,10 @@ $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
 }
 
 ._msp-header-title {
-    background-color: unquote("rgb(#{$palette-grey-50})");
-    color: $color--accent;
-    font-weight: 300;
-    font-family: 'Roboto Mono', monospace;
+    @extend .mdl-typography--font-light;
+    background-color: $color--header-title--bg;
+    color: $color--header-title--fg;
+    font-family: $font-family--monospace;
     letter-spacing: -0.06em;
     padding-left: 10px;
     padding-right: 10px;
@@ -76,28 +106,17 @@ $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
         }
     }
     &__cursor {
-        //@extend b;
-        font-weight: 400;
-        color: $color--primary;
+        @extend .mdl-typography--font-regular;
+        color: $color--header-title--cursor--fg;
 
-        //animation: 1.2s blink step-end infinite;
         &:after {
             content: '_';
-        }
-
-        @keyframes blink {
-            from, to {
-                color: transparent;
-            }
-            50% {
-                color: $color--primary;
-            }
         }
     }
 
     &.title-highlight & {
         &__text {
-            color: unquote("rgba(#{$palette-grey-700}, 0.87)");
+            color: $color--header-title--text--fg--highlight;
         }
         &__postfix {
             &:after {
@@ -109,9 +128,9 @@ $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
 
     &.title-highlight-legend & {
         &__text {
-            color: $color--primary;
+            color: $color--header-title--text--fg--highlight-legend;
         }
-        &__prefix, &__postfix, &__cursor {
+        &__prefix, &__postfix {
             &:after {
                 color: transparent;
             }

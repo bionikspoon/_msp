@@ -5,8 +5,6 @@ $color--body--bg: unquote("rgb(#{$color-white})");
 $color--pre--bg: unquote("rgb(#{$palette-grey-100})");
 $color--hr--bg: #ccc;
 $gutter: 16px;
-// TODO upgrade font
-$font--code: monospace;
 
 html {
     box-sizing: border-box;
@@ -76,7 +74,7 @@ code, kbd, tt, var {
     color: unquote("rgb(#{$palette-grey-700})");
     @extend .mdl-typography--font-regular;
 
-    font-family: $font--code;
+    font-family: $font-family--monospace;
 }
 
 hr {

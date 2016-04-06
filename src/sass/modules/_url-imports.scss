@@ -1,7 +1,5 @@
 //fonts
-//@import url('https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium');
-@import url('https://fonts.googleapis.com/css?family=Roboto:700,400,300,700italic,400italic,500|Roboto+Mono:400,300|Roboto+Slab|Material+Icons');
-//@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700,700italic|Roboto+Mono:300,400|Roboto+Slab|Material+Icons');
 
 //urls
 $img--logo: url('../images/logo.png');
@@ -9,9 +7,3 @@ $img--ex-blog-03: url('../images/example-blog03.jpg');
 $img--ex-blog-05: url('../images/example-blog05.jpg');
 $img--ex-blog-06: url('../images/example-blog06.jpg');
 $img--footer-bg: url('../images/footer-background.png');
-
-//%fonts {
-//    font-family: 'Roboto', sans-serif;
-//    font-family: 'Roboto Mono', monospace;
-//    font-family: 'Roboto Slab', serif;
-//}
