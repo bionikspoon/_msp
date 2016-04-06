@@ -1,6 +1,5 @@
 {% extends "base.twig" %}
 
+{% block main_classes %}{{ super }} _msp-layout__content--flex{% endblock %}
 
-{% block content %}
-   {% include '_partials/portfolio-single.twig' %}
-{% endblock %}
+{% block content %}{% include '_partials/portfolio-single.twig' %}{% endblock %}

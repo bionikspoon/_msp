@@ -6,8 +6,7 @@
    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
    <link rel=profile href=http://gmpg.org/xfn/11>
    <link rel=pingback href={{ site.pingback_url }}>
-   {% block header %}
-   {% endblock %}
+   {% block header %}{% endblock %}
    {{ wp_head }}
    {% include '_partials/base--styles.twig' %}
 
@@ -18,16 +17,13 @@
 <div id=page class="mdl-layout mdl-js-layout mdl-layout--fixed-header _msp-layout">
    {% include '_partials/header.twig' %}
 
-   <main id="content" class="mdl-layout__content _msp-layout__content _msp-layout__content--flex">
-      {% block content %}
-         {{ __('Sorry, no content.', '_msp') }}
+   <main id="content" class="{% block main_classes %}mdl-layout__content _msp-layout__content{% endblock %}">
 
-      {% endblock %}
+      {% block content %}{{ __('Sorry, no content.', '_msp') }}{% endblock %}
+
       {% include '_partials/footer.twig' %}
-
    </main>
    {% block footer %}{% endblock %}
-   <div class="mdl-layout__obfuscator"></div>
 </div><!-- #page -->
 
 {{ wp_footer() }}

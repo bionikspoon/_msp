@@ -1,8 +1,18 @@
 <header class="mdl-layout__header mdl-layout__header--waterfall  _msp-header">
    <div class="mdl-layout__header-row _msp-header__row _msp-header__row--logo">
-       <span class="mdl-layout__title">
-           <div class="_msp-header__logo"></div>
-       </span>
+      <a class="_msp-header__logo" href={{ site.link }}></a>
+      <h1 class="_msp-header__title _msp-header-title title-highlight">
+         {% spaceless %}
+            <span class="screen-reader-text">{{ site.name }}</span>
+            <span class="_msp-header-title__prefix" role="presentation"></span>
+            <span id="_msp-page-title"
+                  class="_msp-header-title__text"
+                  role="presentation"
+            >{{ site.name }}</span>
+            <span class="_msp-header-title__postfix" role="presentation"></span>
+            <span class="_msp-header-title__cursor" role="presentation"></span>
+         {% endspaceless %}
+      </h1>
    </div>
    <div class="mdl-layout__header-row mdl-layout--large-screen-only _msp-header__row _msp-navigation--container">
       <nav class="mdl-navigation _msp-navigation">
@@ -18,3 +28,4 @@
       {% include '_partials/social.twig' %}
    </nav>
 </div>
+

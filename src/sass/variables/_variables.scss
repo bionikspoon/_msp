@@ -43,12 +43,18 @@ $trim-color-classes: true;
 
 // Use color primarily for emphasis. Choose colors that fit with
 // your brand and provide good contrast between visual components.
-$color-primary: $palette-indigo-500;
-$color-primary-dark: $palette-indigo-700;
-$color-accent: $palette-pink-A200;
+$color-primary: $palette-light-green-500;
+$color-primary-dark: $palette-light-green-700;
+$color-accent: $palette-deep-orange-A200;
+$color-accent-light: $palette-deep-orange-A200;
+$color-accent-dark: $palette-deep-orange-A700;
 $color--primary: unquote("rgb(#{$color-primary})");
 $color--primary-dark: unquote("rgb(#{$color-primary-dark})");
 $color--accent: unquote("rgb(#{$color-accent})");
+$color--accent-light: unquote("rgb(#{$color-accent-light})");
+$color--accent-dark: unquote("rgb(#{$color-accent-dark})");
+$color--black: unquote("rgb(#{$color-black})");
+$color--white: unquote("rgb(#{$color-white})");
 
 // Our primary is dark, so use $color-dark-contrast for overlaid text.
 $color-primary-contrast: $color-dark-contrast;

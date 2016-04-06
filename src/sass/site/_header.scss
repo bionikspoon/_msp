@@ -1,20 +1,22 @@
 $color--header--fg: $layout-text-color;
-$color--header--bg: #fff;
+$color--header--bg: $color--white;
 $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
 
 ._msp-header {
     position: relative;
     color: $color--header--fg;
-    background-color: $color--header--bg;
+    //background-color: $color--header--bg;
 
     & &__row {
         padding: 0;
         justify-content: center;
         &--logo {
             min-height: 200px;
+            width: 100%;
+            max-width: 1000px;
+            align-self: center;
+            justify-content: flex-start;
             .mdl-layout__title {
-                width: 100%;
-                max-width: 1000px;
                 & ._msp-header__logo {
                     background-size: cover;
                     margin: auto auto auto 0;
@@ -23,11 +25,9 @@ $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
         }
     }
     & &__logo {
+        display: none;
     }
     & &__title {
-        @extend .mdl-typography--font-light;
-        @extend .mdl-typography--text-center;
-        font-size: 14px;
     }
     .mdl-layout {
 
@@ -45,9 +45,76 @@ $color--header--drawer-button--bg: unquote("rgba(#{$palette-grey-400}, 0.44)");
 
         }
         &__logo {
+            display: block;
         }
         &__title {
             display: none;
+        }
+    }
+}
+
+._msp-header-title {
+    background-color: unquote("rgb(#{$palette-grey-50})");
+    color: $color--accent;
+    font-weight: 300;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: -0.06em;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &__prefix {
+        &:after {
+            content: '</';
+        }
+    }
+    &__text {
+
+    }
+    &__postfix {
+        &:after {
+            content: '';
+        }
+    }
+    &__cursor {
+        //@extend b;
+        font-weight: 400;
+        color: $color--primary;
+
+        //animation: 1.2s blink step-end infinite;
+        &:after {
+            content: '_';
+        }
+
+        @keyframes blink {
+            from, to {
+                color: transparent;
+            }
+            50% {
+                color: $color--primary;
+            }
+        }
+    }
+
+    &.title-highlight & {
+        &__text {
+            color: unquote("rgba(#{$palette-grey-700}, 0.87)");
+        }
+        &__postfix {
+            &:after {
+                content: '>';
+            }
+        }
+
+    }
+
+    &.title-highlight-legend & {
+        &__text {
+            color: $color--primary;
+        }
+        &__prefix, &__postfix, &__cursor {
+            &:after {
+                color: transparent;
+            }
         }
     }
 }

@@ -1,8 +1,9 @@
 $size--navigation--max-width: $layout--max-width;
-$color--navigation--link--fg: $layout-text-color;
+$color--navigation--link--fg: $color--white;
 $color--navigation--container--bg: unquote("rgba(#{$color-black}, 0.08)");
-$color--navigation--link--social--fg: $color--accent;
-$color--navigation--menu-item--bg--after: $color--accent;
+$color--navigation--link--social--fg: $color--white;
+$color--navigation--link--social--bg--hover: unquote("rgba(#{$color-black}, 0.16)");
+$color--navigation--menu-item--bg--after: $color--accent-light;
 ._msp-navigation {
     @extend .mdl-typography--body-1-force-preferred-font;
     text-align: center;
@@ -16,23 +17,35 @@ $color--navigation--menu-item--bg--after: $color--accent;
         margin: 0;
         padding: 0;
 
+        &:hover {
+            opacity: 1;
+        }
+
         &:first-of-type {
             padding-left: 0;
         }
         &--social {
             @extend %genericon;
-
+            padding: 0;
             font-size: 26px;
 
             @include padding(null 10px);
 
             &[href*='github.com'] {
                 @extend %genericon-github;
+                padding: 0;
             }
             &[href*='linkedin.com'] {
                 @extend %genericon-linkedin-alt;
+                padding: 0;
+            }
+            &:before {
+                padding: $gutter / 2;
+                border-radius: 2px;
+                transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
             &:hover:before {
+                background-color: $color--navigation--link--social--bg--hover;
                 color: $color--navigation--link--social--fg;
             }
         }
@@ -52,7 +65,10 @@ $color--navigation--menu-item--bg--after: $color--accent;
 
     .current-menu-item {
         position: relative;
+        opacity: 1;
         @extend b;
+
+        // highlight line
         &:after {
             content: "";
             width: 70%;
@@ -62,6 +78,7 @@ $color--navigation--menu-item--bg--after: $color--accent;
             bottom: 0;
             background-color: $color--navigation--menu-item--bg--after;
             left: 15%;
+
         }
     }
 

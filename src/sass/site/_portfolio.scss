@@ -136,9 +136,10 @@ $color--portfolio--dl--link--fg--hover: $text-link-color;
         padding: 0;
         margin-top: $gutter;
         margin-bottom: $gutter;
+        font-size: 18px;
         p {
             margin: $gutter;
-            font-size: 18px;
+            font-size: inherit;
             &:last-of-type {
                 margin-bottom: 0;
             }

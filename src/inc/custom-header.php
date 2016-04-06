@@ -65,10 +65,10 @@ if ( !function_exists( '_msp_header_style' ) ) :
       <?php if ( get_header_image() ) : ?>
          <style type="text/css">
             ._msp-header {
-               background-image: url(<?php header_image(); ?>);
-               background-position: center;
-               background-repeat: repeat-x;
-               background-color: #fff;
+               /*background-image: url(*/<?php //header_image(); ?>/*);*/
+               /*background-position: center;*/
+               /*background-repeat: repeat-x;*/
+               /*background-color: #fff;*/
             }
          </style>
       <?php endif; ?>

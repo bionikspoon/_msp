@@ -1,7 +1,9 @@
 {% set excerpt = post.get_preview(null, false, null) %}
 <article
    id=portfolio-{{ post.ID }}
-   class="mdl-card mdl-shadow--4dp _msp-portfolio _msp-portfolio--item {{ post.class }}">
+   class="mdl-card mdl-shadow--4dp _msp-portfolio _msp-portfolio--item {{ post.class }}"
+   style="width: {{ post.thumbnail.sizes['summary-image'].width ?: post.thumbnail.width }}px;"
+>
 
    {% include '_partials/portfolio--thumbnail.twig' %}
 
