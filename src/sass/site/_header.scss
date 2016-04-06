@@ -68,7 +68,11 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
 }
 
 .is-compact._msp-header {
+    &:hover {
+        cursor: pointer;
+    }
     ._msp-header {
+
         &__row--logo {
             //noinspection CssInvalidPropertyValue
             min-height: auto;

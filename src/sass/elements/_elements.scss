@@ -1,5 +1,6 @@
 $color--blockquote--border: rgba(#cccccc, .54);
 $color--blockquote--text: unquote("rgba(#{$color-black}, .54)");
+$color--strike--text: unquote("rgba(#{$color-black}, .33)");
 
 $color--body--bg: unquote("rgb(#{$color-white})");
 $color--pre--bg: unquote("rgb(#{$palette-grey-100})");
@@ -21,9 +22,6 @@ body {
 }
 
 blockquote, q {
-    border-top: 1px solid $color--blockquote--border;
-    border-bottom: 1px solid $color--blockquote--border;
-
     quotes: "" "";
     color: $color--blockquote--text;
 
@@ -34,7 +32,6 @@ blockquote, q {
         margin: inherit;
     }
 
-    margin: $gutter * 2 0;
     padding: $gutter * 2;
 
     &, & p {
@@ -51,9 +48,33 @@ blockquote, q {
     }
 }
 
+blockquote {
+    border-top: 1px solid $color--blockquote--border;
+    border-bottom: 1px solid $color--blockquote--border;
+    margin: $gutter * 2 0;
+    p {
+        text-align: justify;
+    }
+}
+
+q {
+    padding: $gutter;
+}
+
+em {
+    @extend i;
+    color: $color--blockquote--text;
+}
+
+cite {
+    @extend em;
+    padding: 0 $gutter / 2;
+
+}
+
 abbr, acronym {
     border-bottom: 1px dotted;
-    cursor: help;
+    cursor: alias;
 }
 
 mark, ins {
@@ -103,6 +124,13 @@ img {
 address {
     @include typo-caption;
     @extend .mdl-typography--font-regular;
+}
+
+del, strike, s {
+    color: $color--strike--text;
+    text-decoration: line-through;
+    text-decoration-color: $color--strike--text;
+
 }
 
 @import "lists";

@@ -1,0 +1,4 @@
+{% set data = {'title': site.title, 'description': site.description} %}
+{% spaceless %}
+   <script>var siteData = {{ data | json_encode() | striptags }};</script>
+{% endspaceless %}

@@ -5,6 +5,7 @@ $gutter--table--cell: 5px;
 $gutter: 16px;
 
 table {
+    cursor: cell;
     margin: 0 0 $gutter;
     width: 100%;
 }
@@ -27,6 +28,7 @@ th {
 }
 
 tbody {
+
     > tr > th {
         background: unquote("rgb(#{$palette-grey-200})");
         &:hover {
