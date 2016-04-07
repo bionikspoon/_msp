@@ -38,7 +38,6 @@ $color--caption--fg: unquote("rgb(#{$palette-grey-500})");
     text-align: center;
     margin-top: 2px;
     font-style: italic;
-    // TODO use variable
     color: $color--caption--fg;
     font-size: 80%;
 }
