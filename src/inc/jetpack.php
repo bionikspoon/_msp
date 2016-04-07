@@ -15,14 +15,16 @@
  */
 function _msp_jetpack_setup() {
    // Add theme support for Infinite Scroll.
-   add_theme_support( 'infinite-scroll', [
+   // TODO support this
+   /*add_theme_support( 'infinite-scroll', [
       'container' => 'main',
       'render'    => '_msp_infinite_scroll_render',
       'footer'    => 'page',
-   ] );
+   ] );*/
 
    // Add theme support for Responsive Videos.
-   add_theme_support( 'jetpack-responsive-videos' );
+   // TODO support this
+   //add_theme_support( 'jetpack-responsive-videos' );
    add_theme_support( 'jetpack-portfolio' );
 }
 

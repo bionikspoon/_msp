@@ -24,7 +24,7 @@ add_action( 'customize_register', '_msp_customize_register' );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function _msp_customize_preview_js() {
-   wp_enqueue_script( '_msp_customizer', get_template_directory_uri() . '/js/customizer.js', [ 'customize-preview' ], '20151215', TRUE );
+   wp_enqueue_script( '_msp_customizer', get_template_directory_uri() . '/js/customizer.js', [ 'customize-preview' ], MSP_SCRIPT_VERSION, TRUE );
 }
 
 add_action( 'customize_preview_init', '_msp_customize_preview_js' );

@@ -35,7 +35,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const ENV = getEnv(TARGET);
 const DEBUG = !process.argv.includes('release');
 const VERBOSE = process.argv.includes('verbose');
-const WATCH = global.watch;
+const WATCH = global.watch || false;
 
 // ===========================================================================
 // NOTIFY

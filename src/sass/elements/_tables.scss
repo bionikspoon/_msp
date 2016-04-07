@@ -2,7 +2,6 @@ $color--table--th--bg: unquote("rgb(#{$palette-grey-700})");
 $color--table--th--fg: unquote("rgb(#{$color-white})");
 $color--table--td--bg: unquote("rgb(#{$palette-grey-300})");
 $gutter--table--cell: 5px;
-$gutter: 16px;
 
 table {
     cursor: cell;

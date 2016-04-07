@@ -1,9 +1,8 @@
 /* ==========  Custom  ========== */
-//fonts
 $font-genericons: Genericons;
-
-//layout
 $layout--max-width: 1000px;
+$gutter: 16px;
+
 /* ==========  TYPOGRAPHY  ========== */
 
 /* We're splitting fonts into "preferred" and "performance" in order to optimize
@@ -437,8 +436,8 @@ $shadow-ambient-shadow-opacity: 0.12;
 /* GRID */
 
 $grid-desktop-columns: 12;
-$grid-desktop-gutter: 16px;
-$grid-desktop-margin: 16px;
+$grid-desktop-gutter: $gutter;
+$grid-desktop-margin: $gutter;
 
 $grid-desktop-breakpoint: 840px;
 

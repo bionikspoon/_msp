@@ -23,10 +23,10 @@ function _msp_custom_background_setup() {
       'admin-preview-callback' => '',
    ];
    add_theme_support( 'custom-background', $background_args );
-   //add_theme_support( 'custom-background', apply_filters( '_msp_custom_background_args', [
-   //   'default-color' => 'ffffff',
-   //   'default-image' => '',
-   //] ) );
+   /*add_theme_support( 'custom-background', apply_filters( '_msp_custom_background_args', [
+      'default-color' => 'ffffff',
+      'default-image' => '',
+   ] ) );*/
 
 }
 

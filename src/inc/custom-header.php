@@ -24,7 +24,7 @@
 function _msp_custom_header_setup() {
    // Add theme support for Custom Header
    $header_args = [
-      'default-image'          => get_template_directory_uri() . '/images/header-bg.jpg',
+      'default-image'          => '',
       'width'                  => 1140,
       'height'                 => 263,
       'flex-width'             => TRUE,
@@ -50,28 +50,12 @@ if ( !function_exists( '_msp_header_style' ) ) :
     * @see _msp_custom_header_setup().
     */
    function _msp_header_style() {
-      $header_text_color = get_header_textcolor();
-
-      ///*
-      // * If no custom options for text are set, let's bail.
-      // * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
-      // */
-      //if ( HEADER_TEXTCOLOR === $header_text_color ) {
-      //   return;
-      //}
-
-      // If we get this far, we have custom styles. Let's do this.
-      ?>
-      <?php if ( get_header_image() ) : ?>
+      if ( get_header_image() ) : ?>
          <style type="text/css">
             ._msp-header {
-               /*background-image: url(*/<?php //header_image(); ?>/*);*/
-               /*background-position: center;*/
-               /*background-repeat: repeat-x;*/
-               /*background-color: #fff;*/
+               background-image: url(<?php header_image(); ?>);
             }
          </style>
-      <?php endif; ?>
-      <?php
+      <?php endif;
    }
 endif;

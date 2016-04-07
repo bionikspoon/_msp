@@ -1,16 +1,20 @@
 /* eslint default-case:0, no-console: 0  */
 global.watch = true;
 
+const fs = require('fs-promise');
 const browserSync = require('browser-sync');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('./webpack.config');
-const fs = require('fs-promise');
 const htmlInjector = require('bs-html-injector');
 const chalk = require('chalk');
 const { task, log, timeout, mapPath } = require('./_utils');
+const { clean, composer } = require('./_tasks');
 const bundler = webpack(webpackConfig);
+
+console.log(clean);
+console.log(composer);
 
 // ===========================================================================
 // CONFIG
@@ -30,6 +34,14 @@ const bsOptions = {
 
       // copy from SRC to DIST, inject html diff
       fn: synchronize(DIST),
+    },
+    {
+      match: [ 'vendor/autoload.php' ],
+      async fn() {
+        if (!injector.activated) {return;}
+
+        await composer();
+      },
     },
   ],
 
@@ -62,6 +74,7 @@ const bsOptions = {
 (async function main() {
   const bs = await task(setup);
   await task(clean);
+  await task(composer);
   await task(up, bs);
 }());
 
@@ -88,11 +101,6 @@ async function setup() {
   _bs.use(htmlInjector);
 
   return _bs;
-}
-
-async function clean() {
-  // preserve top level folder
-  await fs.emptyDir(DIST);
 }
 
 async function up(_bs) {
@@ -134,7 +142,6 @@ function synchronize(dist) {
 
       // JS/CSS injected via HMR, PHP updates injected here
       if (srcFile.match(/\.(?:php|twig)$/)) {
-
         // state machine, skips injection first few seconds
         injector(destFile);
       }
@@ -155,7 +162,10 @@ injector.active = function inject(file) {
   log(chalk.dim('Injecting html: ') + file);
 };
 
+injector.activated = false;
+
 injector.activate = async function activate(delay = INIT_DELAY, func = htmlInjector) {
   await timeout(delay);
   injector.call = func;
+  injector.activated = true;
 };

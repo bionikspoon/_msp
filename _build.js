@@ -2,16 +2,15 @@
 const webpack = require('webpack');
 const config = require('./webpack.config');
 const fs = require('fs-promise');
-const { task, log, timeout, mapPath } = require('./_utils');
+const { task, mapPath } = require('./_utils');
 const glob = require('glob');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ProgressBar = require('progress');
 const chalk = require('chalk');
 const path = require('path');
 const bs = require('browser-sync').create();
-const archiver = require('archiver');
-const prettyBytes = require('pretty-bytes');
 
+const { clean, composer, zip } = require('./_tasks');
 
 // ===========================================================================
 // CONFIG
@@ -19,10 +18,8 @@ const prettyBytes = require('pretty-bytes');
 const DIST = config.data.THEME_NAME;
 const FILE_MAP = config.data.FILE_MAP;
 const PROXY_TARGET = config.data.PROXY_TARGET;
-const ZIP_FILE = `${DIST}.zip`;
 const SERVE = process.argv.includes('serve');
 const PROFILE = process.argv.includes('profile');
-
 
 // ===========================================================================
 // Run
@@ -31,6 +28,7 @@ const PROFILE = process.argv.includes('profile');
   try {
     await task(clean);
     await task(copy);
+    await task(composer);
     const stats = await task(bundle);
     await task(zip);
 
@@ -50,11 +48,6 @@ const PROFILE = process.argv.includes('profile');
 // ===========================================================================
 // Tasks
 // ===========================================================================
-async function clean() {
-  // preserve top level folder
-  await fs.emptyDir(DIST);
-  await fs.unlink(path.join(__dirname, ZIP_FILE));
-}
 
 async function copy() {
   const files = await globAsync('src/**/*.!(js|scss)');
@@ -76,23 +69,6 @@ async function bundle() {
   return stats;
 }
 
-async function zip() {
-
-  const out = fs.createWriteStream(path.join(__dirname, ZIP_FILE));
-  const archive = archiver.create('zip');
-
-  out.on('close', () => {
-    const size = prettyBytes(archive.pointer());
-    log(`${chalk.white.bold(size)} written to ${chalk.white.dim(ZIP_FILE)}`);
-  });
-
-  archive.on('error', (err) => { throw  err;});
-  archive.directory(DIST);
-  archive.pipe(out);
-
-  await archive.finalize();
-}
-
 async function profile(stats) {
   const statsFile = path.join(__dirname, 'stats.json');
   await fs.outputJson(statsFile, stats.toJson());
@@ -101,7 +77,6 @@ async function profile(stats) {
 async function serve() {
   bs.init({ proxy: PROXY_TARGET });
 }
-
 
 // ===========================================================================
 // Utils

@@ -6,8 +6,6 @@
    <div class="_msp-blog__body">
 
       <span class="_msp-blog__excerpt">
-         {#{{ post.content }}#}
-         {# TODO use excerpt #}
          {{ post.get_preview(55,false,null,false,'') }}
       </span>
    </div><!-- .entry-content -->
@@ -22,4 +20,4 @@
       </footer><!-- .entry-footer -->
    {% endif %}
 
-</article><!-- #post-## -->
+</article><!-- #post-{{ post.ID }} -->
