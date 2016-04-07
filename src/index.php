@@ -12,7 +12,7 @@
  * @package _msp
  */
 
-get_template_part('timber');
+get_template_part( 'timber' );
 
 $templates = [ 'index.twig' ];
 if ( is_home() ) {

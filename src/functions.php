@@ -95,8 +95,6 @@ class MSPSite extends TimberSite {
    function add_to_context( $context ) {
       $context[ 'menu' ] = new TimberMenu( 'primary' );
       $context[ 'social' ] = new TimberMenu( 'social' );
-      $context[ 'footer_bg' ] = new TimberImage( 305 );
-
       $context[ 'site' ] = $this;
 
       return $context;

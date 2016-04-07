@@ -5,7 +5,6 @@ const Masonry = require('masonry-layout');
 const imagesLoaded = require('imagesloaded');
 const malarkey = require('malarkey');
 
-
 (() => {
   // Bind to DOM
   document.addEventListener('DOMContentLoaded', loadingComplete);

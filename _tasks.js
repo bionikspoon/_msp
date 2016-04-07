@@ -17,7 +17,7 @@ async function clean() {
   // preserve top level folder
   await fs.emptyDir(DIST);
 
-  // await fs.unlink(path.join(__dirname, ZIP_FILE));
+  await fs.unlink(ZIP_FILE);
 }
 
 async function composer() {
