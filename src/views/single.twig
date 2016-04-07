@@ -1,6 +1,10 @@
+{% extends "base.twig" %}
+
 {% from 'macros/img.twig' import img_attr %}
 
-{% extends "base.twig" %}
+{% block main_classes %}{{ parent() }} _msp-layout__content--flex{% endblock %}
+
+
    {% block content %}
       <div id="primary" class=_msp-blog--container>
          {# TODO page title ? #}

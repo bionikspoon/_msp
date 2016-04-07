@@ -48,10 +48,10 @@ class MSPSite extends TimberSite {
        * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
        */
       add_theme_support( 'post-thumbnails' );
-      add_image_size( 'summary-image', 300, 9998 );
-      add_image_size( 'detail-image', 750, 9999 );
-      add_image_size( 'portfolio-image-item', 300, 9999 );
-      add_image_size( 'portfolio-image-entry', 300, 9997 );
+      //add_image_size( 'summary-image', 300, 9998 );
+      //add_image_size( 'detail-image', 750, 9999 );
+      add_image_size( 'portfolio-image-archive', 300, 9999 );
+      add_image_size( 'portfolio-image-single', 300, 300 );
 
 
       // This theme uses wp_nav_menu()

@@ -17,7 +17,12 @@ async function clean() {
   // preserve top level folder
   await fs.emptyDir(DIST);
 
-  await fs.unlink(ZIP_FILE);
+  try {
+    await fs.unlink(ZIP_FILE);
+  }
+  catch (e) {
+    console.error(e.toString()); // eslint-disable-line no-console
+  }
 }
 
 async function composer() {

@@ -12,8 +12,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     @include typo-display-3($colorContrast: true);
-
-    font-size: $font-size--small;
 }
 
 h1 {
@@ -56,6 +54,10 @@ h6 {
 
     margin-top: $gutter--header;
     margin-bottom: $gutter--header * .75;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    font-size: $font-size--small;
 }
 
 p {

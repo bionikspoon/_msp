@@ -16,6 +16,7 @@ $font-size--blog--base-heading: 34px;
         background-color: $color--blog--sticky--bg;
         padding: $gutter;
         @include shadow-4dp;
+        margin-bottom: $gutter * 4;
     }
     & &__header {
 
@@ -112,6 +113,12 @@ $font-size--blog--base-heading: 34px;
         }
 
     }
+    &--single {
+        padding-bottom: $gutter * 2;
+        margin-bottom: $gutter * 2;
+    }
+    &--archive {
+    }
 
     &--container {
         max-width: 1000px;
@@ -119,7 +126,7 @@ $font-size--blog--base-heading: 34px;
         margin: auto;
         padding-top: $gutter * 2;
         padding-bottom: $gutter * 2;
-        display: block;
+        flex: 1;
     }
 }
 

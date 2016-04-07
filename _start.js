@@ -13,9 +13,6 @@ const { task, log, timeout, mapPath } = require('./_utils');
 const { clean, composer } = require('./_tasks');
 const bundler = webpack(webpackConfig);
 
-console.log(clean);
-console.log(composer);
-
 // ===========================================================================
 // CONFIG
 // ===========================================================================

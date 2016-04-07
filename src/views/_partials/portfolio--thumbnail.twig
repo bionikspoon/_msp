@@ -1,8 +1,16 @@
 {% from 'macros/img.twig' import img_style %}
 {% if post.thumbnail %}
+   {% if single %}
+      {% set div_class = 'mdl-card__title  _msp-portfolio__image' %}
+      {% set div_style = img_style(post.thumbnail, 'portfolio-image-single', single) %}
+   {% else %}
+      {% set div_class = '_msp-portfolio__image' %}
+      {% set div_style = img_style(post.thumbnail, 'portfolio-image-archive', single) %}
+   {% endif %}
+
    <div
-      class="{% if not single %}mdl-card__title{% endif %} _msp-portfolio__image"
-      style="{{ img_style(post.thumbnail, 'summary-image', single) }}">
+      class="{{ div_class }}"
+      style="{{ div_style }}">
       <p class="_msp-portfolio__categories mdl-card__title-text">
          {{ post.terms('jetpack-portfolio-type') | tax_links | join(',&nbsp;') }}
       </p>
