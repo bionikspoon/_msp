@@ -10,7 +10,7 @@
 
 define( 'MSP_SCRIPT_VERSION', '1.0.0' );
 define( 'ACF_LITE', TRUE );
-define( 'TWIG_CACHE_TIMEOUT', 600 );
+define( 'TWIG_CACHE_TIMEOUT', getenv( 'TWIG_CACHE_TIMEOUT' ) ?? 600 );
 
 
 /**

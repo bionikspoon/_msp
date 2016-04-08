@@ -1,5 +1,11 @@
 /* eslint default-case:0, no-console: 0  */
+
+// ===========================================================================
+// ENV
+// ===========================================================================
 global.watch = true;
+process.env.TWIG_CACHE_TIMEOUT = 0;
+
 
 const fs = require('fs-promise');
 const browserSync = require('browser-sync');
@@ -22,6 +28,7 @@ const INIT_DELAY = 5000;
 const DIST = webpackConfig.data.THEME_NAME;
 const FILE_MAP = webpackConfig.data.FILE_MAP;
 const PROXY_TARGET = webpackConfig.data.PROXY_TARGET;
+
 
 const bsOptions = {
   files: [

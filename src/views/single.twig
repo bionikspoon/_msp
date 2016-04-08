@@ -5,20 +5,20 @@
 {% block main_classes %}{{ parent() }} _msp-layout__content--flex{% endblock %}
 
 
-   {% block content %}
-      <div id="primary" class=_msp-blog--container>
-         {# TODO page title ? #}
+{% block content %}
+   <div id="primary" class=_msp-blog--container>
+      {# TODO page title ? #}
 
-         {% for post in posts %}
-            {% if not loop.first %}
-               <hr/>
-            {% endif %}
-         {% endfor %}
-         {% include ['_partials/content-single-'~post.post_type~'.twig', '_partials/content-single.twig'] %}
-
-
-         {# todo the_posts_navigation(); #}
+      {% for post in posts %}
+         {% if not loop.first %}
+            <hr/>
+         {% endif %}
+      {% endfor %}
+      {% include ['_partials/content-single-'~post.post_type~'.twig', '_partials/content-single.twig'] %}
 
 
-      </div><!-- #primary -->
-   {% endblock %}
+      {# todo the_posts_navigation(); #}
+
+
+   </div><!-- #primary -->
+{% endblock %}

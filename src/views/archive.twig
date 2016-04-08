@@ -1,8 +1,10 @@
 {% extends "base.twig" %}
 
-{% if posts %}
-   {% block content %}
-      <div id="primary" class=_msp-blog--container>
+{% block main_classes %}{{ parent() }} _msp-layout__content--flex{% endblock %}
+
+{% block content %}
+   <div id="primary" class=_msp-blog--container>
+      {% if posts %}
          {# TODO page title ? #}
 
          {% for post in posts if ' sticky ' in post.class %}
@@ -17,9 +19,11 @@
 
          {# todo the_posts_navigation(); #}
 
+      {% else %}
+         <h1>{{ __('No posts were found', '_msp') }} :(</h1>
+      {% endif %}
+   </div><!-- #primary -->
 
-      </div><!-- #primary -->
-   {% endblock %}
-{% endif %}
+{% endblock %}
 
 {# TODO else none ? #}
