@@ -14,4 +14,4 @@ $context = Timber::get_context();
 $context[ 'posts' ] = Timber::get_posts( $args );
 
 
-Timber::render( 'archive-jetpack-portfolio.twig', $context );
+Timber::render( 'archive-jetpack-portfolio.twig', $context, TWIG_CACHE_TIMEOUT );

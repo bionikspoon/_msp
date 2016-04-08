@@ -14,10 +14,13 @@
 {% endmacro %}
 
 
-{% macro img_style(image, size = null, square = false) %}
+{% macro img_style(image, size = null, square = false, fallback = null) %}
    {% if size and image.sizes[size] %}
       {% set height = image.sizes[size].height %}
       {% set width = image.sizes[size].width %}
+   {% elseif fallback %}
+      {% set height = fallback / image.width * image.height %}
+      {% set width = fallback %}
    {% else %}
       {% set height = image.height %}
       {% set width = image.width %}
@@ -27,7 +30,7 @@
    {% endif %}
    {% if height %}height: {{ height }}px;{% endif %}
    {% if width %}width: {{ width }}px;{% endif %}
-   background: url('{{ image.src(size) }}');
+   background: url('{{ image.src(size) }}') 50% 0% / cover;
    overflow:hidden;
 {% endmacro %}
 

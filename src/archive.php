@@ -16,4 +16,4 @@ if ( is_category() ) {
 
 $context = Timber::get_context();
 $context[ 'pagination' ] = Timber::get_pagination();
-Timber::render( $templates, $context );
+Timber::render( $templates, $context, TWIG_CACHE_TIMEOUT );

@@ -2,7 +2,7 @@
 <article
    id=portfolio-{{ post.ID }}
    class="mdl-card mdl-shadow--4dp _msp-portfolio _msp-portfolio--item {{ post.class }}"
-   style="width: {{ post.thumbnail.sizes['portfolio-image-archive'].width ?: post.thumbnail.width }}px;"
+   style="width: {{ post.thumbnail.sizes['portfolio-image-archive'].width ?: 300 }}px;"
 >
 
    {% include '_partials/portfolio--thumbnail.twig' %}

@@ -8,4 +8,4 @@
  */
 get_template_part( 'timber' );
 
-Timber::render( '404.twig', Timber::get_context() );
+Timber::render( '404.twig', Timber::get_context(), TWIG_CACHE_TIMEOUT );

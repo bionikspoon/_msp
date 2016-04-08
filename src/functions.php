@@ -8,7 +8,16 @@
  */
 
 
-define( 'MSP_SCRIPT_VERSION', '20160406' );
+define( 'MSP_SCRIPT_VERSION', '1.0.0' );
+define( 'ACF_LITE', TRUE );
+define( 'TWIG_CACHE_TIMEOUT', 600 );
+
+
+/**
+ * Include composer.
+ */
+require_once(__DIR__ . '/vendor/autoload.php');
+
 
 if ( !class_exists( 'Timber' ) ) {
    add_action( 'admin_notices', function () {
@@ -17,76 +26,15 @@ if ( !class_exists( 'Timber' ) ) {
 
    return;
 }
+Timber::$cache = TRUE;
+
 
 if ( !isset($content_width) ) $content_width = 640;
 
 class MSPSite extends TimberSite {
 
    function __construct() {
-      /*
-      * Make theme available for translation.
-      * Translations can be filed in the /languages/ directory.
-      * If you're building a theme based on _msp, use a find and replace
-      * to change '_msp' to the name of your theme in all the template files.
-      */
-      load_theme_textdomain( '_msp', get_template_directory() . '/languages' );
 
-      // Add default posts and comments RSS feed links to head.
-      add_theme_support( 'automatic-feed-links' );
-
-      /*
-       * Let WordPress manage the document title.
-       * By adding theme support, we declare that this theme does not use a
-       * hard-coded <title> tag in the document head, and expect WordPress to
-       * provide it for us.
-       */
-      add_theme_support( 'title-tag' );
-
-      /*
-       * Enable support for Post Thumbnails on posts and pages.
-       *
-       * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-       */
-      add_theme_support( 'post-thumbnails' );
-      //add_image_size( 'summary-image', 300, 9999 );
-      //add_image_size( 'detail-image', 750, 9999 );
-      add_image_size( 'portfolio-image-archive', 300, 9999 );
-      add_image_size( 'portfolio-image-single', 300, 300, [ 'center', 'top' ] );
-
-
-      // This theme uses wp_nav_menu()
-      register_nav_menus( [
-         'primary' => esc_html__( 'Primary Menu', '_msp' ),
-         'social'  => esc_html__( 'Social Links Menu', '_msp' ),
-      ] );
-
-
-      /*
-       * Switch default core markup for search form, comment form, and comments
-       * to output valid HTML5.
-       */
-      add_theme_support( 'html5', [
-         'search-form',
-         'comment-form',
-         'comment-list',
-         'gallery',
-         'caption',
-      ] );
-
-      /*
-       * Enable support for Post Formats.
-       * See https://developer.wordpress.org/themes/functionality/post-formats/
-       */
-      // TODO support this
-      add_theme_support( 'post-formats'/*, [
-         'aside',
-         'image',
-         'video',
-         'quote',
-         'link',
-      ]*/ );
-
-      add_theme_support( 'menus' );
       add_filter( 'timber_context', [ $this, 'add_to_context' ] );
       add_filter( 'get_twig', [ $this, 'add_to_twig' ] );
       parent::__construct();
@@ -133,8 +81,85 @@ function categorized( $categories ) {
    return $result;
 }
 
-new MSPSite();
+function _msp_setup_theme() {
+   /*
+  * Make theme available for translation.
+  * Translations can be filed in the /languages/ directory.
+  * If you're building a theme based on _msp, use a find and replace
+  * to change '_msp' to the name of your theme in all the template files.
+  */
+   load_theme_textdomain( '_msp', get_template_directory() . '/languages' );
 
+   // Add default posts and comments RSS feed links to head.
+   add_theme_support( 'automatic-feed-links' );
+
+   /*
+    * Let WordPress manage the document title.
+    * By adding theme support, we declare that this theme does not use a
+    * hard-coded <title> tag in the document head, and expect WordPress to
+    * provide it for us.
+    */
+   add_theme_support( 'title-tag' );
+
+   /*
+    * Enable support for Post Thumbnails on posts and pages.
+    *
+    * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+    */
+   add_theme_support( 'post-thumbnails' );
+   //add_image_size( 'summary-image', 300, 9999 );
+   //add_image_size( 'detail-image', 750, 9999 );
+   //add_image_size( 'medium_large', '768', '0', FALSE );
+   //add_image_size( 'portfolio-image-archive', '300', '0', FALSE );
+   //add_image_size( 'portfolio-image-single', '300', '300', [ "center", "top" ] );
+   //add_image_size( 'jetpack-portfolio-admin-thumb', '50', '50', TRUE );
+   add_image_size( 'medium_large', '768', '0', FALSE );
+   add_image_size( 'portfolio-image-archive', '300', '9999', FALSE );
+   add_image_size( 'portfolio-image-single', '300', '300', [ "1", "" ] );
+   add_image_size( 'medium_large', '768', '0', FALSE );
+   add_image_size( 'jetpack-portfolio-admin-thumb', '50', '50', TRUE );
+   add_image_size( 'summary-image', '300', '9999', FALSE );
+   add_image_size( 'detail-image', '750', '3999', FALSE );
+
+   // This theme uses wp_nav_menu()
+   register_nav_menus( [
+      'primary' => esc_html__( 'Primary Menu', '_msp' ),
+      'social'  => esc_html__( 'Social Links Menu', '_msp' ),
+   ] );
+
+
+   /*
+    * Switch default core markup for search form, comment form, and comments
+    * to output valid HTML5.
+    */
+   add_theme_support( 'html5', [
+      'search-form',
+      'comment-form',
+      'comment-list',
+      'gallery',
+      'caption',
+   ] );
+
+   /*
+    * Enable support for Post Formats.
+    * See https://developer.wordpress.org/themes/functionality/post-formats/
+    */
+   // TODO support this
+   add_theme_support( 'post-formats'/*, [
+         'aside',
+         'image',
+         'video',
+         'quote',
+         'link',
+      ]*/ );
+
+   add_theme_support( 'menus' );
+
+
+   new MSPSite();
+}
+
+add_action( 'after_setup_theme', '_msp_setup_theme' );
 
 /**
  * Enqueue scripts and styles.
@@ -146,7 +171,7 @@ function _msp_scripts() {
    wp_enqueue_script( '_msp.manifest', get_template_directory_uri() . '/js/manifest.js', [ ], MSP_SCRIPT_VERSION, TRUE );
    wp_enqueue_script( '_msp.vendor', get_template_directory_uri() . '/js/vendor.js', [ '_msp.manifest' ], MSP_SCRIPT_VERSION, TRUE );
 
-   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ 'jquery-masonry', '_msp.vendor' ], MSP_SCRIPT_VERSION, TRUE );
+   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ '_msp.manifest', '_msp.vendor' ], MSP_SCRIPT_VERSION, TRUE );
 
    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
@@ -184,12 +209,9 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
+
 /**
  * Load advanced custom fields setup.
  */
 require get_template_directory() . '/inc/advanced-custom-fields.php';
 
-/**
- * Include composer.
- */
-require_once(__DIR__ . '/vendor/autoload.php');

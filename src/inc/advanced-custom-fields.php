@@ -1,5 +1,5 @@
 <?php
-define( 'ACF_LITE', TRUE );
+
 
 if ( function_exists( "register_field_group" ) ) {
    register_field_group( [
@@ -13,7 +13,7 @@ if ( function_exists( "register_field_group" ) ) {
             'type'          => 'true_false',
             'instructions'  => 'Show "Read More" link.',
             'message'       => '',
-            'default_value' => 1,
+            'default_value' => 0,
          ],
          [
             'key'           => 'field_56f6f4db64e69',

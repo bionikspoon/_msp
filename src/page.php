@@ -18,4 +18,4 @@ $context = Timber::get_context();
 $post = new TimberPost();
 $context[ 'post' ] = $post;
 $template = [ 'page-' . $post->post_name . '.twig', 'page.twig' ];
-Timber::render( $template, $context );
+Timber::render( $template, $context, TWIG_CACHE_TIMEOUT );
