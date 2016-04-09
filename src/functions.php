@@ -7,8 +7,10 @@
  * @package _msp
  */
 
+$version_json = file_get_contents( get_template_directory() . '/__version__.json' );
+$version = json_decode( $version_json, TRUE )[ 'version' ];
 
-define( 'MSP_SCRIPT_VERSION', '1.0.0' );
+define( 'MSP_SCRIPT_VERSION', $version );
 define( 'ACF_LITE', TRUE );
 define( 'TWIG_CACHE_TIMEOUT', getenv( 'TWIG_CACHE_TIMEOUT' ) ?? 600 );
 

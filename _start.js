@@ -16,7 +16,7 @@ const webpackConfig = require('./webpack.config');
 const htmlInjector = require('bs-html-injector');
 const chalk = require('chalk');
 const { task, log, timeout, mapPath } = require('./_utils');
-const { clean, composer } = require('./_tasks');
+const { clean, composer, updateVersion } = require('./_tasks');
 const bundler = webpack(webpackConfig);
 
 // ===========================================================================
@@ -34,7 +34,7 @@ const bsOptions = {
   files: [
     {
       // scss/js handled by webpack
-      match: [ 'src/**/*.!(scss|js)' ],
+      match: [ 'src/**/*.!(scss|js)', 'src/**/*.json' ],
 
       // copy from SRC to DIST, inject html diff
       fn: synchronize(DIST),
@@ -78,6 +78,7 @@ const bsOptions = {
 (async function main() {
   const bs = await task(setup);
   await task(clean);
+  await task(updateVersion);
   await task(composer);
   await task(up, bs);
 }());
@@ -85,6 +86,7 @@ const bsOptions = {
 // ===========================================================================
 // Tasks
 // ===========================================================================
+
 async function setup() {
   // create BS instance
   const _bs = browserSync.create();
@@ -116,6 +118,8 @@ async function up(_bs) {
 
   // notify
   log(chalk.white.bold.bgBlue('HTML injection initiated'));
+
+  return true;
 }
 
 // ===========================================================================
@@ -153,6 +157,8 @@ function synchronize(dist) {
     catch (e) {
       console.error(e);
     }
+
+    return true;
   };
 }
 

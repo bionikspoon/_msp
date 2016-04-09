@@ -10,7 +10,7 @@ const chalk = require('chalk');
 const path = require('path');
 const bs = require('browser-sync').create();
 
-const { clean, composer, zip } = require('./_tasks');
+const { clean, composer, zip, updateVersion } = require('./_tasks');
 
 // ===========================================================================
 // CONFIG
@@ -27,6 +27,7 @@ const PROFILE = process.argv.includes('profile');
 (async function main() {
   try {
     await task(clean);
+    await task(updateVersion);
     await task(copy);
     await task(composer);
     const stats = await task(bundle);
@@ -56,6 +57,7 @@ async function copy() {
     const fileDest = mapPath(file, DIST, FILE_MAP);
     await fs.copy(file, fileDest);
   });
+  return true;
 }
 
 async function bundle() {
@@ -71,11 +73,11 @@ async function bundle() {
 
 async function profile(stats) {
   const statsFile = path.join(__dirname, 'stats.json');
-  await fs.outputJson(statsFile, stats.toJson());
+  return await fs.outputJson(statsFile, stats.toJson());
 }
 
 async function serve() {
-  bs.init({ proxy: PROXY_TARGET });
+  return bs.init({ proxy: PROXY_TARGET });
 }
 
 // ===========================================================================

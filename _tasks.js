@@ -5,24 +5,30 @@ const archiver = require('archiver');
 const prettyBytes = require('pretty-bytes');
 const chalk = require('chalk');
 
+const npmPackage = require('./package.json');
 const webpackConfig = require('./webpack.config');
 const { log } = require('./_utils');
+
 
 const DIST = webpackConfig.data.THEME_NAME;
 const ZIP_FILE = `${DIST}.zip`;
 
-module.exports = { clean, composer, zip };
+module.exports = { clean, updateVersion, composer, zip };
 
 async function clean() {
   // preserve top level folder
   await fs.emptyDir(DIST);
 
   try {
-    await fs.unlink(ZIP_FILE);
+    return await fs.unlink(ZIP_FILE);
   }
   catch (e) {
     console.error(e.toString()); // eslint-disable-line no-console
   }
+}
+
+async function updateVersion() {
+  return await fs.writeJson('src/__version__.json', { version: npmPackage.version });
 }
 
 async function composer() {
@@ -30,7 +36,7 @@ async function composer() {
 
   await fs.emptyDir(distVendor);
 
-  await fs.copy(localVendor, distVendor, { clobber: true });
+  return await fs.copy(localVendor, distVendor, { clobber: true });
 }
 
 async function zip() {
@@ -46,5 +52,5 @@ async function zip() {
   archive.directory(DIST);
   archive.pipe(out);
 
-  await archive.finalize();
+  return await archive.finalize();
 }
