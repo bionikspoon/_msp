@@ -1,0 +1,6 @@
+body.admin-bar {
+    overflow-y: hidden;
+    > div:first-of-type {
+        padding-bottom: 32px;
+    }
+}

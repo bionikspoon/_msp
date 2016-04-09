@@ -168,17 +168,20 @@ function _msp_scripts() {
    wp_enqueue_style( '_msp-style', get_stylesheet_uri() );
 
 
-   wp_enqueue_script( '_msp.manifest', get_template_directory_uri() . '/js/manifest.js', [ ], MSP_SCRIPT_VERSION, TRUE );
-   wp_enqueue_script( '_msp.vendor', get_template_directory_uri() . '/js/vendor.js', [ '_msp.manifest' ], MSP_SCRIPT_VERSION, TRUE );
+   wp_enqueue_script( '_msp.vendor', get_template_directory_uri() . '/js/vendor.js', [ ], MSP_SCRIPT_VERSION, TRUE );
 
-   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ '_msp.manifest', '_msp.vendor' ], MSP_SCRIPT_VERSION, TRUE );
+   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ '_msp.vendor' ], MSP_SCRIPT_VERSION, TRUE );
 
-   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-      wp_enqueue_script( 'comment-reply' );
-   }
+   //wp_enqueue_style( '_msp.admin', get_template_directory_uri() . '/adminbar.css', [ ], MSP_SCRIPT_VERSION, TRUE );
+
+
+   //if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+   //   wp_enqueue_script( 'comment-reply' );
+   //}
 }
 
 add_action( 'wp_enqueue_scripts', '_msp_scripts' );
+
 
 /**
  * Implement the Custom Header feature.

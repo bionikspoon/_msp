@@ -4,6 +4,7 @@ require('babel-polyfill');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const NPMInstallPlugin = require('npm-install-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const path = require('path');
 
 const { logLine, unipath } = require('./_utils');
@@ -122,24 +123,24 @@ module.exports = {
 
 function getEntry(env) {
   const entry = {};
-  entry.main = [ PATHS.src('sass', 'style.scss') ];
+  entry.main = [ PATHS.src('js', 'main.js') ];
+  entry.style = [];
 
   entry.vendor = Object.keys(require('./package.json').dependencies);
-  entry.manifest = [];
+  entry.vendor.push(PATHS.modules('material-design-lite', 'material.js'));
   entry.customizer = PATHS.src('js', 'customizer.js');
 
   switch (env) {
     case DEVELOPMENT:
-      entry.main.push(`webpack-hot-middleware/client?http://${HOST}:${PORT}`);
-      entry.main.push('webpack/hot/only-dev-server');
+      entry.main.unshift('webpack/hot/only-dev-server');
+      entry.main.unshift(`webpack-hot-middleware/client?http://${HOST}:${PORT}`);
+      entry.main.push(PATHS.src('sass', 'style.scss'), PATHS.src('sass', 'main.scss'));
       break;
 
     case PRODUCTION:
+      entry.style.push(PATHS.src('sass', 'style.scss'), PATHS.src('sass', 'main.scss'));
       break;
   }
-  entry.vendor.push(PATHS.modules('material-design-lite', 'material.js'));
-  entry.main.push(PATHS.src('js', 'main.js'));
-  entry.main.push(PATHS.src('sass', 'main.scss'));
 
   return entry;
 }
@@ -279,25 +280,24 @@ function getPlugins(env) {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
+    new ExtractTextPlugin('[name].css'),
   ];
-  plugins.push(new ExtractTextPlugin('style.css'));
-  switch (env) {
-    case PRODUCTION:
-      plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false },
-      }));
 
-      plugins.push(new webpack.optimize.CommonsChunkPlugin({
-        names: [ 'vendor', 'manifest' ],
-      }));
+  switch (env) {
+
+    case PRODUCTION:
+      plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }));
+      plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', '[name].js'));
+      plugins.push(new webpack.optimize.OccurenceOrderPlugin());
+      plugins.push(new webpack.optimize.AggressiveMergingPlugin());
       plugins.push(new webpack.optimize.DedupePlugin());
       break;
 
     case DEVELOPMENT:
-
       plugins.push(new NPMInstallPlugin({ save: true }));
       plugins.push(new webpack.HotModuleReplacementPlugin());
       plugins.push(new webpack.NoErrorsPlugin());
+      plugins.push(WriteFilePlugin());
       break;
 
   }

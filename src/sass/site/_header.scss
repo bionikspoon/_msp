@@ -25,6 +25,7 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
             max-width: 1000px;
             align-self: center;
             justify-content: flex-start;
+
             .mdl-layout__title {
                 & ._msp-header__logo {
                     background-size: cover;
@@ -49,8 +50,6 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
         }
 
         a {
-            padding-left: $gutter;
-            padding-right: $gutter;
             &:link, &:active, &:hover, &:focus, &:visited {
                 color: $color--header--logo--link--fg
             }
@@ -77,14 +76,26 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
             //noinspection CssInvalidPropertyValue
             min-height: auto;
 
+            .is-small-screen & {
+                width: 100%;
+                min-width: 100%;
+            }
+
         }
         &__logo {
             display: block;
+            .is-small-screen & {
+                a {
+                    margin-left: 56px;
+                }
+                //padding-left: 80px;
+            }
         }
         &__title {
             display: none;
         }
     }
+
 }
 
 ._msp-header-title {
