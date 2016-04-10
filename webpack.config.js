@@ -304,7 +304,6 @@ function getPlugins(env) {
 
   plugins.push(new ExtractTextPlugin('[name].css?[hash]'));
 
-
   return plugins;
 }
 
