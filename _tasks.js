@@ -103,15 +103,15 @@ function getDependencyMap(chunks, prefix = `${DIST}.`) {
       const parent = _.find(chunks, { id });
 
       //use parent name with prefix
-      return prefix + getChunkName(parent);
+      return prefix + getName(parent);
     });
 
     // add chunk-parent data to map
-    return _.merge(chunkMap, { [ getChunkName(chunk) ]: { parents } });
+    return _.merge(chunkMap, { [ getName(chunk) ]: { parents } });
   }
-}
 
-function getChunkName(chunk) { return chunk.name || chunk.names[ 0 ];}
+  function getName(chunk) { return chunk.name || chunk.names[ 0 ];}
+}
 
 function getManifest(assets, dependencyMap, prefix = `${DIST}.`) {
   // create manifest object from each asset
@@ -124,7 +124,7 @@ function getManifest(assets, dependencyMap, prefix = `${DIST}.`) {
     // Guard, uninteresting entry
     if (asset.emitted !== true || !asset.chunkNames.length) {return data;}
 
-    const name = getChunkName(asset);
+    const name = asset.chunkNames[ 0 ];
 
     // discover script - vs - style
     let folder;
