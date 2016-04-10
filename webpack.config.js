@@ -56,7 +56,8 @@ module.exports = {
   output: {
     path: PATHS.build(),
     publicPath: ENV === PRODUCTION ? '/' : `//${HOST}:${PORT}/wp-content/themes/${THEME_NAME}/`,
-    filename: 'js/[name].js',
+    filename: DEBUG ? 'js/[name].js?[hash]' : 'js/[name].[chunkhash].js',
+    chunkFilename: DEBUG ? 'js/[name].js?[chunkhash]' : 'js/[name].[chunkhash].js',
     sourceMapFilename: '[file].map',
     sourcePrefix: '  ',
   },
@@ -134,11 +135,13 @@ function getEntry(env) {
     case DEVELOPMENT:
       entry.main.unshift('webpack/hot/only-dev-server');
       entry.main.unshift(`webpack-hot-middleware/client?http://${HOST}:${PORT}`);
-      entry.main.push(PATHS.src('sass', 'style.scss'), PATHS.src('sass', 'main.scss'));
+      entry.main.push(PATHS.src('sass', 'style.scss'));
+      entry.main.push(PATHS.src('sass', 'main.scss'));
       break;
 
     case PRODUCTION:
-      entry.style.push(PATHS.src('sass', 'style.scss'), PATHS.src('sass', 'main.scss'));
+      entry.style.push(PATHS.src('sass', 'style.scss'));
+      entry.style.push(PATHS.src('sass', 'main.scss'));
       break;
   }
 
@@ -276,18 +279,16 @@ function getLoaders(env) {
 
 function getPlugins(env) {
   const plugins = [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
-    new ExtractTextPlugin('[name].css'),
   ];
 
   switch (env) {
 
     case PRODUCTION:
       plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }));
-      plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', '[name].js'));
+      plugins.push(new webpack.optimize.CommonsChunkPlugin({ names: [ 'vendor' ] }));
       plugins.push(new webpack.optimize.OccurenceOrderPlugin());
       plugins.push(new webpack.optimize.AggressiveMergingPlugin());
       plugins.push(new webpack.optimize.DedupePlugin());
@@ -299,8 +300,10 @@ function getPlugins(env) {
       plugins.push(new webpack.NoErrorsPlugin());
       plugins.push(WriteFilePlugin());
       break;
-
   }
+
+  plugins.push(new ExtractTextPlugin('[name].css?[hash]'));
+
 
   return plugins;
 }

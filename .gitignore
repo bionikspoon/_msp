@@ -4,3 +4,6 @@ vendor
 composer.lock
 wp-content
 *.log.*
+stats.json
+_meta.json
+src/__meta__.json

@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const config = require('./webpack.config');
 const fs = require('fs-promise');
-const { task, mapPath } = require('./_utils');
+const { task, mapPath, timeout } = require('./_utils');
 const glob = require('glob');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ProgressBar = require('progress');
@@ -10,7 +10,7 @@ const chalk = require('chalk');
 const path = require('path');
 const bs = require('browser-sync').create();
 
-const { clean, composer, zip, updateVersion } = require('./_tasks');
+const { clean, composer, zip, meta } = require('./_tasks');
 
 // ===========================================================================
 // CONFIG
@@ -20,6 +20,7 @@ const FILE_MAP = config.data.FILE_MAP;
 const PROXY_TARGET = config.data.PROXY_TARGET;
 const SERVE = process.argv.includes('serve');
 const PROFILE = process.argv.includes('profile');
+const DEBUG = !process.argv.includes('release');
 
 // ===========================================================================
 // Run
@@ -27,11 +28,14 @@ const PROFILE = process.argv.includes('profile');
 (async function main() {
   try {
     await task(clean);
-    await task(updateVersion);
-    await task(copy);
     await task(composer);
     const stats = await task(bundle);
-    await task(zip);
+    await task(meta, true, stats);
+    await task(copy);
+
+    if (!DEBUG) {
+      await task(zip);
+    }
 
     if (PROFILE) {
       await task(profile, stats);
@@ -53,11 +57,10 @@ const PROFILE = process.argv.includes('profile');
 async function copy() {
   const files = await globAsync('src/**/*.!(js|scss)');
 
-  files.forEach(async(file) => {
+  for (const file of files) {
     const fileDest = mapPath(file, DIST, FILE_MAP);
     await fs.copy(file, fileDest);
-  });
-  return true;
+  }
 }
 
 async function bundle() {
@@ -68,12 +71,12 @@ async function bundle() {
   // print webpack output
   console.error(stats.toString(config.stats));
 
-  return stats;
+  return stats.toJson();
 }
 
 async function profile(stats) {
   const statsFile = path.join(__dirname, 'stats.json');
-  return await fs.outputJson(statsFile, stats.toJson());
+  return await fs.outputJson(statsFile, stats);
 }
 
 async function serve() {
@@ -85,14 +88,10 @@ async function serve() {
 // ===========================================================================
 
 async function globAsync(match, options = {}) {
-  return new Promise((resolve, reject) => {
-    glob(match, options, cb);
-    function cb(error, results) {
-      if (error) {return reject(error);}
-
-      return resolve(results);
-    }
-  });
+  return new Promise((resolve, reject) => (
+    glob(match, options, (error, results) => (error ? reject(error) : resolve(results))
+    )
+  ));
 }
 
 function runWebpack(webpackConfig) {
@@ -128,7 +127,7 @@ function runWebpack(webpackConfig) {
     // run the build;
     bundler.run((error, stats) => {
       // use progress callback to resolve promise
-      progress.callback = () => error ? reject(error) : resolve(stats);
+      progress.callback = () => (error ? reject(error) : resolve(stats));
 
       clearInterval(intervalHandle);
 

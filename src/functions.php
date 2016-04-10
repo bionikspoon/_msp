@@ -7,10 +7,11 @@
  * @package _msp
  */
 
-$version_json = file_get_contents( get_template_directory() . '/__version__.json' );
-$version = json_decode( $version_json, TRUE )[ 'version' ];
 
-define( 'MSP_SCRIPT_VERSION', $version );
+define( 'MSP_META', file_get_contents( get_template_directory() . '/__meta__.json' ) );
+$meta = json_decode( MSP_META );
+define( 'MSP_SCRIPT_VERSION', $meta->version );
+define( 'MSP_PRODUCTION', $meta->production );
 define( 'ACF_LITE', TRUE );
 define( 'TWIG_CACHE_TIMEOUT', getenv( 'TWIG_CACHE_TIMEOUT' ) ?? 600 );
 
@@ -167,15 +168,29 @@ add_action( 'after_setup_theme', '_msp_setup_theme' );
  * Enqueue scripts and styles.
  */
 function _msp_scripts() {
-   wp_enqueue_style( '_msp-style', get_stylesheet_uri() );
+   $meta = json_decode( MSP_META );
 
+   wp_enqueue_style(
+      $meta->styles->style->name,
+      get_stylesheet_uri(),
+      [ ],
+      $meta->styles->style->version ?? MSP_SCRIPT_VERSION );
 
-   wp_enqueue_script( '_msp.vendor', get_template_directory_uri() . '/js/vendor.js', [ ], MSP_SCRIPT_VERSION, TRUE );
+   wp_enqueue_script(
+      $meta->scripts->vendor->name,
+      get_template_directory_uri() . '/' . $meta->scripts->vendor->path,
+      $meta->scripts->vendor->parents,
+      $meta->scripts->vendor->version ?? MSP_SCRIPT_VERSION,
+      TRUE
+   );
 
-   wp_enqueue_script( '_msp.main', get_template_directory_uri() . '/js/main.js', [ '_msp.vendor' ], MSP_SCRIPT_VERSION, TRUE );
-
-   //wp_enqueue_style( '_msp.admin', get_template_directory_uri() . '/adminbar.css', [ ], MSP_SCRIPT_VERSION, TRUE );
-
+   wp_enqueue_script(
+      $meta->scripts->main->name,
+      get_template_directory_uri() . '/' . $meta->scripts->main->path,
+      $meta->scripts->main->parents,
+      $meta->scripts->main->version ?? MSP_SCRIPT_VERSION,
+      TRUE
+   );
 
    //if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
    //   wp_enqueue_script( 'comment-reply' );
