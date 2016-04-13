@@ -57,6 +57,7 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
 
     }
     & &__title {
+        @extend h1;
     }
     .mdl-layout {
 

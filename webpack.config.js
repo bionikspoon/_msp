@@ -108,6 +108,7 @@ module.exports = {
       [ `${path.sep}sass` ]: '',
     },
     PROXY_TARGET,
+    PATHS,
   },
 
   postcss( bundler ) {

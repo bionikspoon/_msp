@@ -13,8 +13,13 @@ const OPTIONS = {
   postfix: '',
 };
 
-// Run malarkey
+// delay running malarkey
 module.exports = function activateMalarkey() {
+  setTimeout( _activateMalarkey, 5 * 1000 );
+};
+
+//run malarkey
+function _activateMalarkey() {
   // setup
   const pageTitleContainer = document.querySelector( '._msp-header-title' );
 
@@ -100,4 +105,4 @@ module.exports = function activateMalarkey() {
 
     return handle;
   }
-};
+}

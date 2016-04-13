@@ -44,4 +44,4 @@ function _msp_infinite_scroll_render() {
    }
 }
 
-add_filter( 'jetpack_sso_bypass_login_forward_wpcom', '__return_true' );
+//add_filter( 'jetpack_sso_bypass_login_forward_wpcom', '__return_true' );

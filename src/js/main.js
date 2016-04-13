@@ -8,6 +8,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 } );
 
 if ( module.hot ) {
-  module.hot.accept( () => location.reload() );
+  module.hot.accept( [ './modules/masonry', './modules/malarkey' ], () => location.reload() );
 }
 

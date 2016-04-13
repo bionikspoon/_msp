@@ -23,10 +23,10 @@ body {
 blockquote, q {
     quotes: "" "";
     color: $color--blockquote--text;
+    font-family: $font-family--serif !important;
 
     &:before,
     &:after {
-        content: "";
         position: inherit;
         margin: inherit;
     }
@@ -43,14 +43,14 @@ blockquote, q {
     }
     p {
         padding: 0;
-        margin: 0;
+        margin: 0 !important;
     }
 }
 
 blockquote {
     border-top: 1px solid $color--blockquote--border;
     border-bottom: 1px solid $color--blockquote--border;
-    margin: $gutter * 2 0;
+    margin: $gutter * 2;
     p {
         text-align: justify;
     }
