@@ -8,19 +8,20 @@
          {# TODO page title ? #}
 
          {% for post in posts if ' sticky ' in post.class %}
-            {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
+            {% include ['_partials/archive--'~post.post_type~'.twig', '_partials/archive--post.twig'] %}
          {% endfor %}
+
          {% for post in posts if ' sticky ' not in post.class %}
             {% if not loop.first %}
                <hr/>{% endif %}
-            {% include ['_partials/content-'~post.post_type~'.twig', '_partials/content.twig'] %}
+            {% include ['_partials/archive--'~post.post_type~'.twig', '_partials/archive--post.twig'] %}
          {% endfor %}
-         {% include '_partials/content--navigation.twig' %}
+         {% include '_partials/post--navigation.twig' %}
 
          {# todo the_posts_navigation(); #}
 
       {% else %}
-         <h1>{{ __('No posts were found', '_msp') }} :(</h1>
+         <h1>{{ __('No blog posts here.', '_msp') }}</h1>
       {% endif %}
    </div><!-- #primary -->
 

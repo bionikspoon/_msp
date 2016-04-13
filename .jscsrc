@@ -8,6 +8,7 @@
     "_msp/**",
     "node_modules/**"
   ],
+  "disallowSpacesInsideParentheses": false,
   "disallowSpacesInsideBrackets": null,
   "disallowSpacesInsideArrayBrackets": null,
   "disallowKeywordsOnNewLine": [],

@@ -14,7 +14,7 @@
             <hr/>
          {% endif %}
       {% endfor %}
-      {% include ['_partials/content-single-'~post.post_type~'.twig', '_partials/content-single.twig'] %}
+      {% include ['_partials/single--'~post.post_type~'.twig', '_partials/single--post.twig'] %}
 
 
       {# todo the_posts_navigation(); #}

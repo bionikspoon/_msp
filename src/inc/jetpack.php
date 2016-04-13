@@ -43,3 +43,5 @@ function _msp_infinite_scroll_render() {
       endif;
    }
 }
+
+add_filter( 'jetpack_sso_bypass_login_forward_wpcom', '__return_true' );
