@@ -57,6 +57,7 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
 
     }
     & &__title {
+        @extend h1;
     }
     .mdl-layout {
 
@@ -99,8 +100,6 @@ $color--header-title--text--fg--highlight-legend: $color--primary;
 }
 
 ._msp-header-title {
-    @extend h1;
-    @extend .mdl-typography--font-light;
     background-color: $color--header-title--bg;
     color: $color--header-title--fg;
     font-family: $font-family--monospace;
