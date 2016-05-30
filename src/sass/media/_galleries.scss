@@ -1,0 +1,22 @@
+.gallery {
+    margin-bottom: 1.5em;
+}
+
+.gallery-item {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 100%;
+    margin: auto;
+
+    @for $i from 2 through 9 {
+        .gallery-columns-#{$i} {
+            max-width: 100% / $i;
+        }
+    }
+}
+
+.gallery-caption {
+    display: block;
+    margin: 0;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "bionikspoon/wp_msp",
+  "description": "Wordpress theme for manuphatak.com",
+  "keywords": [
+    "wordpress",
+    "wordpress-theme",
+    "Manu Phatak"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Manu Phatak",
+      "email": "bionikspoon@gmail.com"
+    }
+  ],
+  "require": {
+    "elliotcondon/acf": "4.4.6"
+  },
+  "repositories": {
+    "acf": {
+      "type": "package",
+      "package": {
+        "name": "elliotcondon/acf",
+        "version": "4.4.6",
+        "source": {
+          "url": "https://github.com/elliotcondon/acf",
+          "type": "git",
+          "reference": "07e1f31"
+        }
+      }
+    }
+  },
+  "autoload": {
+    "files": [
+      "vendor/elliotcondon/acf/acf.php"
+    ]
+  }
+}

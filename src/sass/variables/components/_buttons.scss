@@ -1,0 +1,31 @@
+// Default button colors.
+$button-primary-color: unquote("rgba(#{$palette-grey-500}, 0.20)");
+$button-secondary-color: unquote("rgb(#{$color-black})");
+$button-hover-color: $button-primary-color;
+$button-active-color: unquote("rgba(#{$palette-grey-500}, 0.40)");
+$button-focus-color: unquote("rgba(#{$color-black}, 0.12)");
+
+// Colored button colors.
+$button-primary-color-alt: unquote("rgb(#{$color-primary})");
+$button-secondary-color-alt: unquote("rgb(#{$color-primary-contrast})");
+$button-hover-color-alt: unquote("rgb(#{$color-primary})");
+$button-active-color-alt: unquote("rgb(#{$color-primary})");
+$button-focus-color-alt: $button-focus-color;
+
+// Ripple color for colored raised buttons.
+$button-ripple-color-alt: unquote("rgb(#{$color-primary-contrast})");
+
+// Disabled button colors.
+$button-primary-color-disabled: unquote("rgba(#{$color-black}, 0.12)");
+$button-secondary-color-disabled: unquote("rgba(#{$color-black}, 0.26)");
+
+// FAB colors and sizes.
+$button-fab-color-alt: unquote("rgb(#{$color-accent})");
+$button-fab-hover-color-alt: unquote("rgb(#{$color-accent})");
+$button-fab-active-color-alt: unquote("rgb(#{$color-accent})");
+$button-fab-text-color-alt: unquote("rgb(#{$color-accent-contrast})");
+$button-fab-ripple-color-alt: unquote("rgb(#{$color-accent-contrast})");
+
+// Icon button colors and sizes.
+$button-icon-color: unquote("rgb(#{$palette-grey-700})");
+$button-icon-focus-color: $button-focus-color;

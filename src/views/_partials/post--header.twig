@@ -1,0 +1,26 @@
+{% from 'macros/img.twig' import img_attr, img_style %}
+{% set categories = post.categories | categorized %}
+<h2 class="_msp-blog__title">
+   {% if link_title %}
+      <a href={{ post.link }}>
+         {{ post.title }}
+      </a>
+   {% else %}
+      {{ post.title }}
+   {% endif %}
+</h2>
+<div class="_msp-blog__meta">
+   <p class="_msp-blog__date">
+      <i class="material-icons">access_time</i>{{ post.post_date | date }}
+   </p>
+   {% if categories %}
+      <p class="_msp-blog__categories">
+         <i class="material-icons">folder</i>{{ categories | tax_links | join(',&nbsp;') }}
+      </p>
+   {% endif %}
+
+</div>
+
+{% if post.thumbnail %}
+   <img {{ img_attr(post.thumbnail) }} class="_msp-blog__thumbnail">
+{% endif %}

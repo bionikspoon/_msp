@@ -1,0 +1,15 @@
+<article id=post-{{ post.ID }} class="_msp-blog _msp-blog--single {{ post.class }}">
+   <header class="_msp-blog__header">
+      {% include '_partials/post--header.twig' %}
+   </header>
+
+   <div class="_msp-blog__body">
+               <span class="_msp-blog__content">
+                  {{ post.content }}
+               </span>
+   </div><!-- .entry-content -->
+
+   {#<footer class="_msp-blog__footer">#}
+   {# TODO <?php _msp_entry_footer(); ?>#}
+   {#</footer><!-- .entry-footer -->#}
+</article><!-- #post-## -->

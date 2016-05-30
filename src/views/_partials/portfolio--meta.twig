@@ -1,0 +1,26 @@
+{% set source_link = post.get_field('source_link') %}
+{% set live_link = post.get_field('live_link') %}
+{% if post.get_field('include_external_link') %}
+   {% set external_link = post.get_field('external_link') %}
+   {% set external_title = post.get_field('external_title') %}
+{% endif %}
+
+
+{% if live_link or source_link or external_link %}
+   <dl>
+
+      {% if live_link %}
+         <dt>{{ __('See Live') }}</dt>
+         <dd><a href="{{ live_link }}" target="_blank">{{ live_link }}</a></dd>
+      {% endif %}
+
+      {% if source_link %}
+         <dt>{{ __('Source Code') }}</dt>
+         <dd><a href="{{ source_link }}" target="_blank">{{ source_link }}</a></dd>
+      {% endif %}
+      {% if external_link %}
+         <dt>{{ __(external_title) }}</dt>
+         <dd><a href="{{ external_link }}" target="_blank">{{ external_link }}</a></dd>
+      {% endif %}
+   </dl>
+{% endif %}

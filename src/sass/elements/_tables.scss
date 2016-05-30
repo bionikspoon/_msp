@@ -1,0 +1,43 @@
+$color--table--th--bg: unquote("rgb(#{$palette-grey-700})");
+$color--table--th--fg: unquote("rgb(#{$color-white})");
+$color--table--td--bg: unquote("rgb(#{$palette-grey-300})");
+$gutter--table--cell: 5px;
+
+table {
+    cursor: cell;
+    margin: 0 0 $gutter;
+    width: 100%;
+}
+
+td {
+    padding: $gutter--table--cell;
+    border: 1px solid $color--table--td--bg;
+    &:hover {
+        background: $color--table--td--bg;
+    }
+}
+
+th {
+    padding: $gutter--table--cell;
+    border: 1px solid $color--table--td--bg;
+    @extend b;
+    @extend .mdl-typography--text-center;
+    background: $color--table--th--bg;
+    color: $color--table--th--fg;
+}
+
+tbody {
+
+    > tr > th {
+        background: unquote("rgb(#{$palette-grey-200})");
+        &:hover {
+            background: $color--table--td--bg;
+        }
+    }
+}
+
+tr {
+    &.alternate {
+        background-color: unquote("rgb(#{$palette-grey-100})");
+    }
+}

@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+{% block main_classes %}{{ parent() }} _msp-layout__content--flex{% endblock %}
+
+{% block content %}
+   <div style="background: url('{{ theme.uri }}/images/404.jpg') 50% 25% / cover;flex: 1;color: rgba(255,255,255, .95);display: flex;flex-direction: column;justify-content: flex-end">
+      <h1 style="background-color: rgba(0,0,0,.5);margin: 0;white-space: nowrap;">
+         <span>{{ __('404', '_msp') }}</span>
+         <small style="opacity: 1;color: rgba(255,255,255, .54);">{{ __('Page not found') }}</small>
+      </h1>
+   </div>
+{% endblock %}

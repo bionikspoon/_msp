@@ -1,0 +1,30 @@
+{% if pagination.pages and (pagination.next or pagination.prev) %}
+   <hr/>
+   <div>
+      <nav class="_msp-blog__navigation">
+         {% if pagination.next %}
+            <a href="{{ pagination.next.link }}"
+               class="_msp-blog__navigation__link _msp-blog__navigation__link--next  {{ pagination.next.class }}"
+               title="{{ __('Previous', '_msp') }}">
+               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                  <i class="material-icons" role="presentation">arrow_backward</i></button>
+               {{ __('Previous', '_msp') }}
+            </a>
+         {% else %}
+            <div class="_msp-blog__navigation__spacer"></div>
+         {% endif %}
+         {% if pagination.prev %}
+            <a href="{{ pagination.prev.link }}"
+               class="_msp-blog__navigation__link _msp-blog__navigation__link--prev {{ pagination.prev.class }}"
+               title="{{ __('Next', '_msp') }}">
+               {{ __('Next', '_msp') }}
+               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                  <i class="material-icons" role="presentation">arrow_forward</i></button>
+            </a>
+         {% else %}
+            <div class="_msp-blog__navigation__spacer"></div>
+         {% endif %}
+      </nav>
+   </div>
+
+{% endif %}

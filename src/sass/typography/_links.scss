@@ -1,0 +1,21 @@
+a {
+    @extend .mdl-typography--font-medium;
+    text-decoration: none;
+    &:link {
+        color: $text-link-color;
+
+    }
+    &:visited {
+        color: $text-link-color;
+
+    }
+    &:hover {
+        color: unquote("rgb(#{$palette-grey-700})");
+    }
+    &:active {
+
+    }
+    &:focus {
+        outline-style: none;
+    }
+}

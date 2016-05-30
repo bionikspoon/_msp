@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+{% if posts %}
+   {% block content %}
+      <div class=_msp-portfolio__container>
+         {% for post in posts %}
+            {% include '_partials/archive--portfolio.twig' %}
+         {% endfor %}
+      </div>
+   {% endblock %}
+{% endif %}

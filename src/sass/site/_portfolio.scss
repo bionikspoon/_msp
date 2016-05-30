@@ -1,0 +1,167 @@
+$size--portfolio--max-width: $layout--max-width;
+$color--portfolio--categories--fg: rgba(255, 255, 255, .7);
+$color--portfolio--categories--bg: rgba(0, 0, 0, .7);
+$color--portfolio--categories--link--fg: $text-link-color;
+$color--portfolio--fg: unquote("rgba(#{$color-black}, 0.54)");
+$color--portfolio--link--fg--hover: $color--accent;
+$color--portfolio--content-header--bg: unquote("rgb(#{$palette-grey-100})");
+$color--portfolio--dl--link--fg: unquote("rgba(#{$color-black}, 0.54)");
+$color--portfolio--dl--link--fg--hover: $text-link-color;
+
+._msp-portfolio {
+    & {
+
+    }
+
+    &__container {
+        max-width: $size--portfolio--max-width;
+        width: 100%;
+        padding-top: $gutter * 2;
+        padding-bottom: $gutter * 2;
+
+        flex: 1;
+        flex-basis: auto;
+
+    }
+    @media (min-width: 1200px) {
+        &__container {
+            max-width: 100%;
+            margin-left: $gutter * 2;
+        }
+    }
+
+    & &__image {
+        padding: 0;
+        display: flex;
+    }
+
+    %categories {
+        @extend i;
+        color: $color--portfolio--categories--fg;
+        text-decoration: none;
+        white-space: nowrap;
+
+        font-size: 13px;
+    }
+
+    & &__categories {
+        @extend %categories;
+
+        background-color: $color--portfolio--categories--bg;
+        margin: 0;
+        padding: 0 $gutter;
+        line-height: $gutter * 2;
+        overflow: hidden;
+
+        a {
+            @extend %categories;
+
+            &:hover {
+                color: $color--portfolio--categories--link--fg;
+            }
+        }
+    }
+
+    & &__title {
+
+    }
+
+    & &__excerpt {
+        padding-top: 0;
+
+        &--entry {
+            color: $color--portfolio--fg;
+            overflow: hidden;
+        }
+    }
+
+    &:hover &__menu {
+        opacity: 1;
+    }
+    & &__actions {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        &__group {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+    }
+
+    & &__link {
+        color: $color--portfolio--fg;
+        &:hover {
+            color: $color--portfolio--link--fg--hover;
+
+        }
+
+        &--external {
+            padding-left: 12px;
+            &:hover {
+                color: $color--portfolio--link--fg--hover;
+            }
+        }
+    }
+
+    & &__content-header {
+        display: flex;
+        flex-flow: row wrap-reverse;
+        justify-content: space-between;
+        background-color: $color--portfolio--content-header--bg;
+        z-index: 10;
+
+        &__meta {
+            padding: $gutter;
+            flex: 1;
+
+            &__title {
+                @include typo-display-3;
+                @extend .mdl-typography--font-light;
+            }
+
+            & > dl a {
+                color: $color--portfolio--dl--link--fg;
+                text-decoration: none;
+                &:hover {
+                    color: $color--portfolio--dl--link--fg--hover;
+                }
+            }
+        }
+    }
+
+    & &__content {
+        width: 100%;
+        padding: 0;
+        margin-top: $gutter;
+        margin-bottom: $gutter;
+        font-size: 18px;
+        p {
+            margin: $gutter;
+            font-size: inherit;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-left: $gutter;
+            margin-right: $gutter;
+        }
+        .sharedaddy {
+            margin: $gutter;
+        }
+    }
+
+    &--entry {
+        width: 100%;
+        max-width: $size--portfolio--max-width;
+        min-height: min-content;
+        margin: $gutter * 2 auto;
+    }
+    &--item {
+        @extend .mdl-typography--font-light;
+        margin: $gutter / 2;
+        display: inline-block;
+    }
+}
+

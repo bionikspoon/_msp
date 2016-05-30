@@ -1,0 +1,14 @@
+._msp-layout {
+    & &__content {
+        &--flex {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    &--container {
+
+    }
+}
+

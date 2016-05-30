@@ -1,0 +1,69 @@
+{% set source_link = post.get_field('source_link') %}
+{% set live_link = post.get_field('live_link') %}
+{% set read_more = post.get_field('read_more') %}
+{% if post.get_field('include_external_link') %}
+   {% set external_link = post.get_field('external_link') %}
+   {% set external_title = post.get_field('external_title') %}
+{% endif %}
+
+
+{% if live_link or source_link or external_link or read_more %}
+
+   <div class="mdl-card__actions mdl-card--border _msp-portfolio__actions">
+      <div class="_msp-portfolio__actions__group">
+         {% if live_link %}
+            <a id=portfolio-{{ post.ID }}--live
+               class="mdl-button mdl-js-button mdl-button--icon _msp-portfolio__link"
+               href="{{ live_link }}"
+               target="_blank">
+               <i class="material-icons">play_arrow</i>
+            </a>
+            <div class="mdl-tooltip mdl-tooltip--top" for=portfolio-{{ post.ID }}--live>
+               {{ __('See Live') }}
+            </div>
+         {% endif %}
+
+         {% if source_link %}
+            <a id=portfolio-{{ post.ID }}--source
+               class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect _msp-portfolio__link"
+               href="{{ source_link }}"
+               target="_blank">
+               <i class="material-icons">code</i>
+            </a>
+            <div class="mdl-tooltip mdl-tooltip--top" for=portfolio-{{ post.ID }}--source>
+               {{ __('Source Code') }}
+            </div>
+         {% endif %}
+         {% if external_link and read_more %}
+            <a id=portfolio-{{ post.ID }}--external
+               class="mdl-button mdl-js-button mdl-button--icon _msp-portfolio__link"
+               href="{{ live_link }}"
+               target="_blank">
+               <i class="material-icons">link</i>
+            </a>
+            <div class="mdl-tooltip mdl-tooltip--top" for=portfolio-{{ post.ID }}--external>
+               {{ __(external_title) }}
+            </div>
+         {% endif %}
+      </div>
+      <div class="_msp-portfolio__actions__group">
+         {% if external_link and not read_more %}
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect _msp-portfolio__link  _msp-portfolio__link--external"
+               href="{{ external_link }}"
+               target="_blank">
+               <i class="material-icons">link</i>
+               {{ external_title }}
+            </a>
+         {% endif %}
+
+         {% if read_more %}
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent"
+               href="{{ post.link }}">
+               {{ __('Read more') }}
+            </a>
+         {% endif %}
+      </div>
+
+
+   </div>
+{% endif %}

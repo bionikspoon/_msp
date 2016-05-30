@@ -1,0 +1,38 @@
+dt {
+    @extend b;
+}
+
+dd {
+    margin: 0 $gutter $gutter;
+}
+
+ul {
+    list-style: disc;
+
+}
+
+ol {
+    list-style: decimal;
+    li {
+        padding-left: $gutter / 2;
+        ol {
+            list-style-type: lower-alpha;
+            li ol {
+                list-style-type: lower-roman;
+            }
+        }
+    }
+
+}
+
+ul, ol {
+    margin: $gutter;
+    padding-left: $gutter * 2;
+    font-size: 90%;
+
+    ul, ol {
+        margin: 0;
+        padding-left: $gutter * 2;
+        font-size: inherit;
+    }
+}

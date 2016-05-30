@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}>
+<head>
+   <meta charset={{ site.charset }}>
+   <meta http-equiv=X-UA-Compatible content="IE=edge">
+   <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+   <link rel=profile href=http://gmpg.org/xfn/11>
+   <link rel=pingback href={{ site.pingback_url }}>
+   {% block header %}{% endblock %}
+   {{ wp_head }}
+   {% include '_partials/base--styles.twig' %}
+
+</head>
+
+<body class='{{ body_class }}'>
+
+<div id=page class="mdl-layout mdl-js-layout mdl-layout--fixed-header _msp-layout">
+   {% include '_partials/base--header.twig' %}
+
+   <main id="content" class="{% block main_classes %}mdl-layout__content _msp-layout__content{% endblock %}">
+
+      {% block content %}{{ __('Sorry, no content.', '_msp') }}{% endblock %}
+
+      {% include '_partials/base--footer.twig' %}
+   </main>
+</div><!-- #page -->
+
+{% include '_partials/base--scripts.twig' %}
+{{ wp_footer() }}
+</body>
+</html>

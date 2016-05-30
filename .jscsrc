@@ -1,0 +1,16 @@
+{
+  "preset": "airbnb",
+  "fileExtensions": [
+    ".js"
+  ],
+  "esnext": true,
+  "excludeFiles": [
+    "_msp/**",
+    "node_modules/**"
+  ],
+  "disallowSpacesInsideParentheses": false,
+  "disallowSpacesInsideBrackets": null,
+  "disallowSpacesInsideArrayBrackets": null,
+  "disallowKeywordsOnNewLine": [],
+  "maximumLineLength": 120
+}

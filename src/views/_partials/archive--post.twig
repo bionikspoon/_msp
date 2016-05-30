@@ -1,0 +1,23 @@
+<article id=post-{{ post.ID }} class="_msp-blog _msp-blog--archive {{ post.class }}">
+   <header class="_msp-blog__header">
+      {% include '_partials/post--header.twig' with {'link_title': true } %}
+   </header><!-- .entry-header -->
+
+   <div class="_msp-blog__body">
+
+      <span class="_msp-blog__excerpt">
+         {{ post.get_preview(55,false,null,false,'') }}
+      </span>
+   </div><!-- .entry-content -->
+
+   {% if post.content %}
+      <footer class="_msp-blog__footer">
+         <a href="{{ post.link }}"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect _msp-blog__read-more mdl-button--primary">
+            {{ __('Read More', '_msp') }}
+         </a>
+         {# TODO <?php _msp_entry_footer(); ?>#}
+      </footer><!-- .entry-footer -->
+   {% endif %}
+
+</article><!-- #post-{{ post.ID }} -->

@@ -1,0 +1,16 @@
+html,
+body,
+button,
+input,
+select,
+textarea {
+    @extend .mdl-typography--font-regular;
+    font-family: $performance_font;
+    font-size: 14px;
+    line-height: 20px;
+    color: $text-color-primary;
+}
+
+@import "headings";
+
+@import "links";

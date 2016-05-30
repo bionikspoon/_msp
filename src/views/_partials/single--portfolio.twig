@@ -1,0 +1,22 @@
+{% set excerpt = post.get_preview(null, false, null) %}
+<article class="_msp-portfolio _msp-portfolio--entry mdl-card mdl-shadow--4dp">
+
+   <header class="_msp-portfolio__content-header mdl-shadow--2dp" style="min-height: {{ thumb_size }}px;">
+      <div class="_msp-portfolio__content-header__meta">
+         <h2 class="mdl-card__title-text _msp-portfolio__content-header__meta__title">
+            {{ post.name }}
+         </h2>
+         {% if excerpt %}
+            <div class="_msp-portfolio__excerpt _msp-portfolio__excerpt--entry">
+               {{ excerpt }}
+            </div>
+         {% endif %}
+         {% include '_partials/portfolio--meta.twig' %}
+      </div>
+
+      {% include '_partials/portfolio--thumbnail.twig' with {single: true} %}
+   </header>
+   <div class="mdl-card__supporting-text _msp-portfolio__content">
+      {{ post.content | after_more }}
+   </div>
+</article>

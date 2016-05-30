@@ -1,0 +1,31 @@
+<header class="mdl-layout__header mdl-layout__header--waterfall  _msp-header">
+   <div class="mdl-layout__header-row _msp-header__row _msp-header__row--logo">
+      <h1 class="_msp-header__logo"><a href={{ site.link }}>{{ site.name }}</a></h1>
+      <div class="_msp-header__title _msp-header-title title-highlight">
+         {% spaceless %}
+            <span class="screen-reader-text">{{ site.name }}</span>
+            <span class="_msp-header-title__prefix" role="presentation"></span>
+            <span id="_msp-page-title"
+                  class="_msp-header-title__text"
+                  role="presentation"
+            >{{ site.name }}</span>
+            <span class="_msp-header-title__postfix" role="presentation"></span>
+            <span class="_msp-header-title__cursor" role="presentation"></span>
+         {% endspaceless %}
+      </div>
+   </div>
+   <div class="mdl-layout__header-row mdl-layout--large-screen-only _msp-header__row _msp-navigation--container">
+      <nav class="mdl-navigation _msp-navigation">
+         {% include '_partials/base--menu.twig' %}
+         <span class="_msp-navigation__social">{% include '_partials/base--social.twig' %}</span>
+      </nav>
+   </div>
+
+</header>
+<div class="mdl-layout__drawer mdl-layout--small-screen-only">
+   <nav class="mdl-navigation _msp-navigation">
+      {% include '_partials/base--menu.twig' %}
+      {% include '_partials/base--social.twig' %}
+   </nav>
+</div>
+

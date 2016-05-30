@@ -1,0 +1,30 @@
+{% extends "base.twig" %}
+
+{% block main_classes %}{{ parent() }} _msp-layout__content--flex{% endblock %}
+
+{% block content %}
+   <div id="primary" class=_msp-blog--container>
+      {% if posts %}
+         {# TODO page title ? #}
+
+         {% for post in posts if ' sticky ' in post.class %}
+            {% include ['_partials/archive--'~post.post_type~'.twig', '_partials/archive--post.twig'] %}
+         {% endfor %}
+
+         {% for post in posts if ' sticky ' not in post.class %}
+            {% if not loop.first %}
+               <hr/>{% endif %}
+            {% include ['_partials/archive--'~post.post_type~'.twig', '_partials/archive--post.twig'] %}
+         {% endfor %}
+         {% include '_partials/post--navigation.twig' %}
+
+         {# todo the_posts_navigation(); #}
+
+      {% else %}
+         <h1>{{ __('No blog posts here.', '_msp') }}</h1>
+      {% endif %}
+   </div><!-- #primary -->
+
+{% endblock %}
+
+{# TODO else none ? #}

@@ -1,0 +1,161 @@
+$color--blog--sticky--bg: unquote("rgb(#{$palette-grey-100})");
+$color--blog--title--link--fg: $text-color-primary;
+$color--blog--title--link--fg--hover: $text-link-color;
+$color--blog--meta--fg: rgba(0, 0, 0, .40);
+$color--blog--meta--icon--fg: rgba(0, 0, 0, .20);
+$color--blog--categories--link--fg--hover: $color--accent;
+$color--blog--read-more--fg--hover: $color--primary-dark;
+$color--blog--navigation--link--fg: #000;
+$color--blog--navigation--link--button--bg: #000;
+$color--blog--navigation--link--button--fg: rgba(255, 255, 255, .9);
+$color--blog--heading--fg: rgba(0, 0, 0, .54);
+$font-size--blog--base-heading: 34px;
+
+._msp-blog {
+    &.sticky {
+        background-color: $color--blog--sticky--bg;
+        padding: $gutter;
+        @include shadow-4dp;
+        margin-bottom: $gutter * 4;
+    }
+    & &__header {
+
+    }
+    & &__thumbnail {
+        margin-bottom: $gutter;
+    }
+    & &__title {
+        margin-bottom: 0;
+        &, & a {
+            @include typo-display-1;
+            @extend .mdl-typography--font-light;
+            color: $color--blog--title--link--fg;
+            text-decoration: none;
+        }
+        a {
+            &:hover {
+                color: $color--blog--title--link--fg--hover;
+            }
+        }
+    }
+    & &__meta {
+        margin-bottom: $gutter;
+        overflow: hidden;
+        white-space: nowrap;
+        > p {
+            @include typo-body-1;
+            font-size: 13px;
+            color: $color--blog--meta--fg;
+            margin-bottom: 0;
+            display: inline;
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+
+            > .material-icons {
+                color: $color--blog--meta--icon--fg;
+
+                vertical-align: text-bottom;
+                margin-right: 4px;
+                font-size: 130%;
+            }
+        }
+    }
+    & &__date {
+    }
+    & &__categories {
+        > a {
+            color: inherit;
+            &:hover {
+                color: $color--blog--categories--link--fg--hover;
+            }
+        }
+    }
+    & &__excerpt {
+        @extend %excerpt;
+    }
+
+    & &__content {
+        @extend %excerpt;
+    }
+
+    & &__body {
+
+    }
+    & &__footer {
+    }
+    & &__read-more {
+        &:hover {
+            color: $color--blog--read-more--fg--hover;
+        }
+    }
+    &__navigation {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-content: center;
+        @extend .mdl-typography--font-medium;
+
+        & > &__link {
+            color: $color--blog--navigation--link--fg;
+            text-decoration: none;
+            &--prev > button.mdl-button {
+                margin-left: $gutter;
+            }
+            &--next > button.mdl-button {
+                margin-right: $gutter;
+            }
+
+            & > button.mdl-button {
+                background-color: $color--blog--navigation--link--button--bg;
+                color: $color--blog--navigation--link--button--fg;
+            }
+        }
+
+    }
+    &--single {
+        padding-bottom: $gutter * 2;
+        margin-bottom: $gutter * 2;
+    }
+    &--archive {
+    }
+
+    &--container {
+        max-width: 1000px;
+        width: 100%;
+        margin: auto;
+        padding-top: $gutter * 2;
+        padding-bottom: $gutter * 2;
+        flex: 1;
+    }
+}
+
+%excerpt {
+    @include typo-body-1;
+    font-size: 16px;
+
+    h1, h2, h3, h4, h5, h6 {
+        line-height: 1em;
+        margin: $gutter 0;
+        color: $color--blog--heading--fg;
+    }
+    h1 {
+        font-size: $font-size--blog--base-heading * .90;
+    }
+    h2 {
+        font-size: $font-size--blog--base-heading * .75;
+    }
+    h3 {
+        font-size: $font-size--blog--base-heading * .65;
+    }
+    h4 {
+        font-size: $font-size--blog--base-heading * .60;
+    }
+    h5 {
+        font-size: $font-size--blog--base-heading * .55;
+    }
+    h6 {
+        font-size: $font-size--blog--base-heading * .50;
+    }
+
+}

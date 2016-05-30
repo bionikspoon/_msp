@@ -1,0 +1,85 @@
+$size--navigation--max-width: $layout--max-width;
+$color--navigation--link--fg: $color--white;
+$color--navigation--container--bg: unquote("rgba(#{$color-black}, 0.08)");
+$color--navigation--link--social--fg: $color--white;
+$color--navigation--link--social--bg--hover: unquote("rgba(#{$color-black}, 0.16)");
+$color--navigation--menu-item--bg--after: $color--accent-light;
+._msp-navigation {
+    @extend .mdl-typography--body-1-force-preferred-font;
+    text-align: center;
+    padding-right: 24px;
+    max-width: $size--navigation--max-width;
+    width: 100%;
+    & &__link {
+        flex: 1;
+        line-height: 42px;
+        color: $color--navigation--link--fg;
+        margin: 0;
+        padding: 0;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:first-of-type {
+            padding-left: 0;
+        }
+        &--social {
+            @extend %genericon;
+            padding: 0;
+            font-size: 26px;
+
+            @include padding(null 10px);
+
+            &[href*='github.com'] {
+                @extend %genericon-github;
+                padding: 0;
+            }
+            &[href*='linkedin.com'] {
+                @extend %genericon-linkedin-alt;
+                padding: 0;
+            }
+            &:before {
+                padding: $gutter / 2;
+                border-radius: 2px;
+                transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            &:hover:before {
+                background-color: $color--navigation--link--social--bg--hover;
+                color: $color--navigation--link--social--fg;
+            }
+        }
+    }
+
+    & &__social {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    &--container {
+        background-color: $color--navigation--container--bg;
+        text-transform: uppercase;
+        height: 45px;
+    }
+
+    .current-menu-item {
+        position: relative;
+        opacity: 1;
+        @extend b;
+
+        // highlight line
+        &:after {
+            content: "";
+            width: 70%;
+            height: 2px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            background-color: $color--navigation--menu-item--bg--after;
+            left: 15%;
+
+        }
+    }
+
+}

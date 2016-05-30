@@ -1,0 +1,43 @@
+$color--caption--border: unquote("rgb(#{$palette-grey-300})");
+$gutter--caption--align: 1.5em;
+$color--caption--fg: unquote("rgb(#{$palette-grey-500})");
+
+.wp-caption {
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid $color--caption--border;
+    max-width: 99%;
+    &.aligncenter {
+        margin-bottom: $gutter--caption--align;
+    }
+    &.alignleft {
+        margin-bottom: $gutter--caption--align;
+    }
+    &.alignright {
+        margin-bottom: $gutter--caption--align;
+    }
+    img {
+        display: block;
+        margin: 1.2% auto 0;
+        max-width: 98%;
+    }
+    .wp-caption-text {
+        margin: 0;
+    }
+
+    img[class*="wp-image-"] {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+.wp-caption-text {
+    text-align: center;
+    margin-top: 2px;
+    font-style: italic;
+    color: $color--caption--fg;
+    font-size: 80%;
+}
