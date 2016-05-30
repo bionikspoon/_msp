@@ -32,13 +32,13 @@ const bsOptions = {
   files: [
     {
       // scss/js handled by webpack
-      match: [ 'src/**/*.json', 'src/**/*.!(scss|js)' ],
+      match: ['src/**/*.json', 'src/**/*.!(scss|js)'],
 
       // copy from SRC to DIST, inject html diff
       fn: synchronize(DIST),
     },
     {
-      match: [ 'vendor/autoload.php' ],
+      match: ['vendor/autoload.php'],
       async fn() {
         if (!injector.activated) {return;}
 
@@ -53,6 +53,7 @@ const bsOptions = {
   proxy: {
     // VVV host proxy
     target: PROXY_TARGET,
+    https: true,
     middleware: [
       webpackDevMiddleware(bundler, {
         publicPath: webpackConfig.output.publicPath,

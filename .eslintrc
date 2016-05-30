@@ -9,46 +9,14 @@
     "node": true
   },
   "rules": {
-    "brace-style": [
-      2,
-      "stroustrup",
-      {
-        "allowSingleLine": true
-      }
-    ],
-    "indent": [
-      2,
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "id-length": [
-      2,
-      {
-        "min": 1
-      }
-    ],
+    "brace-style": [2, "stroustrup", {"allowSingleLine": true}],
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "id-length": [2, {"min": 1}],
     "new-cap": 0,
-    "max-len": [
-      2,
-      120
-    ],
-    "no-use-before-define": [
-      2,
-      "nofunc"
-    ],
+    "max-len": [2, 120],
+    "no-use-before-define": [2, "nofunc"],
     "spaced-comment": 0,
     "no-unused-vars": 1,
-    "semi": 1,
-    "array-bracket-spacing": [
-      2,
-      "always"
-    ],
-    "computed-property-spacing": [
-      2,
-      "always"
-    ],
-    "space-in-parens": 0
+    "semi": 1
   }
 }

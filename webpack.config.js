@@ -1,29 +1,29 @@
 /* eslint dot-notation:0, default-case:0  */
 /* jscs:disable requireDotNotation*/
-require( 'babel-polyfill' );
-const webpack = require( 'webpack' );
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
-const NPMInstallPlugin = require( 'npm-install-webpack-plugin' );
-const WriteFilePlugin = require( 'write-file-webpack-plugin' );
-const path = require( 'path' );
+require('babel-polyfill');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const NPMInstallPlugin = require('npm-install-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
+const path = require('path');
 
-const { logLine, unipath } = require( './_utils' );
+const { logLine, unipath } = require('./_utils');
 
 // ===========================================================================
 // CONSTANTS
 // ===========================================================================
 const THEME_NAME = '_msp';
-const PROXY_TARGET = 'local.wordpress.dev';
+const PROXY_TARGET = 'manuphatak.dev';
 const HOST = 'localhost';
 const PORT = 3000;
 const PATHS = {
-  src: unipath( 'src' ),
-  build: unipath( THEME_NAME ),
-  modules: unipath( 'node_modules' ),
-  base: unipath( '.' ),
+  src: unipath('src'),
+  build: unipath(THEME_NAME),
+  modules: unipath('node_modules'),
+  base: unipath('.'),
 };
 
-const LOADER_INCLUDES = [ PATHS.src() ];
+const LOADER_INCLUDES = [PATHS.src()];
 
 const DEVELOPMENT = 'development';
 const PRODUCTION = 'production';
@@ -33,26 +33,26 @@ const PRODUCTION = 'production';
 // ===========================================================================
 
 const TARGET = process.env.npm_lifecycle_event;
-const ENV = getEnv( TARGET );
+const ENV = getEnv(TARGET);
 const IS_PRODUCTION = ENV === PRODUCTION;
-const DEBUG = !process.argv.includes( 'release' );
-const VERBOSE = process.argv.includes( 'verbose' );
+const DEBUG = !process.argv.includes('release');
+const VERBOSE = process.argv.includes('verbose');
 const WATCH = global.watch || false;
 
 // ===========================================================================
 // NOTIFY
 // ===========================================================================
 
-logLine( 'ENV', ENV );
-logLine( 'DEBUG', DEBUG );
-logLine( 'VERBOSE', VERBOSE );
-logLine( 'WATCH', WATCH );
+logLine('ENV', ENV);
+logLine('DEBUG', DEBUG);
+logLine('VERBOSE', VERBOSE);
+logLine('WATCH', WATCH);
 
 // ===========================================================================
 // CONFIG EXPORT
 // ===========================================================================
 module.exports = {
-  entry: getEntry( ENV ),
+  entry: getEntry(ENV),
 
   output: {
     path: PATHS.build(),
@@ -64,21 +64,21 @@ module.exports = {
   },
 
   module: {
-    preLoaders: getPreLoaders( ENV ),
-    loaders: getLoaders( ENV ),
+    preLoaders: getPreLoaders(ENV),
+    loaders: getLoaders(ENV),
   },
 
   resolve: {
-    extensions: [ '', '.json', '.js' ],
+    extensions: ['', '.json', '.js'],
   },
 
   cache: DEBUG,
 
   debug: DEBUG,
 
-  devtool: getDevtool( ENV ),
+  devtool: getDevtool(ENV),
 
-  plugins: getPlugins( ENV ),
+  plugins: getPlugins(ENV),
 
   target: 'web',
 
@@ -111,11 +111,11 @@ module.exports = {
     PATHS,
   },
 
-  postcss( bundler ) {
+  postcss(bundler) {
     return [
-      require( 'postcss-import' )( { addDependencyTo: bundler } ),
-      require( 'precss' )(),
-      require( 'autoprefixer' )( { browsers: [ 'last 2 versions' ] } ),
+      require('postcss-import')({ addDependencyTo: bundler }),
+      require('precss')(),
+      require('autoprefixer')({ browsers: ['last 2 versions'] }),
     ];
   },
 };
@@ -124,40 +124,40 @@ module.exports = {
 // CONFIG ENV DEFINITIONS
 // ===========================================================================
 
-function getEntry( env ) {
+function getEntry(env) {
   const entry = {};
-  entry.main = [ PATHS.src( 'js', 'main.js' ) ];
+  entry.main = [PATHS.src('js', 'main.js')];
   entry.style = [];
 
-  entry.vendor = Object.keys( require( './package.json' ).dependencies );
-  entry.vendor.push( PATHS.modules( 'material-design-lite', 'material.js' ) );
-  entry.customizer = PATHS.src( 'js', 'customizer.js' );
+  entry.vendor = Object.keys(require('./package.json').dependencies);
+  entry.vendor.push(PATHS.modules('material-design-lite', 'material.js'));
+  entry.customizer = PATHS.src('js', 'customizer.js');
 
-  switch ( env ) {
+  switch (env) {
     case DEVELOPMENT:
-      entry.main.unshift( 'webpack/hot/only-dev-server' );
-      entry.main.unshift( `webpack-hot-middleware/client?http://${HOST}:${PORT}` );
-      entry.main.push( PATHS.src( 'sass', 'style.scss' ) );
-      entry.main.push( PATHS.src( 'sass', 'main.scss' ) );
+      entry.main.unshift('webpack/hot/only-dev-server');
+      entry.main.unshift(`webpack-hot-middleware/client?http://${HOST}:${PORT}`);
+      entry.main.push(PATHS.src('sass', 'style.scss'));
+      entry.main.push(PATHS.src('sass', 'main.scss'));
       break;
 
     case PRODUCTION:
-      entry.style.push( PATHS.src( 'sass', 'style.scss' ) );
-      entry.style.push( PATHS.src( 'sass', 'main.scss' ) );
+      entry.style.push(PATHS.src('sass', 'style.scss'));
+      entry.style.push(PATHS.src('sass', 'main.scss'));
       break;
   }
 
   return entry;
 }
 
-function getPreLoaders( env ) {
+function getPreLoaders(env) {
   const preLoaders = [
     {
-      test: /\.js$/, include: LOADER_INCLUDES, loaders: [ 'eslint', 'jscs' ],
+      test: /\.js$/, include: LOADER_INCLUDES, loaders: ['eslint', 'jscs'],
     },
   ];
 
-  switch ( env ) {
+  switch (env) {
     case PRODUCTION:
       break;
 
@@ -168,8 +168,8 @@ function getPreLoaders( env ) {
   return preLoaders;
 }
 
-function getDevtool( env ) {
-  switch ( env ) {
+function getDevtool(env) {
+  switch (env) {
     case PRODUCTION:
       return 'source-map';
 
@@ -181,7 +181,7 @@ function getDevtool( env ) {
   }
 }
 
-function getLoaders( env ) {
+function getLoaders(env) {
   const JS_LOADER = {
     test: /\.js$/,
     include: LOADER_INCLUDES,
@@ -234,12 +234,12 @@ function getLoaders( env ) {
     },
   ];
 
-  switch ( env ) {
+  switch (env) {
     case PRODUCTION:
-      loaders.push( {
+      loaders.push({
         test: /\.s?css$/,
         include: LOADER_INCLUDES,
-        loader: ExtractTextPlugin.extract( (
+        loader: ExtractTextPlugin.extract((
           ''
           + 'css'
           + '?sourceMap'
@@ -250,12 +250,12 @@ function getLoaders( env ) {
           + '!'
           + 'sass'
           + '?sourceMap'
-        ) ),
-      } );
+        )),
+      });
       break;
 
     case DEVELOPMENT:
-      loaders.push( {
+      loaders.push({
         test: /\.s?css$/,
         includes: LOADER_INCLUDES,
         loaders: [
@@ -269,7 +269,7 @@ function getLoaders( env ) {
           'sass'
           + '?sourceMap',
         ],
-      } );
+      });
       JS_LOADER.loader = 'babel?cacheDirectory';
       delete JS_LOADER.query;
       break;
@@ -279,32 +279,32 @@ function getLoaders( env ) {
   return loaders;
 }
 
-function getPlugins( env ) {
+function getPlugins(env) {
   const plugins = [
-    new webpack.DefinePlugin( {
-      'process.env.NODE_ENV': JSON.stringify( env ),
-    } ),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(env),
+    }),
   ];
 
-  switch ( env ) {
+  switch (env) {
 
     case PRODUCTION:
-      plugins.push( new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } ) );
-      plugins.push( new webpack.optimize.CommonsChunkPlugin( { names: [ 'vendor' ] } ) );
-      plugins.push( new webpack.optimize.OccurenceOrderPlugin() );
-      plugins.push( new webpack.optimize.AggressiveMergingPlugin() );
-      plugins.push( new webpack.optimize.DedupePlugin() );
+      plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }));
+      plugins.push(new webpack.optimize.CommonsChunkPlugin({ names: ['vendor'] }));
+      plugins.push(new webpack.optimize.OccurenceOrderPlugin());
+      plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+      plugins.push(new webpack.optimize.DedupePlugin());
       break;
 
     case DEVELOPMENT:
-      plugins.push( new NPMInstallPlugin( { save: true } ) );
-      plugins.push( new webpack.HotModuleReplacementPlugin() );
-      plugins.push( new webpack.NoErrorsPlugin() );
-      plugins.push( WriteFilePlugin() );
+      plugins.push(new NPMInstallPlugin({ save: true }));
+      plugins.push(new webpack.HotModuleReplacementPlugin());
+      plugins.push(new webpack.NoErrorsPlugin());
+      plugins.push(WriteFilePlugin());
       break;
   }
 
-  plugins.push( new ExtractTextPlugin( '[name].css?[hash]' ) );
+  plugins.push(new ExtractTextPlugin('[name].css?[hash]'));
 
   return plugins;
 }
@@ -319,8 +319,8 @@ function getPlugins( env ) {
  * @param {string} target
  * @returns {string}
  */
-function getEnv( target ) {
-  switch ( target ) {
+function getEnv(target) {
+  switch (target) {
     case 'start':
       return DEVELOPMENT;
 
